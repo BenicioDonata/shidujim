@@ -1,0 +1,252 @@
+/*BODY*/
+
+    .form-section{
+        padding-left: 15px;
+        display: none;
+    }
+
+    .form-section.current{
+        display: inherit;
+    }
+
+
+    .parsley-error-list{
+        marign: 2px 0 3px;
+        padding: 0;
+        list-style-type: none;
+        color: red;
+    }
+
+    .step0, .step1, .step2, .step3, .step4, .step5, .step6, .step7, .step8, .step9, .step10 {
+        font-family: Roboto,Arial,sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: .2px;
+        line-height: 20px;
+        color: #202124;
+    }
+
+    .step1 h6, .step2 h6, .step3 h6, .step4 h6, .step5 h6, .step6 h6, .step7 h6, .step8 h6, .step9 h6, .step10 h6   {
+
+        color: red;
+        font-family: 'Google Sans',Roboto,Arial,sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .navbar-header a {
+        color: rgb(91, 92, 40);
+        font-family: 'Google Sans',Roboto,Arial,sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+
+    }
+
+
+    .form-navigation .previous, .next, .send {
+        margin-top: 10px;
+        border-color: black;
+        color: rgb(91, 92, 40);
+        font-family: 'Google Sans',Roboto,Arial,sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+
+    }
+
+    .form-navigation .previous {
+        margin-right: 10px;
+
+    }
+
+    .card-step0, .card-step1, .card-step2, .card-step3, .card-step4, .card-step5, .card-step6, .card-step7, .card-step8, .card-step9,.card-step10 {
+        margin-top: 50px;
+        border-radius: 18px;
+    }
+
+    .navbar {
+        padding-top: 15px;
+        padding-bottom: 20px;
+    }
+
+    .card .card-header h5{
+        color: white;
+    }
+
+    .step1 .card , .step2 .card, .step3 .card, .step4 .card, .step5 .card, .step6 .card, .step7 .card, .step8 .card, .step9 .card, .step10 .card  {
+
+        border-radius: 18px;
+        margin-top: 16px;
+    }
+
+
+    .step2 input, .step3 input, .step4 input, .step5 input, .step6 input, .step7 input, .step8 input, .step9 input  {
+
+        border: none;
+        border-bottom: 1px solid #000;
+        font-family: Roboto,Arial,sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: .2px;
+        line-height: 20px;
+        color: #202124;
+    }
+
+    .progress-div-bar {
+
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .progress-div-bar .progress {
+
+        width: 70%;
+    }
+
+    .progress-div-bar p {
+
+        font-family: Roboto,Arial,sans-serif;
+        font-size: 12px;
+        padding-left: inherit;
+    }
+
+
+    h6.asterics {
+
+        color: red;
+        display: inline-block;
+    }
+
+    .input-group-text {
+
+        display: flex;
+        align-items: center;
+        padding: 0 0;
+        margin-bottom: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #202124;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0px;
+        border-radius: .25rem;
+    }
+
+    .input-group-prepend {
+        /*margin-right: 32px;*/
+        margin-top: 14px;
+        font-family: Roboto,Arial,sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .input-group-prepend p {
+        margin-left: 7px;
+    }
+
+
+
+     .step5 .input-group-text input[type=checkbox] {
+        margin-top: -17px !important;
+    }
+
+    .step5 .input-group input[type=text] {
+         height: 17px !important;
+         margin-top: 15px !important;
+         margin-left: 7px !important;
+     }
+
+    .step5 .input-group {
+        margin-top: -14px;
+
+    }
+
+    /*.btn-file {*/
+    /*    position: relative;*/
+    /*    overflow: hidden;*/
+    /*}*/
+    /*.btn-file input[type=file] {*/
+    /*    position: absolute;*/
+    /*    top: 0;*/
+    /*    right: 0;*/
+    /*    min-width: 100%;*/
+    /*    min-height: 100%;*/
+    /*    font-size: 100px;*/
+    /*    text-align: right;*/
+    /*    filter: alpha(opacity=0);*/
+    /*    opacity: 0;*/
+    /*    outline: none;*/
+    /*    background: white;*/
+    /*    cursor: inherit;*/
+    /*    display: block;*/
+    /*}*/
+
+    .step7 .btn {
+        font-size: 0.7rem !important;
+    }
+
+    .form-check-label {
+        margin-bottom: 14px;
+    }
+
+    input[type=checkbox], input[type=radio] {
+        margin-top: 3px;
+    }
+
+    .step9 .card-final{
+        padding-top: 20px;
+
+    }
+
+    .step7 .number-radio {
+
+        margin-right:  25px;
+
+    }
+
+    .step7 .component-radio {
+
+        margin-left: 4px;
+        text-align: center;
+    }
+
+    .step7 .radio-inline {
+
+        margin-top: 23px;
+        margin-bottom: 39px;
+    }
+
+    .step7 .btn span {
+        font-family: Roboto,Arial,sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        padding-right: 8px;
+    }
+
+    .step7 .file-preview {
+        border: 0px !important;
+
+    }
+
+    .step7 .file-drop-zone {
+        border: 0px !important;
+
+
+    }
+
+    .img-fluid {
+        border-radius: 10px;
+    }
+
+    .img-header-form{
+        display: contents;
+    }
+
+    .form-section {
+        padding-left: 0px !important;
+    }
+
