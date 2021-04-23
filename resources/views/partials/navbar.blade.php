@@ -2,7 +2,7 @@
     <div class="container custom-nav-container">
         <a class="navbar-brand" href="{{ route('multi-step-form') }}">
             <div>
-                <img class="logo-impulso" alt="Logo Impulso" src=" {{ asset('images/shidujim_logo.jpeg') }}" />
+                <img class="logo-impulso" alt="Logo Impulso" src=" {{ asset('images/logo-png.png') }}" />
             </div>
 
         </a>

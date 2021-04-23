@@ -26,7 +26,7 @@
         color: #202124;
     }
 
-    .step1 h6, .step2 h6, .step3 h6, .step4 h6, .step5 h6, .step6 h6, .step7 h6, .step8 h6, .step9 h6, .step10 h6   {
+     .step0 h6, .step1 h6, .step2 h6, .step3 h6, .step4 h6, .step5 h6, .step6 h6, .step7 h6, .step8 h6, .step9 h6, .step10 h6   {
 
         color: red;
         font-family: 'Google Sans',Roboto,Arial,sans-serif;
@@ -74,7 +74,7 @@
         color: white;
     }
 
-    .step1 .card , .step2 .card, .step3 .card, .step4 .card, .step5 .card, .step6 .card, .step7 .card, .step8 .card, .step9 .card, .step10 .card  {
+    .step0 .card, .step1 .card , .step2 .card, .step3 .card, .step4 .card, .step5 .card, .step6 .card, .step7 .card, .step8 .card, .step9 .card, .step10 .card  {
 
         border-radius: 18px;
         margin-top: 16px;
