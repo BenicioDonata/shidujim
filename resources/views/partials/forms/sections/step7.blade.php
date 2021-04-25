@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
             <div class="form-group col-md-6">
-             <label for="civil_status_seeker"><h6 class="asterics">*</h6> Estado Civil (Puedes elegir varios)</label>
+                <label for="civil_status_seeker"><h6 class="asterics">*</h6> Estado Civil (Puedes elegir varios)</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="single_seeker" {{ (old('single_seeker') ===  1) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="single_seeker">
@@ -63,7 +63,8 @@
                     <label class="form-check-label" for="couple_sons_maybe">
                         Tal vez
                     </label>
-                </div>            </div>
+                </div>
+            </div>
             <h6>* Obligatorio</h6>
         </div>
     </div>

@@ -11127,3 +11127,14 @@ form.edit-form .form-navigation .previous {
 
 }
 
+.edit-level .number-radio {
+    margin-right: 25px;
+}
+
+.edit-level .form-check {
+    padding-left: 0.25rem;
+}
+
+.edit-level .form-check-input {
+    margin-left: -0.25rem;
+}

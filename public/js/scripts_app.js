@@ -96,6 +96,30 @@ $(document).ready(function () {
         $('#edit-form-'+$(this).data('id')).submit();
     });
 
+    $("#main_phone").keypress(function(tecla)
+    {
+        if(tecla.charCode < 48 || tecla.charCode > 57)
+        {
+            return false;
+        }
+    });
+
+    $("#years_range_from").keypress(function(tecla)
+    {
+        if(tecla.charCode < 48 || tecla.charCode > 57)
+        {
+            return false;
+        }
+    });
+
+    $("#years_range_to").keypress(function(tecla)
+    {
+        if(tecla.charCode < 48 || tecla.charCode > 57)
+        {
+            return false;
+        }
+    });
+
 
 //---------------
 
