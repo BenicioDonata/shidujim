@@ -8,9 +8,9 @@
         </div>
     </div>
     <div class="card ">
-        <div class="card-header card-form">
-            <h5></h5>
-        </div>
+{{--        <div class="card-header card-form">--}}
+{{--            <h5></h5>--}}
+{{--        </div>--}}
         <div class="card-body">
             <div class="form-group col-md-4">
                  <label for="smoke"><h6 class="asterics">*</h6> ¿Fumas?</label>

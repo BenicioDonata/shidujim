@@ -8,9 +8,9 @@
         </div>
     </div>
     <div class="card ">
-        <div class="card-header card-form">
-            <h5></h5>
-        </div>
+{{--        <div class="card-header card-form">--}}
+{{--            <h5></h5>--}}
+{{--        </div>--}}
         <div class="card-body">
             <div class="form-group col-md-12">
                 <label for="studies"><h6 class="asterics">*</h6> Estudios seculares y judíos (Puedes elegir varios)</label>

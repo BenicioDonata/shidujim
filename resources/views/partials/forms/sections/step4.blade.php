@@ -8,9 +8,9 @@
         </div>
     </div>
     <div class="card ">
-        <div class="card-header card-form">
-            <h5></h5>
-        </div>
+{{--        <div class="card-header card-form">--}}
+{{--            <h5></h5>--}}
+{{--        </div>--}}
         <div class="card-body">
             <div class="form-group col-md-12">
                  <label for="community_assists"><h6 class="asterics">*</h6> A que comunidad asistís?</label>

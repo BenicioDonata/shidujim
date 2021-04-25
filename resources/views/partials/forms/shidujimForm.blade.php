@@ -11,7 +11,7 @@
     @include('partials.forms.sections.step6')
     @include('partials.forms.sections.step7')
     @include('partials.forms.sections.step8')
-    @include('partials.forms.sections.step9')
+{{--    @include('partials.forms.sections.step9')--}}
 
     <div class="row col-md-12">
         <div class="col-md-6">
