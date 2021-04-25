@@ -49,6 +49,15 @@ $(document).ready(function () {
                 $('.step1 .divorced').hide();
                 $('.step1 .widower').hide();
                 $('.step1 .single').show();
+                $('.step1 label#widower').text('¿Eres Viudo?');
+                $('.step1 label#divorced').text('¿Eres Divorciado?');
+                $('.step1 label#single').text('¿Eres Soltero?');
+                if($('.step0 select').val() == 1){
+                    $('.card .card-header h5').text('Bienvenida!');
+                    $('.step1 label#widower').text('¿Eres Viuda?');
+                    $('.step1 label#divorced').text('¿Eres Divorciada?');
+                    $('.step1 label#single').text('¿Eres Soltera?');
+                }
 
                 break;
 
@@ -61,6 +70,10 @@ $(document).ready(function () {
                 $('.progress-div-bar p').text('Página 3 de 9');
                 datetimeComponent();
                 $('.step2 #name').focus();
+                if($('.step0 select').val() == 1){
+                    $('.card .card-header h5').text('Bienvenida!');
+                }
+
                 break;
 
             // case 3:
@@ -82,6 +95,9 @@ $(document).ready(function () {
                 $('.progress-div-bar .progress .progress-bar').css('width', '44.44%');
                 $('.progress-div-bar p').text('Página 4 de 9');
                 $('.step4 #community_assists').focus();
+                if($('.step0 select').val() == 1){
+                    $('.card .card-header h5').text('Bienvenida!');
+                }
 
                 break;
 
@@ -92,6 +108,9 @@ $(document).ready(function () {
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '50');
                 $('.progress-div-bar .progress .progress-bar').css('width', '55.55%');
                 $('.progress-div-bar p').text('Página 5 de 9');
+                if($('.step0 select').val() == 1){
+                    $('.card .card-header h5').text('Bienvenida!');
+                }
                 $('.step5 #full_primary').focus();
 
                 break;
@@ -103,6 +122,9 @@ $(document).ready(function () {
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '66.66');
                 $('.progress-div-bar .progress .progress-bar').css('width', '66.66%');
                 $('.progress-div-bar p').text('Página 6 de 9');
+                if($('.step0 select').val() == 1){
+                    $('.card .card-header h5').text('Bienvenida!');
+                }
                 $('.step6 select#smoke').focus();
 
                 break;
@@ -115,6 +137,9 @@ $(document).ready(function () {
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '77.77');
                 $('.progress-div-bar .progress .progress-bar').css('width', '77.77%');
                 $('.progress-div-bar p').text('Página 7 de 9');
+                if($('.step0 select').val() == 1){
+                    $('.card .card-header h5').text('Bienvenida!');
+                }
                 $('.step7 #single_seeker').focus();
 
 

@@ -6,8 +6,8 @@
             </div>
 
         </a>
-        <div class="navbar-header">
-            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Ingresar</a>
-        </div>
+{{--        <div class="navbar-header">--}}
+{{--            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Ingresar</a>--}}
+{{--        </div>--}}
     </div>
 </nav>
