@@ -70,7 +70,7 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-8">
                  <label for="studies_lvl_seek"><h6 class="asterics">*</h6> ¿Qué nivel de estudios te gustaría que tenga?</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="studies_lvl_seek[]" id="full_primary_seek" {{ (old('full_primary_seek') ===  1) ? 'checked' : '' }} value="1">
