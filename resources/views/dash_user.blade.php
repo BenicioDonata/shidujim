@@ -42,16 +42,16 @@
                                                 <td>{{$form->email}}</td>
                                                 <td>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_check ? 'Sin Revisión' : 'Revisado'}}" class="btn {{!$form->is_check ? 'fas fa-eye-slash btn-danger' : 'far fa-eye btn-success'}} btn-sm view-data"></a>
-                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}" title="Editar Formulario" class="far fa-edit btn btn-dark btn-sm edit-form"></a>
-                                                    <form  method="post" id="change-status-form-{{$form->id}}"  action="{{route('status_form',$form->id)}}">
-                                                        {{csrf_field()}}
-                                                        {{ method_field('PUT') }}
-                                                    </form>
+{{--                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}" title="Editar Formulario" class="far fa-edit btn btn-dark btn-sm edit-form"></a>--}}
+{{--                                                    <form  method="post" id="change-status-form-{{$form->id}}"  action="{{route('status_form',$form->id)}}">--}}
+{{--                                                        {{csrf_field()}}--}}
+{{--                                                        {{ method_field('PUT') }}--}}
+{{--                                                    </form>--}}
                                                 </td>
                                                 <td class="text-center" scope="row">
                                                     <a type="button" data-toggle="tooltip" data-placement="top" title="Fotos Subidas" data-file="{{$form->files}}" class="btn btn-info fas fa-images btn-sm view-files"></a>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" title="Matchear Usuarios" class="btn btn-dark fas fa-users btn-sm" href="{{route('dash_user')}}"></a>
-                                                    <a type="button" data-toggle="tooltip" data-placement="top" title="Dejar Comentarios" class="btn btn-success fas fa-torah btn-sm" href="{{route('dash_user')}}"></a>
+{{--                                                    <a type="button" data-toggle="tooltip" data-placement="top" title="Dejar Comentarios" class="btn btn-success fas fa-torah btn-sm" href="{{route('dash_user')}}"></a>--}}
                                                 </td>
                                             </tr>
                                         @endforeach

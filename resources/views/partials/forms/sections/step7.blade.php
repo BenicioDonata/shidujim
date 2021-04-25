@@ -357,7 +357,7 @@
     <div class="card upload">
         <div class="card-body">
             <div class="form-group col-md-12">
-                <label for="upload_img"><h6 class="asterics">*</h6> Sube al menos una foto tuya, la misma tiene que ser actual.</label>
+                <label for="upload_img"><h6 class="asterics">*</h6> Puedes agregar varias fotos, debes seleccionarlas todas juntas (no por separado). Entre todas las fotos no pueden exceder los <b>15 MB</b> (si tus fotos son más pesadas puedes reducirlas fácilmente <a href="https://compressjpg.com/es" target="_blank">clic aquí </a>) .</label>
                 <br>
                 <input id="input-id" type="file" name="files[]" accept="image/*"  multiple>
             </div>

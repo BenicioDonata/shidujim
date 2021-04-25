@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    const MAXIMO_TAMANIO_BYTES = 2000000; // 1MB = 1 millón de bytes
+    const MAXIMO_TAMANIO_BYTES = 15000000; // 1MB = 1 millón de bytes
 
     var $sections = $('.form-section');
     var index_step = 0;
