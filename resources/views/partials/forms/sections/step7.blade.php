@@ -12,7 +12,7 @@
 {{--            <h5></h5>--}}
 {{--        </div>--}}
         <div class="card-body">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="civil_status_seeker"><h6 class="asterics">*</h6> ¿Qué estado civil te gustaría que tenga la persona a conocer? (puedes elegir varios)</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="single_seeker" {{ (old('single_seeker') ===  1) ? 'checked' : '' }} value="1">
