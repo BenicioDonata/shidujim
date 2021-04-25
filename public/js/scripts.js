@@ -28,7 +28,7 @@ $(document).ready(function () {
 
             case 0:
                 $('.card .card-header h5').text('');
-                $('.contact-form .step0 p').text('En el proceso de matchmaking, la diferencia de Shidujim.com es el fa  ctor humano, en forma totalmente desinteresada, analizamos cada registro en forma individual, somos profesionales, discretas y ponemos lo mejor, creemos que no mereces un algoritmo automatizado que decida por tu futuro, como sabes esto es un proceso que lleva tiempo, por más que no te contactemos,  podes dar por sentado que te tendremos en cuenta, aunque no podemos garantizar encontrar a alguien, si garantizamos que pondremos mucho esfuerzo.');
+                $('.contact-form .step0 p').text('La diferencia de Shidujim.com es que además de utilizar la ultima tecnología en el proceso de matchmaking, la combinamos con el factor humano, en forma desinteresada, analizamos cada registro en forma individual, somos profesionales, discretas y ponemos lo mejor, creemos que no mereces un algoritmo automatizado que decida por tu futuro.');
                 $('.card .card-header').css('height', '15px');
                 $('.progress-div-bar').css('display', 'none');
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '12.5');
@@ -594,9 +594,7 @@ $(document).ready(function () {
     if ($('.step10').is(":visible")) {
 
         $('.card .card-header h5').text('');
-        $('.step10 h6').css('text-align','center').css('color','#297ca5').css('font-size', '19px');
-        $('.step10 h6').text('¡Formulario cargado con EXITO!');
-        $('.card .card-header').css('height', '15px');
+        $('.step10 p').text('La diferencia de Shidujim.com es que además de utilizar la ultima tecnología en el proceso de matchmaking, la combinamos con el factor humano, en forma desinteresada, analizamos cada registro en forma individual, somos profesionales, discretas y ponemos lo mejor, creemos que no mereces un algoritmo automatizado que decida por tu futuro. Como sabes esto es un proceso que lleva tiempo, por más que no te contactemos, podes dar por sentado que te tendremos en cuenta, aunque no podemos garantizar encontrar a alguien, si garantizamos que pondremos mucho esfuerzo.');
 
     }
 

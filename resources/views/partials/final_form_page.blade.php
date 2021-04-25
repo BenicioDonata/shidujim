@@ -16,7 +16,7 @@
                         <h5></h5>
                     </div>
                     <div class="card-body">
-                        <h6></h6>
+                        <p></p>
                     </div>
                 </div>
             </div>

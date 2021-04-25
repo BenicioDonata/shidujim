@@ -7,30 +7,33 @@
 {{--            <p></p>--}}
 {{--        </div>--}}
 {{--    </div>--}}
+{{--    <div class="card ">--}}
+{{--        <div class="card-header card-form">--}}
+{{--            <h5></h5>--}}
+{{--        </div>--}}
+{{--        <div class="card-body">--}}
+{{--            <div class="form-group col-md-12">--}}
+{{--                <label><h6 class="asterics">*</h6> ACEPTO que Shidujim comparta mis datos y fotos con los candidatos que considere que machean con mi perfil.</label>--}}
+{{--                <div class="form-check">--}}
+{{--                    <input class="form-check-input" type="radio" name="send_share" id="accept_share">--}}
+{{--                    <label class="form-check-label" for="accept_share">--}}
+{{--                        <b>¡SI! ACEPTO</b>--}}
+{{--                    </label>--}}
+{{--                </div>--}}
+{{--                <div class="form-check">--}}
+{{--                    <input class="form-check-input" type="radio" name="send_share" id="no_accept_share">--}}
+{{--                    <label class="form-check-label" for="no_accept_share">--}}
+{{--                        NO ACEPTO (NO PODREMOS CONTINUAR)--}}
+{{--                    </label>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <h6>* Obligatorio</h6>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="card ">
         <div class="card-header card-form">
             <h5></h5>
         </div>
-        <div class="card-body">
-            <div class="form-group col-md-12">
-                <label><h6 class="asterics">*</h6> ACEPTO que Shidujim comparta mis datos y fotos con los candidatos que considere que machean con mi perfil.</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="send_share" id="accept_share">
-                    <label class="form-check-label" for="accept_share">
-                        <b>¡SI! ACEPTO</b>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="send_share" id="no_accept_share">
-                    <label class="form-check-label" for="no_accept_share">
-                        NO ACEPTO (NO PODREMOS CONTINUAR)
-                    </label>
-                </div>
-            </div>
-            <h6>* Obligatorio</h6>
-        </div>
-    </div>
-    <div class="card ">
         <div class="card-body">
             <div class="form-group col-md-12">
                 <label><h6 class="asterics">*</h6> Entiendo que Shidujim no tiene responsabilidad alguna y es mi obligación chequear la infromación y referencias.</label>

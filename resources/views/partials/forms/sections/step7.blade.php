@@ -13,7 +13,7 @@
 {{--        </div>--}}
         <div class="card-body">
             <div class="form-group col-md-6">
-                <label for="civil_status_seeker"><h6 class="asterics">*</h6> Estado Civil (Puedes elegir varios)</label>
+                <label for="civil_status_seeker"><h6 class="asterics">*</h6> ¿Qué estado civil te gustaría que tenga la persona a conocer? (puedes elegir varios)</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="single_seeker" {{ (old('single_seeker') ===  1) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="single_seeker">
@@ -226,7 +226,7 @@
     <div class="card ">
         <div class="card-body">
             <div class="form-group col-md-12">
-                <label for="qualities_seek">¿Qué cualidad consideras que tienes tu? puedes elegir una, varias o ninguna.</label>
+                <label for="qualities_seek">¿Qué cualidades te gustaría que tenga? Puedes elegir una, varias o ninguna.</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="sympathetic_seek" {{ (old('sympathetic_seek') ===  1) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="sympathetic_seek">
@@ -357,7 +357,7 @@
     <div class="card upload">
         <div class="card-body">
             <div class="form-group col-md-12">
-                <label for="upload_img"><h6 class="asterics">*</h6> Puedes agregar varias fotos, debes seleccionarlas todas juntas (no por separado). Entre todas las fotos no pueden exceder los <b>15 MB</b> (si tus fotos son más pesadas puedes reducirlas fácilmente <a href="https://compressjpeg.com/" target="_blank">clic aquí </a>) .</label>
+                <label for="upload_img"><h6 class="asterics">*</h6> Puedes agregar varias fotos, debes seleccionarlas todas juntas (no por separado). Entre todas las fotos no pueden exceder los <b>15 MB</b> (si tus fotos son más pesadas puedes reducirlas fácilmente <a href="https://compressjpeg.com/" target="_blank">clic aquí</a>).</label>
                 <br>
                 <input id="input-id" type="file" name="files[]" accept="image/*"  multiple>
             </div>
