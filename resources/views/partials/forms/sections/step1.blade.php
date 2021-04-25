@@ -30,7 +30,7 @@
                     </label>
                 </div>
                 <div id="widower" class="widower">
-                    <label for="widower">¿Eres Viudo?</label>
+                    <label id="widower" for="widower">¿Eres Viudo?</label>
                     <label class="checkbox-inline" for="widower_yes">
                         <input type="radio" name="civil_status" id="widower_yes" {{ (old('widower_yes') ===  1) ? 'checked' : '' }} value="3"> Si
                     </label>

@@ -295,8 +295,8 @@ $(document).ready(function () {
                     $('.step2 #main_phone').focus();
                     return false;
                 }
-                if($(".step2 #main_phone").val().length !== 12 ) {
-                    toastr["error"]("Debe tener 12 digitos","Campo Teléfono Celular");
+                if($(".step2 #main_phone").val().length < 8 ) {
+                    toastr["error"]("Debe tener minimo 8 digitos","Campo Teléfono Celular");
                     $('.step2 #main_phone').focus();
                     return false;
                 }
