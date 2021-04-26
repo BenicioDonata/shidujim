@@ -50,7 +50,7 @@
                                                 </td>
                                                 <td class="text-center" scope="row">
                                                     <a type="button" data-toggle="tooltip" data-placement="top" title="Fotos Subidas" data-file="{{$form->files}}" class="btn btn-info fas fa-images btn-sm view-files"></a>
-                                                    <a type="button" data-toggle="tooltip" data-placement="top" title="Matchear Usuarios" class="btn btn-dark fas fa-users btn-sm" href="{{route('dash_user')}}"></a>
+{{--                                                    <a type="button" data-toggle="tooltip" data-placement="top" title="Matchear Usuarios" class="btn btn-dark fas fa-users btn-sm" href="{{route('dash_user')}}"></a>--}}
 {{--                                                    <a type="button" data-toggle="tooltip" data-placement="top" title="Dejar Comentarios" class="btn btn-success fas fa-torah btn-sm" href="{{route('dash_user')}}"></a>--}}
                                                 </td>
                                             </tr>
