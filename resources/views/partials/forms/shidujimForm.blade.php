@@ -1,17 +1,15 @@
 @yield('shidujimForm')
-<form class="contact-form"  method="post"  action="{{route('upload')}}" enctype="multipart/form-data">
+<form class="contact-form" id="shidujimform"  method="post"  action="{{route('upload')}}" enctype="multipart/form-data">
     @csrf
 
     @include('partials.forms.sections.step0')
     @include('partials.forms.sections.step1')
     @include('partials.forms.sections.step2')
-{{--    @include('partials.forms.sections.step3')--}}
     @include('partials.forms.sections.step4')
     @include('partials.forms.sections.step5')
     @include('partials.forms.sections.step6')
     @include('partials.forms.sections.step7')
     @include('partials.forms.sections.step8')
-{{--    @include('partials.forms.sections.step9')--}}
 
     <div class="row col-md-12">
         <div class="col-md-6">

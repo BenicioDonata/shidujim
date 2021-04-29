@@ -1,16 +1,13 @@
 <div class="form-section step2">
     <div class="card card-step2">
         <div class="card-header">
-            <h5></h5>
+            <span></span>
         </div>
         <div class="card-body">
             <p></p>
         </div>
     </div>
     <div class="card">
-{{--        <div class="card-header card-form">--}}
-{{--            <h5></h5>--}}
-{{--        </div>--}}
         <div class="card-body">
             <div class="form-group col-md-6">
                  <label for="name"><h6 class="asterics">*</h6> Nombre</label>

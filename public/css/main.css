@@ -102,8 +102,8 @@
 
 
     .progress-div-bar .progress {
-
         width: 70%;
+        background : #e9ecef;
     }
 
     .progress-div-bar p {
@@ -164,26 +164,6 @@
         margin-top: -14px;
 
     }
-
-    /*.btn-file {*/
-    /*    position: relative;*/
-    /*    overflow: hidden;*/
-    /*}*/
-    /*.btn-file input[type=file] {*/
-    /*    position: absolute;*/
-    /*    top: 0;*/
-    /*    right: 0;*/
-    /*    min-width: 100%;*/
-    /*    min-height: 100%;*/
-    /*    font-size: 100px;*/
-    /*    text-align: right;*/
-    /*    filter: alpha(opacity=0);*/
-    /*    opacity: 0;*/
-    /*    outline: none;*/
-    /*    background: white;*/
-    /*    cursor: inherit;*/
-    /*    display: block;*/
-    /*}*/
 
     .step7 .btn {
         font-size: 0.7rem !important;
@@ -250,3 +230,18 @@
         padding-left: 0px !important;
     }
 
+    .card .card-header span {
+        font-size : 27px;
+        color:white;
+    }
+
+
+    .card .card-header {
+        background-color : #00C6D7;
+        border-top-left-radius : 11px;
+        border-top-right-radius: 11px;
+        height : 40px;
+        text-align: center;
+
+    }
+    

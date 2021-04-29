@@ -20,16 +20,11 @@ $(document).ready(function () {
         }
 
 
-
-        $('.card .card-header').css('background-color','#00C6D7').css('border-top-left-radius', '11px').css('border-top-right-radius', '11px').css('height', '46px');
-        $('.progress-div-bar .progress').css('background', '#e9ecef');
-
         switch (index) {
 
             case 0:
-                $('.card .card-header h5').text('');
+                $('.card .card-header span').text('¡Bienvenido!');
                 $('.contact-form .step0 p').text('La diferencia de Shidujim.com es que además de utilizar la ultima tecnología en el proceso de matchmaking, la combinamos con el factor humano, en forma desinteresada, analizamos cada registro en forma individual, somos profesionales, discretas y ponemos lo mejor, creemos que no mereces un algoritmo automatizado que decida por tu futuro.');
-                $('.card .card-header').css('height', '15px');
                 $('.progress-div-bar').css('display', 'none');
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '12.5');
                 $('.progress-div-bar .progress .progress-bar').css('width', '12.5%');
@@ -37,10 +32,10 @@ $(document).ready(function () {
                 $('.progress-div-bar').css('display', 'inline-flex');
                 $('.step0 select').focus();
 
-                break;
+            break;
 
             case 1:
-                $('.card .card-header h5').text('Bienvenido!');
+                $('.card .card-header span').text('¡Bienvenido!');
                 $('.contact-form .step1 p').text('Todos tus datos tienen que estar correctos y completos para poder ser tomados en cuenta. (al final se te pedirá que subas dos fotos lo mas actuales posibles). Toda la información es confidencial, puedes ingresarla con total confianza.');
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '25');
                 $('.progress-div-bar .progress .progress-bar').css('width', '25%');
@@ -53,7 +48,7 @@ $(document).ready(function () {
                 $('.step1 label#divorced').text('¿Eres Divorciado?');
                 $('.step1 label#single').text('¿Eres Soltero?');
                 if($('.step0 select').val() == 1){
-                    $('.card .card-header h5').text('Bienvenida!');
+                    $('.card .card-header span').text('¡Bienvenida!');
                     $('.step1 label#widower').text('¿Eres Viuda?');
                     $('.step1 label#divorced').text('¿Eres Divorciada?');
                     $('.step1 label#single').text('¿Eres Soltera?');
@@ -62,7 +57,7 @@ $(document).ready(function () {
                 break;
 
             case 2:
-                $('.card .card-header h5').text('Bienvenido!');
+                $('.card .card-header span').text('¡Bienvenido!');
                 $('.contact-form .step2 p').text('Todos tus datos tienen que estar correctos y completos para poder ser tomados en cuenta. (al final se te pedirá que subas dos fotos lo mas actuales posibles). Toda la información es confidencial, puedes ingresarla con total confianza.');
                 $('.card .card-form h5').text('Datos Personales');
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '37.5');
@@ -71,24 +66,13 @@ $(document).ready(function () {
                 datetimeComponent();
                 $('.step2 #name').focus();
                 if($('.step0 select').val() == 1){
-                    $('.card .card-header h5').text('Bienvenida!');
+                    $('.card .card-header span').text('¡Bienvenida!');
                 }
 
                 break;
 
-            // case 3:
-            //     $('.card .card-header h5').text('Bienvenido!');
-            //     $('.contact-form .step3 p').text('Todos tus datos tienen que estar correctos y completos para poder ser tomados en cuenta. (al final se te pedirá que subas dos fotos lo mas actuales posibles). Toda la información es confidencial, puedes ingresarla con total confianza.');
-            //     $('.card .card-step3-header h5').text('Referencias Personales');
-            //     $('.card .card-step3-body p').text('Escribe Nombre, Apellido, Teléfono, email y comunidad a la que asisten 2 personas que puedan dar referencias de vos.');
-            //     $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '33.33');
-            //     $('.progress-div-bar .progress .progress-bar').css('width', '33.33%');
-            //     $('.progress-div-bar p').text('Página 3 de 9');
-            //     $('.step3 #reference_one').focus()
-            //     break;
-
             case 3:
-                $('.card .card-header h5').text('Bienvenido!');
+                $('.card .card-header span').text('¡Bienvenido!');
                 $('.contact-form .step4 p').text('Todos tus datos tienen que estar correctos y completos para poder ser tomados en cuenta. (al final se te pedirá que subas dos fotos lo mas actuales posibles). Toda la información es confidencial, puedes ingresarla con total confianza.');
                 $('.card .card-form h5').text('Referencias Comunitarias');
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '50');
@@ -96,34 +80,34 @@ $(document).ready(function () {
                 $('.progress-div-bar p').text('Página 4 de 8');
                 $('.step4 #community_assists').focus();
                 if($('.step0 select').val() == 1){
-                    $('.card .card-header h5').text('Bienvenida!');
+                    $('.card .card-header span').text('¡Bienvenida!');
                 }
 
                 break;
 
             case 4:
-                $('.card .card-header h5').text('Bienvenido!');
+                $('.card .card-header span').text('¡Bienvenido!');
                 $('.contact-form .step5 .card-step5 p').text('Todos tus datos tienen que estar correctos y completos para poder ser tomados en cuenta. (al final se te pedirá que subas dos fotos lo mas actuales posibles). Toda la información es confidencial, puedes ingresarla con total confianza.');
                 $('.card .card-form h5').text('Tus Estudios');
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '62.5');
                 $('.progress-div-bar .progress .progress-bar').css('width', '62.5%');
                 $('.progress-div-bar p').text('Página 5 de 8');
                 if($('.step0 select').val() == 1){
-                    $('.card .card-header h5').text('Bienvenida!');
+                    $('.card .card-header span').text('¡Bienvenida!');
                 }
                 $('.step5 #full_primary').focus();
 
                 break;
 
             case 5:
-                $('.card .card-header h5').text('Bienvenido!');
+                $('.card .card-header span').text('¡Bienvenido!');
                 $('.contact-form .step6 .card-step6 p').text('Todos tus datos tienen que estar correctos y completos para poder ser tomados en cuenta. (al final se te pedirá que subas dos fotos lo mas actuales posibles). Toda la información es confidencial, puedes ingresarla con total confianza.');
                 $('.card .card-form h5').text('Información Personal');
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '75');
                 $('.progress-div-bar .progress .progress-bar').css('width', '75%');
                 $('.progress-div-bar p').text('Página 6 de 8');
                 if($('.step0 select').val() == 1){
-                    $('.card .card-header h5').text('Bienvenida!');
+                    $('.card .card-header span').text('¡Bienvenida!');
                 }
                 $('.step6 select#smoke').focus();
 
@@ -131,29 +115,23 @@ $(document).ready(function () {
 
             case 6:
 
-                $('.card .card-header h5').text('Bienvenido!');
+                $('.card .card-header span').text('¡Bienvenido!');
                 $('.contact-form .step7 .card-step7 p').text('Todos tus datos tienen que estar correctos y completos para poder ser tomados en cuenta. (al final se te pedirá que subas dos fotos lo mas actuales posibles). Toda la información es confidencial, puedes ingresarla con total confianza.');
                 $('.card .card-form h5').text('¿Qué buscas?');
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '87.5');
                 $('.progress-div-bar .progress .progress-bar').css('width', '87.5%');
                 $('.progress-div-bar p').text('Página 7 de 8');
                 if($('.step0 select').val() == 1){
-                    $('.card .card-header h5').text('Bienvenida!');
+                    $('.card .card-header span').text('¡Bienvenida!');
                 }
                 $('.step7 #single_seeker').focus();
 
-
-                // initialize with defaults
                  $(".step7 #input-id").fileinput();
 
                 $(".step7 #input-id").fileinput({
-                    //uploadUrl: "http://localhost/file-upload.php",
                     languaje:'es',
                     enableResumableUpload: true,
                     resumableUploadOptions: {
-                        // uncomment below if you wish to test the file for previous partial uploaded chunks
-                        // to the server and resume uploads from that point afterwards
-                        // testUrl: "http://localhost/test-upload.php"
                     },
                     uploadExtraData: {
                         'uploadToken': 'SOME-TOKEN', // for access control / security
@@ -169,9 +147,6 @@ $(document).ready(function () {
                     previewFileType:['image'],
                     dropZoneEnabled: false,
                     theme: 'fa',
-                    // initialPreview: [],          // if you have previously uploaded preview files
-                    // initialPreviewConfig: [],    // if you have previously uploaded preview files
-                    //deleteUrl: "http://localhost/file-delete.php"
                 });
 
                 $(".step7 .file-caption").hide();
@@ -186,8 +161,6 @@ $(document).ready(function () {
                 break;
 
             case 7:
-                // $('.card .card-header h5').text('Bienvenido!');
-                // $('.contact-form .step8 .card-step8 p').text('Todos tus datos tienen que estar correctos y completos para poder ser tomados en cuenta. (al final se te pedirá que subas dos fotos lo mas actuales posibles). Toda la información es confidencial, puedes ingresarla con total confianza.');
                 $('.card .card-form h5').text('ACEPTACION FINAL');
                 $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '100');
                 $('.progress-div-bar .progress .progress-bar').css('width', '100%');
@@ -195,14 +168,6 @@ $(document).ready(function () {
                 $('.step8 #accept_share').focus();
 
                 break;
-
-            // case 8:
-            //     // $('.card .card-header h5').text('Bienvenido!');
-            //     // $('.contact-form .step9 .card-step9 p').text('Todos tus datos tienen que estar correctos y completos para poder ser tomados en cuenta. (al final se te pedirá que subas dos fotos lo mas actuales posibles). Toda la información es confidencial, puedes ingresarla con total confianza.');
-            //     $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '100');
-            //     $('.progress-div-bar .progress .progress-bar').css('width', '100%');
-            //     $('.progress-div-bar p').text('Página 9 de 9');
-            //     break;
         }
 
     }
@@ -313,17 +278,6 @@ $(document).ready(function () {
 
                 navigateTo(curlIndex() + 1);
             break;
-
-            // case 3:
-            //     if($('.step3 #reference_one').val() == ""){
-            //         toastr["error"]("Completar el campo","Campo Referencia 1");
-            //         $('.step3 #reference_one').focus();
-            //         return false;
-            //     }
-            //
-            //     navigateTo(curlIndex() + 1);
-            //
-            // break;
 
             case 3:
                 if($('.step4 #community_assists').val() == ""){
@@ -636,6 +590,12 @@ $(document).ready(function () {
         {
             return false;
         }
+    });
+
+
+    $("form#shidujimform").submit(function () {
+
+        $(window).unbind("beforeunload");
     });
 
 

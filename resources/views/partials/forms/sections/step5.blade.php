@@ -1,16 +1,13 @@
 <div class="form-section step5">
     <div class="card card-step5">
         <div class="card-header">
-            <h5></h5>
+            <span></span>
         </div>
         <div class="card-body">
             <p></p>
         </div>
     </div>
     <div class="card ">
-{{--        <div class="card-header card-form">--}}
-{{--            <h5></h5>--}}
-{{--        </div>--}}
         <div class="card-body">
             <div class="form-group col-md-12">
                 <label for="studies"><h6 class="asterics">*</h6> Estudios seculares y judíos (Puedes elegir varios)</label>
