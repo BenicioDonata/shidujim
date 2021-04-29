@@ -245,3 +245,17 @@
 
     }
 
+    .navbar-brand {
+         position: absolute;
+         width: 100%;
+         left: 0;
+         text-align: center;
+        padding-top: 4.3125rem !important;
+    }
+
+    .container-multi-step {
+        padding-top: 53px;
+    }
+
+
+

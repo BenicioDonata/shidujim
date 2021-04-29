@@ -2266,6 +2266,15 @@ textarea.form-control {
   margin-bottom: 1rem;
 }
 
+form#frm_match .form-group {
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
+
+form#frm_match .tree-row {
+    padding-bottom: 25px;
+}
+
 .form-text {
   display: block;
   margin-top: 0.25rem;
@@ -10970,7 +10979,7 @@ a.text-dark:focus {
 }
 
 .panel-busqueda .panel-heading {
-    background-color: #e3a519;
+    background-color: #00c6d7;
     font-size: 18px;
     color: #fff;
 }
@@ -10994,6 +11003,11 @@ a.text-dark:focus {
 }
 
 .panel-busqueda .panel-body, .panel-busqueda .panel-footer {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.panel-busqueda .panel-body{
     background-color: #E1E1E1;
 }
 

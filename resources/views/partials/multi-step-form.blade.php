@@ -5,7 +5,7 @@
 
 @section('content')
     <section>
-        <div class="container col-md-8">
+        <div class="container col-md-8 container-multi-step">
                 <div class=" img-header-form">
                     <img class="img-fluid" alt="Responsive image"  src="{{asset('images/header_img.jpeg')}}" >
                 </div>
