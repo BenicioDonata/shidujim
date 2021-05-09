@@ -11152,3 +11152,14 @@ form.edit-form .form-navigation .previous {
 .edit-level .form-check-input {
     margin-left: -0.25rem;
 }
+
+form#frm_match .fg-buttom {
+    border-bottom: 0px !important;
+    border-right: 0px !important;
+    clear:both;
+}
+
+.table-responsive .btnDownload {
+    display: block;
+    text-align: right;
+}

@@ -19,6 +19,7 @@ class CreateFormsLanguagesTable extends Migration
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
             $table->unsignedInteger('language_id')->nullable(false);
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

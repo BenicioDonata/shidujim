@@ -12,7 +12,7 @@
 
             <div id="collapseMatch" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                 <div class="panel-body">
-                <form  method="get" action="{{route('searchWordForm')}}" name="frm_match" id="frm_match">
+                <form  method="get" action="{{route('matchPersonForm')}}" name="frm_match" id="frm_match">
 
                     <div class="row ">
                         <div class="form-group col-md-4">
@@ -50,13 +50,13 @@
                             <label for="couple_sons"><b>Aceptan que ya tenga hijos anteriormente</b></label>
                             <div class="form-check">
                                 <label class="checkbox-inline" for="couple_sons_yes">
-                                    <input type="checkbox" name="couple_sons[]" id="couple_sons_yes" value="1"> Si
+                                    <input type="radio" name="couple_sons" id="couple_sons_yes" value="1"> Si
                                 </label>
                                 <label class="checkbox-inline" for="couple_sons_no">
-                                    <input type="checkbox" name="couple_sons[]" id="couple_sons_no" value="2"> No
+                                    <input type="radio" name="couple_sons" id="couple_sons_no" value="2"> No
                                 </label>
                                 <label class="checkbox-inline" for="couple_sons_maybe">
-                                    <input type="checkbox" name="couple_sons[]" id="couple_sons_maybe" value="3"> Talvez
+                                    <input type="radio" name="couple_sons" id="couple_sons_maybe" value="3"> Talvez
                                 </label>
                             </div>
                         </div>
@@ -99,13 +99,13 @@
                         <div class="form-group col-md-4">
                             <label for="languages"><b>Idioma</b></label>
                             <div class="form-check">
-                                <label class="checkbox-inline" for="more_sons">
+                                <label class="checkbox-inline" for="spanish">
                                     <input type="checkbox" name="languages[]" id="spanish" value="1"> Español
                                 </label>
-                                <label class="checkbox-inline" for="no_more_sons">
+                                <label class="checkbox-inline" for="english">
                                     <input type="checkbox" name="languages[]" id="english" value="2"> Ingles
                                 </label>
-                                <label class="checkbox-inline" for="want_sons">
+                                <label class="checkbox-inline" for="hebrew">
                                     <input type="checkbox" name="languages[]" id="hebrew"  value="3"> Hebreo
                                 </label>
                             </div>
@@ -143,525 +143,329 @@
                         <div class="form-group col-md-4">
                             <label for="years_range"><b>Rango de edad</b></label>
                             <div class="input-group">
-                                <input type="number" id="years_range_from"  min ="18" class="form-control col-md-2" name="years_range_from"  placeholder="Desde">
+                                <input type="number" id="years_range_from"  min ="18" class="form-control col-md-4" name="years_range_from"  placeholder="Desde">
                                 <span class="col-md-1"></span>
-                                <input type="number" id="years_range_to" min="18" class="form-control col-md-2" name="years_range_to"  placeholder="Hasta">
+                                <input type="number" id="years_range_to" min="18" class="form-control col-md-4" name="years_range_to"  placeholder="Hasta">
                             </div>
                         </div>
                     </div>
 
                     <div class="row ">
-                        <div class="form-group col-md-6">
-                            <label for="studies">Estudios seculares y judíos</label>
+                        <div class="form-group col-md-4">
+                            <label for="studies"><b>Estudios seculares y judíos</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies[]" id="full_primary" {{ (old('full_primary') ===  1) ? 'checked' : '' }} value="1">
-                                <label class="form-check-label" for="full_primary">
-                                    Primario Completo
+                                <label class="checkbox-inline" for="full_primary">
+                                    <input type="checkbox" name="studies[]" id="full_primary" value="1"> Primario Completo
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies[]" id="complete_secondary" {{ (old('complete_secondary') ===  2) ? 'checked' : '' }} value="2">
-                                <label class="form-check-label" for="complete_secondary">
-                                    Secundario Completo
+                                <label class="checkbox-inline" for="complete_secondary">
+                                    <input type="checkbox" name="studies[]" id="complete_secondary" value="2"> Secundario Completo
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies[]" id="full_college" {{ (old('full_college') ===  3 ) ? 'checked' : '' }} value="3">
-                                <label class="form-check-label" for="full_college">
-                                    Universitario Completo
+                                <label class="checkbox-inline" for="full_college">
+                                    <input type="checkbox" name="studies[]" id="full_college" value="3"> Universitario Completo
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies[]" id="postgraduate" {{ (old('postgraduate') ===  4 ) ? 'checked' : '' }} value="4">
-                                <label class="form-check-label" for="postgraduate">
-                                    Posgrado
+                                <label class="checkbox-inline" for="postgraduate">
+                                    <input type="checkbox" name="studies[]" id="postgraduate" value="4"> Posgrado
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies[]" id="hebrew_elementary_school" {{ (old('hebrew_elementary_school') ===  5 ) ? 'checked' : '' }} value="5">
-                                <label class="form-check-label" for="hebrew_elementary_school">
-                                    Escuela Primaria Hebrea
+                                <label class="checkbox-inline" for="hebrew_elementary_school">
+                                    <input type="checkbox" name="studies[]" id="hebrew_elementary_school" value="5"> Escuela Primaria Hebrea
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies[]" id="shiurim_one_per_week" {{ (old('shiurim_one_per_week') ===  6 ) ? 'checked' : '' }} value="6">
-                                <label class="form-check-label" for="shiurim_one_per_week">
-                                    Shiurim 1 por semana
+                                <label class="checkbox-inline" for="shiurim_one_per_week">
+                                    <input type="checkbox" name="studies[]" id="shiurim_one_per_week" value="6"> Shiurim 1 por semana
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies[]" id="shiurim_two_per_week" {{ (old('shiurim_two_per_week') ===  7 ) ? 'checked' : '' }} value="7">
-                                <label class="form-check-label" for="shiurim_two_per_week">
-                                    Shiurim 2 por Semana
+                                <label class="checkbox-inline" for="shiurim_two_per_week">
+                                    <input type="checkbox" name="studies[]" id="shiurim_two_per_week" value="7"> Shiurim 2 por Semana
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies[]" id="shiurim_more_two_per_week" {{ (old('shiurim_more_two_per_week') ===  8 ) ? 'checked' : '' }} value="8">
-                                <label class="form-check-label" for="shiurim_more_two_per_week">
-                                    Shiurim mas de dos por semana
+                                <label class="checkbox-inline" for="shiurim_more_two_per_week">
+                                    <input type="checkbox" name="studies[]" id="shiurim_more_two_per_week" value="8"> Shiurim mas de dos por semana
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies[]" id="ieshiva" {{ (old('ieshiva') ===  9 ) ? 'checked' : '' }} value="9">
-                                <label class="form-check-label" for="ieshiva">
-                                    Ieshiva/Seminario
+                                <label class="checkbox-inline" for="ieshiva">
+                                    <input type="checkbox" name="studies[]" id="ieshiva" value="9"> Ieshiva/Seminario
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies[]" id="hebrew_high_school" {{ (old('hebrew_high_school') ===  10 ) ? 'checked' : '' }} value="10">
-                                <label class="form-check-label" for="hebrew_high_school">
-                                    Secundaria Hebrea
+                                <label class="checkbox-inline" for="hebrew_high_school">
+                                    <input type="checkbox" name="studies[]" id="hebrew_high_school" value="10"> Secundaria Hebrea
                                 </label>
                             </div>
                         </div>
-
-                    </div>
-
-                    <div class="row ">
-                        <div class="form-group col-md-6">
-                            <label for="location">¿En qué Localidad Vivis Actualmente?</label>
-                            <select class="form-control" id="location" name="location" tabindex="-1" aria-hidden="true" required>
-                                <option value="" selected>Elige</option>
-{{--                                @foreach($localities as $location)--}}
-{{--                                    @if($location->id <= 13)--}}
-{{--                                        <option value="{{$location->id}}" {{ old('location') == $location->id ? 'selected' : '' }} > {{ $location->localities_title }} </option>--}}
-{{--                                    @endif--}}
-{{--                                @endforeach--}}
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="row ">
-                        <div class="form-group col-md-6">
-                            <label for="accepted_level">¿Qué nivel seria aceptado por vos? (Puedes Elegir varios)</label>
+                        <div class="form-group col-md-4">
+                            <label for="location"><b>Localidad en la que viven actualmente</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="accepted_level[]" id="kasher_only_house" {{ (old('kasher_only_house') ===  1) ? 'checked' : '' }} value="1">
-                                <label class="form-check-label" for="kasher_only_house">
-                                    Kasher solo en Casa
+                                <label class="checkbox-inline" for="buenos_aires">
+                                    <input type="checkbox" name="location[]" id="buenos_aires" value="1"> Buenos Aires
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="accepted_level[]" id="forever_kasher" {{ (old('forever_kasher') ===  2) ? 'checked' : '' }} value="2">
-                                <label class="form-check-label" for="forever_kasher">
-                                    Siempre Kasher
+                                <label class="checkbox-inline" for="ciudad_de_mexico">
+                                    <input type="checkbox" name="location[]" id="ciudad_de_mexico" value="2"> Ciudad de México
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="accepted_level[]" id="kasher_shabat" {{ (old('kasher_shabat') ===  3) ? 'checked' : '' }} value="3">
-                                <label class="form-check-label" for="kasher_shabat">
-                                    Kasher siempre + Shabat
+                                <label class="checkbox-inline" for="ciudad_de_panama">
+                                    <input type="checkbox" name="location[]" id="ciudad_de_panama" value="3"> Ciudad de Panamá
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="accepted_level[]" id="abrej" {{ (old('abrej') ===  4) ? 'checked' : '' }} value="4">
-                                <label class="form-check-label" for="abrej">
-                                    Abrej (que estudie todo el dia)
+                                <label class="checkbox-inline" for="chile">
+                                    <input type="checkbox" name="location[]" id="chile" value="4"> Chile
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="accepted_level[]" id="tora" {{ (old('tora') ===  5) ? 'checked' : '' }} value="5">
-                                <label class="form-check-label" for="tora">
-                                    Que estudie Tora medio dÍa y trabaje
+                                <label class="checkbox-inline" for="uruguay">
+                                    <input type="checkbox" name="location[]" id="uruguay" value="5"> Uruguay
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="accepted_level[]" id="kasher_shabat_study" {{ (old('kasher_shabat_study') ===  5) ? 'checked' : '' }} value="5">
-                                <label class="form-check-label" for="kasher_shabat_study">
-                                    Kasher siempre + Shabat + un minimo de estudio semanal
+                                <label class="checkbox-inline" for="caracas">
+                                    <input type="checkbox" name="location[]" id="caracas" value="6"> Caracas
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="accepted_level[]" id="hebrew" {{ (old('hebrew') ===  6) ? 'checked' : '' }} value="6">
-                                <label class="form-check-label" for="hebrew">
-                                    Que sepa hebreo
+                                <label class="checkbox-inline" for="estados_unidos">
+                                    <input type="checkbox" name="location[]" id="estados_unidos" value="7"> Estados Unidos
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="accepted_level[]" id="wherever" {{ (old('wherever') ===  7) ? 'checked' : '' }} value="7">
-                                <label class="form-check-label" for="wherever">
-                                    Me da lo mismo cumpla o no
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="civil_status_seeker">Estado Civil Que Buscas (Puedes elegir varios)</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="single_seeker" {{ (old('single_seeker') ===  1) ? 'checked' : '' }} value="1">
-                                <label class="form-check-label" for="single_seeker">
-                                    Soltero/a
+                                <label class="checkbox-inline" for="israel">
+                                    <input type="checkbox" name="location[]" id="israel" value="8"> Israel
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="divorced_seeker" {{ (old('divorced_seeker') ===  2) ? 'checked' : '' }} value="2">
-                                <label class="form-check-label" for="divorced_seeker">
-                                    Divorciado/a
+                                <label class="checkbox-inline" for="cordoba">
+                                    <input type="checkbox" name="location[]" id="cordoba" value="9"> Córdoba
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="widower_seeker" {{ (old('widower_seeker') ===  3) ? 'checked' : '' }} value="3">
-                                <label class="form-check-label" for="widower_seeker">
-                                    Viudo/a
+                                <label class="checkbox-inline" for="tucuman">
+                                    <input type="checkbox" name="location[]" id="tucuman" value="10"> Tucumán
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="wherever_seeker" {{ (old('wherever_seeker') ===  4) ? 'checked' : '' }} value="4">
-                                <label class="form-check-label" for="wherever_seeker">
-                                    Me da igual
+                                <label class="checkbox-inline" for="rosario">
+                                    <input type="checkbox" name="location[]" id="rosario" value="11"> Rosario
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="checkbox-inline" for="otros_lugares_de_argentina">
+                                    <input type="checkbox" name="location[]" id="otros_lugares_de_argentina" value="12"> Otros Lugares de Argentina
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="checkbox-inline" for="otros">
+                                    <input type="checkbox" name="location[]" id="otros" value="13"> Otros
                                 </label>
                             </div>
                         </div>
-                    </div>
-                    <div class="row ">
-
-                        <div class="form-group col-md-6">
-                            <label for="studies_lvl_seek">¿Qué nivel de estudios te gustaría que tenga?</label>
+                        <div class="form-group col-md-4">
+                            <label for="accepted_level"><b>Niveles de Aceptación</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies_lvl_seek[]" id="full_primary_seek" {{ (old('full_primary_seek') ===  1) ? 'checked' : '' }} value="1">
-                                <label class="form-check-label" for="full_primary_seek">
-                                    Primario Completo
+                                <label class="checkbox-inline" for="kasher_only_house">
+                                    <input type="checkbox" name="accepted_level[]" id="kasher_only_house" value="1"> Kasher solo en Casa
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies_lvl_seek[]" id="complete_secondary_seek" {{ (old('complete_secondary_seek') ===  2) ? 'checked' : '' }} value="2">
-                                <label class="form-check-label" for="complete_secondary_seek">
-                                    Secundario Completo
+                                <label class="checkbox-inline" for="forever_kasher">
+                                    <input type="checkbox" name="accepted_level[]" id="forever_kasher" value="2"> Siempre Kasher
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies_lvl_seek[]" id="full_college_seek" {{ (old('full_college_seek') ===  3 ) ? 'checked' : '' }} value="3">
-                                <label class="form-check-label" for="full_college_seek">
-                                    Universitario Completo
+                                <label class="checkbox-inline" for="kasher_shabat">
+                                    <input type="checkbox" name="accepted_level[]" id="kasher_shabat" value="3"> Kasher siempre + Shabat
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies_lvl_seek[]" id="postgraduate_seek" {{ (old('postgraduate_seek') ===  4 ) ? 'checked' : '' }} value="4">
-                                <label class="form-check-label" for="postgraduate_seek">
-                                    Posgrado
+                                <label class="checkbox-inline" for="abrej">
+                                    <input type="checkbox" name="accepted_level[]" id="abrej" value="4"> Abrej (que estudie todo el dia)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies_lvl_seek[]" id="hebrew_elementary_school_seek" {{ (old('hebrew_elementary_school_seek') ===  5 ) ? 'checked' : '' }} value="5">
-                                <label class="form-check-label" for="hebrew_elementary_school_seek">
-                                    Escuela Primaria Hebrea
+                                <label class="checkbox-inline" for="tora">
+                                    <input type="checkbox" name="accepted_level[]" id="tora" value="5"> Que estudie Tora medio dÍa y trabaje
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies_lvl_seek[]" id="shiurim_one_per_week_seek" {{ (old('shiurim_one_per_week_seek') ===  6 ) ? 'checked' : '' }} value="6">
-                                <label class="form-check-label" for="shiurim_one_per_week_seek">
-                                    Shiurim 1 por semana
+                                <label class="checkbox-inline" for="kasher_shabat_study">
+                                    <input type="checkbox" name="accepted_level[]" id="kasher_shabat_study" value="6"> Kasher siempre + Shabat + un minimo de estudio semanal
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="studies_lvl_seek[]" id="hebrew_high_school_seek" {{ (old('hebrew_high_school_seek') ===  7 ) ? 'checked' : '' }} value="7">
-                                <label class="form-check-label" for="hebrew_high_school_seek">
-                                    Secundaria Hebrea
+                                <label class="checkbox-inline" for="hebrew">
+                                    <input type="checkbox" name="accepted_level[]" id="hebrew" value="7"> Que sepa hebreo
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="checkbox-inline" for="wherever">
+                                    <input type="checkbox" name="accepted_level[]" id="wherever" value="8"> Me da lo mismo cumpla o no
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="form-group col-md-6">
-                            <label for="qualities">¿Qué cualidad consideras que tienes tu? puedes elegir una, varias o ninguna.</label>
+                        <div class="form-group col-md-4">
+                            <label for="qualities"><b>Cualidades</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities[]" id="sympathetic" {{ (old('sympathetic') ===  1) ? 'checked' : '' }} value="1">
-                                <label class="form-check-label" for="sympathetic">
-                                    Simpático/a
+                                <label class="checkbox-inline" for="sympathetic">
+                                    <input type="checkbox" name="s[]" id="sympathetic" value="1"> Simpático/a
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities[]" id="professional" {{ (old('professional') ===  2) ? 'checked' : '' }} value="2">
-                                <label class="form-check-label" for="professional">
-                                    Profesional
+                                <label class="checkbox-inline" for="professional">
+                                    <input type="checkbox" name="qualities[]" id="professional" value="2"> Profesional
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities[]" id="worship" {{ (old('worship') ===  3) ? 'checked' : '' }} value="3">
-                                <label class="form-check-label" for="worship">
-                                    Culto
+                                <label class="checkbox-inline" for="worship">
+                                    <input type="checkbox" name="qualities[]" id="worship" value="3"> Culto
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities[]" id="good_mood" {{ (old('good_mood') ===  4) ? 'checked' : '' }} value="4">
-                                <label class="form-check-label" for="good_mood">
-                                    Buen Humor
+                                <label class="checkbox-inline" for="good_mood">
+                                    <input type="checkbox" name="qualities[]" id="good_mood" value="4"> Buen Humor
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities[]" id="organized" {{ (old('organized') ===  5) ? 'checked' : '' }} value="5">
-                                <label class="form-check-label" for="organized">
-                                    Ordenada/o
+                                <label class="checkbox-inline" for="organized">
+                                    <input type="checkbox" name="qualities[]" id="organized" value="5"> Ordenada/o
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities[]" id="family_member" {{ (old('family_member') ===  6) ? 'checked' : '' }} value="6">
-                                <label class="form-check-label" for="family_member">
-                                    Familiero
+                                <label class="checkbox-inline" for="family_member">
+                                    <input type="checkbox" name="qualities[]" id="family_member" value="6"> Familiero
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities[]" id="affectionate" {{ (old('affectionate') ===  7) ? 'checked' : '' }} value="7">
-                                <label class="form-check-label" for="affectionate">
-                                    Cariñoso/a
+                                <label class="checkbox-inline" for="affectionate">
+                                    <input type="checkbox" name="qualities[]" id="affectionate" value="7"> Cariñoso/a
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities[]" id="irat_shamaim" {{ (old('irat_shamaim') ===  8) ? 'checked' : '' }} value="8">
-                                <label class="form-check-label" for="irat_shamaim">
-                                    Irat Shamaim
+                                <label class="checkbox-inline" for="irat_shamaim">
+                                    <input type="checkbox" name="qualities[]" id="irat_shamaim" value="8"> Irat Shamaim
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="live_future">¿En dónde les gustaría vivir? (Puedes elegir varios)</label>
+                        <div class="form-group col-md-4">
+                            <label for="live_future"><b>Dónde le gustaría vivir</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_bs" {{ (old('live_future_bs') ===  1) ? 'checked' : '' }} value="1">
-                                <label class="form-check-label" for="live_future_bs">
-                                    Buenos Aires
+                                <label class="checkbox-inline" for="live_future_bs">
+                                    <input type="checkbox" name="live_future[]" id="live_future_bs" value="1"> Buenos Aires
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_cp" {{ (old('live_future_cp') ===  3) ? 'checked' : '' }} value="3">
-                                <label class="form-check-label" for="live_future_cp">
-                                    Ciudad de Panamá
+                                <label class="checkbox-inline" for="live_future_cp">
+                                    <input type="checkbox" name="live_future[]" id="live_future_cp" value="2"> Ciudad de Panamá
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_df" {{ (old('live_future_df') ===  14 ) ? 'checked' : '' }} value="14">
-                                <label class="form-check-label" for="live_future_df">
-                                    Distrito Federal
+                                <label class="checkbox-inline" for="live_future_df">
+                                    <input type="checkbox" name="live_future[]" id="live_future_df" value="3"> Distrito Federal
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_c" {{ (old('live_future_c') ===  4 ) ? 'checked' : '' }} value="4">
-                                <label class="form-check-label" for="live_future_c">
-                                    Chile
+                                <label class="checkbox-inline" for="live_future_c">
+                                    <input type="checkbox" name="live_future[]" id="live_future_c" value="4"> Chile
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_u" {{ (old('live_future_u') ===  5 ) ? 'checked' : '' }} value="5">
-                                <label class="form-check-label" for="live_future_u">
-                                    Uruguay
+                                <label class="checkbox-inline" for="live_future_u">
+                                    <input type="checkbox" name="live_future[]" id="live_future_u" value="5"> Uruguay
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_ca" {{ (old('live_future_ca') ===  6 ) ? 'checked' : '' }} value="6">
-                                <label class="form-check-label" for="live_future_cas">
-                                    Caracas
+                                <label class="checkbox-inline" for="live_future_ca">
+                                    <input type="checkbox" name="live_future[]" id="live_future_ca" value="6"> Caracas
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_i" {{ (old('live_future_i') ===  8 ) ? 'checked' : '' }} value="8">
-                                <label class="form-check-label" for="live_future_i">
-                                    Israel
+                                <label class="checkbox-inline" for="live_future_ca">
+                                    <input type="checkbox" name="live_future[]" id="live_future_i" value="8"> Israel
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_m" {{ (old('live_future_m') ===  15 ) ? 'checked' : '' }} value="15">
-                                <label class="form-check-label" for="live_future_m">
-                                    Miami
+                                <label class="checkbox-inline" for="live_future_m">
+                                    <input type="checkbox" name="live_future[]" id="live_future_m" value="15"> Miami
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_ny" {{ (old('live_future_ny') ===  16 ) ? 'checked' : '' }} value="16">
-                                <label class="form-check-label" for="live_future_ny">
-                                    New York
+                                <label class="checkbox-inline" for="live_future_ny">
+                                    <input type="checkbox" name="live_future[]" id="live_future_ny" value="16"> New York
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_la" {{ (old('live_future_la') ===  17 ) ? 'checked' : '' }} value="17">
-                                <label class="form-check-label" for="live_future_la">
-                                    Los Angeles
+                                <label class="checkbox-inline" for="live_future_la">
+                                    <input type="checkbox" name="live_future[]" id="live_future_la" value="17"> Los Angeles
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_cor" {{ (old('live_future_cor') ===  9 ) ? 'checked' : '' }} value="9">
-                                <label class="form-check-label" for="live_future_cor">
-                                    Córdoba
+                                <label class="checkbox-inline" for="live_future_cor">
+                                    <input type="checkbox" name="live_future[]" id="live_future_cor" value="9"> Córdoba
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_t" {{ (old('live_future_t') ===  10 ) ? 'checked' : '' }} value="10">
-                                <label class="form-check-label" for="live_future_t">
-                                    Tucumán
+                                <label class="checkbox-inline" for="live_future_t">
+                                    <input type="checkbox" name="live_future[]" id="live_future_t" value="10"> Tucumán
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_ro" {{ (old('live_future_ro') ===  11 ) ? 'checked' : '' }} value="11">
-                                <label class="form-check-label" for="live_future_ro">
-                                    Rosario
+                                <label class="checkbox-inline" for="live_future_ro">
+                                    <input type="checkbox" name="live_future[]" id="live_future_ro" value="11"> Rosario
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_wherever" {{ (old('live_future_wherever') ===  18 ) ? 'checked' : '' }} value="18">
-                                <label class="form-check-label" for="live_future_wherever">
-                                    Me da lo mismo
+                                <label class="checkbox-inline" for="live_future_wherever">
+                                    <input type="checkbox" name="live_future[]" id="live_future_wherever" value="18"> Me da lo mismo
                                 </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="find_partner"><b>Rango de ganas de encontrar una pareja (1 al 10)</b></label>
+                            <div class="input-group">
+                                <input type="number" id="feel_range_from"  min ="1"  min ="10" class="form-control col-md-4" name="feel_range_from"  placeholder="Desde">
+                                <span class="col-md-1"></span>
+                                <input type="number" id="feel_range_to" min="1"  min ="10"class="form-control col-md-4" name="feel_range_to"  placeholder="Hasta">
                             </div>
                         </div>
                     </div>
+
                     <div class="row ">
-                        <div class="form-group col-md-6">
-                            <label for="qualities_seek">¿Qué cualidad consideras que tienes tu? puedes elegir una, varias o ninguna.</label>
+                        <div class="form-group col-md-4">
+                            <label for="family_purity_laws"><b>Disponibilidad para cumplir las leyes de pureza familiar judios</b></label>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="sympathetic_seek" {{ (old('sympathetic_seek') ===  1) ? 'checked' : '' }} value="1">
-                                <label class="form-check-label" for="sympathetic_seek">
-                                    Simpático/a
+                                <label class="checkbox-inline" for="family_purity_laws_yes">
+                                    <input type="checkbox" name="family_purity_laws[]" id="family_purity_laws_yes" value="1"> Si
                                 </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="professional_seek" {{ (old('professional_seek') ===  2) ? 'checked' : '' }} value="2">
-                                <label class="form-check-label" for="professional_seek">
-                                    Profesional
+                                <label class="checkbox-inline" for="family_purity_laws_no">
+                                    <input type="checkbox" name="family_purity_laws[]" id="family_purity_laws_no" value="2"> No
                                 </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="worship_seek" {{ (old('worship_seek') ===  3) ? 'checked' : '' }} value="3">
-                                <label class="form-check-label" for="worship_seek">
-                                    Culto
+                                <label class="checkbox-inline" for="couple_sons_maybe">
+                                    <input type="checkbox" name="family_purity_laws[]" id="couple_sons_maybe" value="3"> Talvez
                                 </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="good_mood_seek" {{ (old('good_mood_seek') ===  4) ? 'checked' : '' }} value="4">
-                                <label class="form-check-label" for="good_mood_seek">
-                                    Buen Humor
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="organized_seek" {{ (old('organized_seek') ===  5) ? 'checked' : '' }} value="5">
-                                <label class="form-check-label" for="organized_seek">
-                                    Ordenada/o
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="family_member_seek" {{ (old('family_member_seek') ===  6) ? 'checked' : '' }} value="6">
-                                <label class="form-check-label" for="family_member_seek">
-                                    Familiero
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="affectionate_seek" {{ (old('affectionate_seek') ===  7) ? 'checked' : '' }} value="7">
-                                <label class="form-check-label" for="affectionate_seek">
-                                    Cariñoso/a
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="no_smoke_seek" {{ (old('no_smoke_seek') ===  9) ? 'checked' : '' }} value="9">
-                                <label class="form-check-label" for="no_smoke_seek">
-                                    Que no fume
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="irat_shamaim_seek" {{ (old('irat_shamaim_seek') ===  8) ? 'checked' : '' }} value="8">
-                                <label class="form-check-label" for="irat_shamaim_seek">
-                                    Irat Shamaim
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6 edit-level">
-                            <label for="find_partner">Del 1 al 10. ¿Cuántas ganas tienes de encontrar pareja? (1 es nada de ganas - 10 es Muchísimas ganas)</label>
-                            <div class="col-12 ">
-                                <label class="radio-inline">
-                                    <div class="form-check">
-                                        <div class="number-radio">1</div>
-                                        <div class="component-radio"><input class="form-check-input" type="radio" name="find_partner" id="find_partner_one" {{ (old('find_partner_one') ===  1) ? 'checked' : '' }} value="1"></div>
-                                    </div>
-                                </label>
-                                <label class="radio-inline">
-                                    <div class="form-check">
-                                        <div class="number-radio">2</div>
-                                        <div class="component-radio"><input class="form-check-input" type="radio" name="find_partner" id="find_partner_two" {{ (old('find_partner_two') ===  2) ? 'checked' : '' }} value="2"></div>
-                                    </div>
-                                </label>
-                                <label class="radio-inline">
-                                    <div class="form-check">
-                                        <div class="number-radio">3</div>
-                                        <div class="component-radio"><input class="form-check-input" type="radio" name="find_partner" id="find_partner_three" {{ (old('find_partner_three') ===  3) ? 'checked' : '' }} value="3"></div>
-                                    </div>
-                                </label>
-                                <label class="radio-inline">
-                                    <div class="form-check">
-                                        <div class="number-radio">4</div>
-                                        <div class="component-radio"><input class="form-check-input" type="radio" name="find_partner" id="find_partner_four" {{ (old('find_partner_four') ===  4) ? 'checked' : '' }} value="4"></div>
-                                    </div>
-                                </label>
-                                <label class="radio-inline">
-                                    <div class="form-check">
-                                        <div class="number-radio">5</div>
-                                        <div class="component-radio"><input class="form-check-input" type="radio" name="find_partner" id="find_partner_five" {{ (old('find_partner_five') ===  5) ? 'checked' : '' }} value="5"></div>
-                                    </div>
-                                </label>
-                                <label class="radio-inline">
-                                    <div class="form-check">
-                                        <div class="number-radio">6</div>
-                                        <div class="component-radio"><input class="form-check-input" type="radio" name="find_partner" id="find_partner_six" {{ (old('find_partner_six') ===  6) ? 'checked' : '' }} value="6"></div>
-                                    </div>
-                                </label>
-                                <label class="radio-inline">
-                                    <div class="form-check">
-                                        <div class="number-radio">7</div>
-                                        <div class="component-radio"><input class="form-check-input" type="radio" name="find_partner" id="find_partner_seven" {{ (old('find_partner_seven') ===  7) ? 'checked' : '' }} value="7"></div>
-                                    </div>
-                                </label>
-                                <label class="radio-inline">
-                                    <div class="form-check">
-                                        <div class="number-radio">8</div>
-                                        <div class="component-radio"><input class="form-check-input" type="radio" name="find_partner" id="find_partner_eigth" {{ (old('find_partner_eigth') ===  8) ? 'checked' : '' }} value="8"></div>
-                                    </div>
-                                </label>
-                                <label class="radio-inline">
-                                    <div class="form-check">
-                                        <div class="number-radio">9</div>
-                                        <div class="component-radio"><input class="form-check-input" type="radio" name="find_partner" id="find_partner_nine" {{ (old('find_partner_nine') ===  9) ? 'checked' : '' }} value="9"></div>
-                                    </div>
-                                </label>
-                                <label class="radio-inline">
-                                    <div class="form-check">
-                                        <div class="number-radio">10</div>
-                                        <div class="component-radio"><input class="form-check-input" type="radio" name="find_partner" id="find_partner_ten" {{ (old('find_partner_ten') ===  10) ? 'checked' : '' }} value="10"></div>
-                                    </div>
+                                <label class="checkbox-inline" for="family_purity_laws_never">
+                                    <input type="checkbox" name="family_purity_laws[]" id="family_purity_laws_never" value="4"> Nunca
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="row ">
-                        <div class="form-group col-md-6">
-                            <label for="family_purity_laws">¿Estarías dispuesto/a a cumplir las leyes de pureza familiar judios?</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="family_purity_laws" id="family_purity_laws_yes" {{ (old('family_purity_laws_yes') ===  1) ? 'checked' : '' }} value="1">
-                                <label class="form-check-label" for="family_purity_laws_yes">
-                                    Si
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="family_purity_laws" id="family_purity_laws_no" {{ (old('family_purity_laws_no') ==  2) ? 'checked' : '' }} value="2" >
-                                <label class="form-check-label" for="family_purity_laws_no">
-                                    No
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="family_purity_laws" id="family_purity_laws_maybe" {{ (old('family_purity_laws_maybe') ==  3) ? 'checked' : '' }} value="3" >
-                                <label class="form-check-label" for="family_purity_laws_maybe">
-                                    Tal vez
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="family_purity_laws" id="family_purity_laws_never" {{ (old('family_purity_laws_never') ==  4) ? 'checked' : '' }} value="4" >
-                                <label class="form-check-label" for="family_purity_laws_never">
-                                    Nunca
-                                </label>
-                            </div>
-                        </div>
+                    <div class="form-group fg-buttom">
+                        <button type="submit" data-toggle="tooltip" data-placement="top" title="Listar"  class=" btn btn-dark fas fa-users"></button>
+                        <a type="button" data-toggle="tooltip" data-placement="top" title="Todos los Registros" class="btn btnBuscar fas fa-list-ol" href="{{route('dash_user')}}"></a>
                     </div>
-
-
-
-
-
-
-                        <div class="form-group" style="clear:both;">
-                            <button type="submit" data-toggle="tooltip" data-placement="top" title="Empezar el Match"  class=" btn btn-dark fas fa-users"></button>
-                            <a type="button" data-toggle="tooltip" data-placement="top" title="Todos los Registros" class="btn btnBuscar fas fa-list-ol" href="{{route('dash_user')}}"></a>
-                        </div>
                 </form>
                 </div>
             </div><!--FIN BUSCADOR-->

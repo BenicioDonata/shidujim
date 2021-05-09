@@ -26,7 +26,12 @@ class AcceptanceLevel extends Model
 
     public function forms(){
         return $this->belongsToMany('App\Models\Form','forms_acceptance_levels')
-            ->withPivot('form_id')->withTimestamps();;
+            ->withPivot('form_id')->withTimestamps();
+    }
+
+    public function acceptancelevel(){
+        return $this->belongsToMany('App\Models\AcceptanceLevel','forms_acceptance_levels')
+            ->withPivot('acceptance_level_id')->withTimestamps();;
     }
 
 }

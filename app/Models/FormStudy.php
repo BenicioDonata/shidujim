@@ -24,4 +24,16 @@ class FormStudy extends Model
     ];
 
     protected $table = "forms_studies";
+
+    public function forms(){
+        return $this->belongsToMany('App\Models\Form','forms_studies')
+            ->withPivot('form_id')->withTimestamps();;
+    }
+
+    public function studies(){
+        return $this->belongsToMany('App\Models\Study','forms_studies')
+            ->withPivot('study_id')->withTimestamps();
+    }
+
+
 }

@@ -24,4 +24,9 @@ class FormAcceptanceLevel extends Model
     ];
 
     protected $table = "forms_acceptance_levels";
+
+    public function forms(){
+        return $this->belongsToMany('App\Models\Form','forms_acceptance_levels')
+            ->withPivot('form_id')->withTimestamps();
+    }
 }

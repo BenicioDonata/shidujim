@@ -208,7 +208,7 @@ class FormService
                 ->maritalsatus($marital_status)
                 ->email($email)
                 ->mainphone($main_phone)
-                ->paginate(5);
+                ->paginate(10);
 
             return $forms;
 
@@ -259,6 +259,61 @@ class FormService
         }
 
     }
+
+    public function matchPersons($request) {
+
+        try {
+
+            $gender = $request->get('gender');
+            $civil_status = $request->get('civil_status');
+            $couple_sons = $request->get('couple_sons');
+            $religiouscompliancelevel = $request->get('religiouscompliancelevel');
+            $sons = $request->get('sons');
+            $languages = $request->get('languajes');
+            $count_sons = $request->get('count_sons');
+            $smoke = $request->get('smoke');
+            $years_range_from = $request->get('years_range_from');
+            $years_range_to = $request->get('years_range_to');
+            $studies = $request->get('studies');
+            $location = $request->get('location');
+            $accepted_level = $request->get('accepted_level');
+            $qualities = $request->get('qualities');
+            $live_future = $request->get('live_future');
+            $feel_range_from = $request->get('feel_range_from');
+            $feel_range_to = $request->get('feel_range_to');
+            $family_purity_laws = $request->get('family_purity_laws');
+
+            $forms = Form::orderBy('forms.id','DESC')
+                ->genders($gender)
+                ->formscivilstatus($civil_status)
+                ->couplesons($couple_sons)
+                ->religiouscompliancelevel($religiouscompliancelevel)
+                ->sons($sons)
+                ->languages($languages)
+                ->countsons($count_sons)
+                ->smoke($smoke)
+                ->yearsrange($years_range_from,$years_range_to)
+                ->studies($studies)
+                ->location($location)
+                ->acceptedlevel($accepted_level)
+                ->qualities($qualities)
+                ->livefuture($live_future)
+                ->partnerfeelrange($feel_range_from,$feel_range_to)
+                ->familypuritylaws($family_purity_laws)
+                ->paginate(10);
+
+            return $forms;
+
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
 
 
 }

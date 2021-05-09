@@ -123,6 +123,10 @@ $(document).ready(function () {
 
 //---------------
 
+    $(document).on('click','.btn-download', function(){
+        $('#downloadFile').submit();
+    });
+
 });
 
 

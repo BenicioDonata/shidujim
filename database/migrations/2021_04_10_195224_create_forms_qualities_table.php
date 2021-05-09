@@ -19,6 +19,7 @@ class CreateFormsQualitiesTable extends Migration
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
             $table->unsignedInteger('quality_id')->nullable(false);
             $table->foreign('quality_id')->references('id')->on('qualities')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

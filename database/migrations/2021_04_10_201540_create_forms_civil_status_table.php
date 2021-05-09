@@ -19,6 +19,7 @@ class CreateFormsCivilStatusTable extends Migration
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
             $table->unsignedInteger('marital_status_id')->nullable(false);
             $table->foreign('marital_status_id')->references('id')->on('marital_statuses')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

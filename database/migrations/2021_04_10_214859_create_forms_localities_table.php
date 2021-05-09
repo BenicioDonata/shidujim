@@ -19,6 +19,7 @@ class CreateFormsLocalitiesTable extends Migration
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
             $table->unsignedInteger('location_id')->nullable(false);
             $table->foreign('location_id')->references('id')->on('localities')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

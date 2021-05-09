@@ -19,6 +19,7 @@ class CreateFormsAcceptanceLevelsTable extends Migration
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
             $table->unsignedInteger('acceptance_level_id')->nullable(false);
             $table->foreign('acceptance_level_id')->references('id')->on('acceptance_levels')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

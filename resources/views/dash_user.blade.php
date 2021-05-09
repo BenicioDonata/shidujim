@@ -6,7 +6,6 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">{{ __('Formularios completados') }}</div>
-
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -15,7 +14,6 @@
                         @endif
                             @include('partials.filterForm')
                             @include('partials.matchForm')
-
 
                             <div class="table-responsive">
                                 @if($forms->isNotEmpty())
@@ -29,7 +27,7 @@
                                             <th scope="col">Celular</th>
                                             <th scope="col">Email</th>
                                             <th scope="col" class="c">Revisión</th>
-                                            <th scope="col " class="text-center">Acción</th>
+                                            <th scope="col" class="text-center">Acción</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -61,6 +59,12 @@
                             @else
                                 <p>No hay formularios cargados para mostrar</p>
                             @endif
+
+                            <a type="button" data-toggle="tooltip" data-placement="top" title="Descargar Registros" class="btn fas fa-file-download btn-success btn-sm btn-download"></a>
+                            <form  method="post" id="downloadFile"  action="{{route('downloadMatchPersonForm')}}">
+                                @csrf
+                                <input id="collection" name="collection" hidden value="{{base64_encode(json_encode($forms))}}">
+                            </form>
                             {!! $forms->render() !!}
                         </div>
                     </div>

@@ -37,6 +37,6 @@ class Location extends Model
 
     public function forms(){
         return $this->belongsToMany('App\Models\Form','forms_localities')
-            ->withPivot('form_id')->withTimestamps();;
+            ->withPivot('form_id')->withTimestamps();
     }
 }

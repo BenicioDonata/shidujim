@@ -24,4 +24,15 @@ class FormQuality extends Model
     ];
 
     protected $table = "forms_qualities";
+
+    public function quality(){
+        return $this->belongsToMany('App\Models\Quality','forms_qualities')
+            ->withPivot('quality_id')->withTimestamps();;
+    }
+
+    public function forms(){
+        return $this->belongsToMany('App\Models\Form','forms_qualities')
+            ->withPivot('form_id')->withTimestamps();;
+    }
+
 }

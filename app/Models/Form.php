@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Study;
+use App\Models\FormStudy;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -76,8 +78,9 @@ class Form extends Model
 
     public function studies(){
         return $this->belongsToMany('App\Models\Study','forms_studies')
-            ->withPivot('study_id')->withTimestamps();;
+            ->withPivot('study_id')->withTimestamps();
     }
+
 
     public function languages(){
         return $this->belongsToMany('App\Models\Language','forms_languages')
@@ -106,27 +109,27 @@ class Form extends Model
 
     public function quality(){
         return $this->belongsToMany('App\Models\Quality','forms_qualities')
-            ->withPivot('quality_id')->withTimestamps();;
+            ->withPivot('quality_id')->withTimestamps();
     }
 
     public function maritalstatuses(){
         return $this->belongsToMany('App\Models\MaritalStatus','forms_civil_status')
-            ->withPivot('marital_status_id')->withTimestamps();;
+            ->withPivot('marital_status_id')->withTimestamps();
     }
 
     public function studiesseeks(){
         return $this->belongsToMany('App\Models\Study','forms_studies_lvl_seeks')
-            ->withPivot('study_id')->withTimestamps();;
+            ->withPivot('study_id')->withTimestamps();
     }
 
     public function locations(){
         return $this->belongsToMany('App\Models\Location','forms_localities')
-            ->withPivot('location_id')->withTimestamps();;
+            ->withPivot('location_id')->withTimestamps();
     }
 
     public function qualityseeks(){
         return $this->belongsToMany('App\Models\Quality','forms_qualities_seeks')
-            ->withPivot('quality_id')->withTimestamps();;
+            ->withPivot('quality_id')->withTimestamps();
     }
 
     public function files()
@@ -180,12 +183,184 @@ class Form extends Model
         }
     }
 
+    public function scopeGenders($query, $search)
+    {
+
+        if(trim($search)!= null) {
+            if ($search == 3 ) {
+                return $query->whereIn('forms.gender_id', array(1, 2), 'or');
+            } else {
+                return $query->orwhere('forms.gender_id', '=',$search);
+            }
+        }
+    }
+
     public function scopeMaritalsatus($query, $search)
     {
         if(trim($search)!= null)
         {
             return $query->join('marital_statuses', 'marital_statuses.id', '=', 'forms.maritalstatus_id')
                 ->orwhere('marital_statuses.marital_statuses_title', 'like','%'.strtolower($search).'%');
+        }
+    }
+
+    public function scopeFormscivilstatus($query, $search)
+    {
+        if(isset($search[0]))
+        {
+            if(in_array(4,$search)){
+                return $query->whereIn('forms.maritalstatus_id',array(1,2,3), 'or');
+            }else{
+                return $query->whereIn('forms.maritalstatus_id',array($search),'or');
+            }
+        }
+    }
+
+    public function scopeCouplesons($query, $search)
+    {
+
+        if(isset($search[0])) {
+            if (in_array(3,$search)) {
+                return $query->whereIn('forms.coupleson_id', array(1, 2, 3),'or');
+            } else {
+                return $query->whereIn('forms.coupleson_id', array($search), 'or');
+            }
+        }
+    }
+
+    public function scopeReligiouscompliancelevel($query, $search)
+    {
+        if(isset($search[0])) {
+            return $query->whereIn('forms.religiouscompliancelevel_id', $search, 'or');
+        }
+
+    }
+
+    public function scopeSons($query, $search)
+    {
+        if(isset($search[0])) {
+            return $query->whereIn('forms.son_id',$search,'or');
+        }
+
+    }
+
+    public function scopeLanguages($query, $search)
+    {
+        if(isset($search[0])) {
+            return $query->whereIn('forms_languages.language_id', $search, 'or');
+        }
+    }
+
+    public function scopeCountsons($query, $search)
+    {
+        if($search <= 1) {
+            return $query->orwhere('forms.count_sons', '=', $search);
+        }else{
+            return $query->orwhere('forms.count_sons', '<=', $search);
+        }
+    }
+
+    public function scopeSmoke($query, $search)
+    {
+        if($search == 3) {
+             return $query->whereIn('forms.smoker_id', array(1,2), 'or');
+        }else{
+            return $query->orwhere('forms.smoker_id', '=', $search);
+        }
+    }
+
+    public function scopeYearsrange($query, $search_form, $search_to)
+    {
+        if(trim($search_form)!= null && trim($search_to)!= null)
+        {
+            return $query->orwhere('forms.years_range_from', '>=', $search_form)
+                         ->where('forms.years_range_to', '<=', $search_to);
+        }
+    }
+
+
+    public function formstudy(){
+        return $this->belongsToMany('App\Models\FormsStudies','forms_studies')
+            ->withPivot('form_id')->withTimestamps();
+    }
+
+    public function scopeStudies($query, $search)
+    {
+        if(isset($search[0]))
+        {
+          return   $query->orwhereHas('studies', function ($query) use ($search) {
+                    $query->whereIn('forms_studies.study_id',array($search));
+
+            });
+        }
+    }
+
+    public function scopeLocation($query, $search)
+    {
+        if(isset($search[0]))
+        {
+            return $query->whereIn('forms.location_id',$search,'or');
+        }
+    }
+
+    public function scopeAcceptedlevel($query, $search)
+    {
+        if(isset($search[0]))
+        {
+            return $query->orwhereHas('acceptancelevel', function ($query) use ($search) {
+                $query->whereIn('forms_acceptance_levels.acceptance_level_id',array($search));
+            });
+        }
+    }
+
+    public function scopeQualities($query, $search)
+    {
+        if(isset($search[0]))
+        {
+            return $query->orwhereHas('quality', function ($query) use ($search) {
+                $query->whereIn('forms_qualities.quality_id',array($search));
+            });
+        }
+    }
+
+    public function scopeLivefuture($query, $search)
+    {
+        if(isset($search[0]))
+        {
+            if (in_array(18,$search)) {
+                return $query->orwhereHas('locations', function ($query) use ($search) {
+                    $query->whereIn('forms_localities.location_id',array(1,2,3,4,5,6,8,9,10,11,15,16,17));
+                });
+
+            } else{
+                return $query->orwhereHas('locations', function ($query) use ($search) {
+                    $query->whereIn('forms_localities.location_id',array($search));
+                });
+            }
+        }
+    }
+
+    public function scopePartnerFeelRange($query, $search_form, $search_to)
+    {
+        if(trim($search_form)!= null && trim($search_to)!= null)
+        {
+            return $query->orwhere('forms.find_partner', '>=', $search_form)
+                ->where('forms.find_partner', '<=', $search_to);
+        }
+    }
+
+    public function scopeFamilyPurityLaws($query, $search)
+    {
+        if(isset($search[0]))
+        {
+            if (in_array(3,$search))
+                return $query->whereIn('forms.familypuritylaw_id', array(1,2,3),'or');
+
+            if (in_array(4,$search))
+                return $query->orwhere('forms.familypuritylaw_id','=',4);
+
+
+            return $query->whereIn('forms.familypuritylaw_id', array($search),'or');
         }
     }
 
@@ -196,7 +371,6 @@ class Form extends Model
             return $query->orWhere('email','LIKE', '%'.strtolower($search).'%');
         }
     }
-
 
     public function scopeMainphone($query, $search)
     {

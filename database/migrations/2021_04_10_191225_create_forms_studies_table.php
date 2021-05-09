@@ -19,6 +19,7 @@ class CreateFormsStudiesTable extends Migration
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
             $table->unsignedInteger('study_id')->nullable(false);
             $table->foreign('study_id')->references('id')->on('studies')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

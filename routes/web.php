@@ -25,28 +25,31 @@ Route::post('/upload', 'App\Http\Controllers\FormController@store')->name('uploa
 
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+    Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
-Route::get('/dash_user','App\Http\Controllers\HomeController@dashUser')->name('dash_user');
+    Route::get('/dash_user', 'App\Http\Controllers\HomeController@dashUser')->name('dash_user');
 
-Route::get('/dash_admin','App\Http\Controllers\HomeController@dashAdmin')->name('dash_admin');
+    Route::get('/dash_admin', 'App\Http\Controllers\HomeController@dashAdmin')->name('dash_admin');
 
-Route::get('/dash_admin/search/', 'App\Http\Controllers\HomeController@searchUser')->name('searchWordUser');
+    Route::get('/dash_admin/search/', 'App\Http\Controllers\HomeController@searchUser')->name('searchWordUser');
 
-Route::get('/dash_user/search/', 'App\Http\Controllers\HomeController@searchForm')->name('searchWordForm');
+    Route::get('/dash_user/search/', 'App\Http\Controllers\HomeController@searchForm')->name('searchWordForm');
 
-Route::get('/dash_user/form/{id}', 'App\Http\Controllers\HomeController@editForm')->name('edit_form');
+    Route::get('/dash_user/match/', 'App\Http\Controllers\HomeController@matchPersonForm')->name('matchPersonForm');
 
-//Route::put('/dash_user/form/{form}', 'FormController@updateForm')->name('updateForm');
+    Route::post('/dash_user/download', 'App\Http\Controllers\HomeController@downloadmMatchPersonForm')->name('downloadMatchPersonForm');
 
-Route::put('/dash_admin/{id}', 'App\Http\Controllers\HomeController@updateStatusUser')->name('status_user');
+    Route::get('/dash_user/form/{id}', 'App\Http\Controllers\HomeController@editForm')->name('edit_form');
 
-Route::put('/dash_admin/admin/{id}', 'App\Http\Controllers\HomeController@updateAdminUser')->name('status_user_admin');
+    //Route::put('/dash_user/form/{form}', 'FormController@updateForm')->name('updateForm');
 
-Route::delete('/dash_admin/delete/{id}', 'App\Http\Controllers\HomeController@deleteUser')->name('status_user_delete');
+    Route::put('/dash_admin/{id}', 'App\Http\Controllers\HomeController@updateStatusUser')->name('status_user');
 
-Route::put('/dash_user/form_status/{id}', 'App\Http\Controllers\HomeController@updateStatusForm')->name('status_form');
+    Route::put('/dash_admin/admin/{id}', 'App\Http\Controllers\HomeController@updateAdminUser')->name('status_user_admin');
 
+    Route::delete('/dash_admin/delete/{id}', 'App\Http\Controllers\HomeController@deleteUser')->name('status_user_delete');
+
+    Route::put('/dash_user/form_status/{id}', 'App\Http\Controllers\HomeController@updateStatusForm')->name('status_form');
 
 
 

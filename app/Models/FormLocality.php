@@ -24,4 +24,15 @@ class FormLocality extends Model
     ];
 
     protected $table = "forms_localities";
+
+    public function locations(){
+        return $this->belongsToMany('App\Models\Location','forms_localities')
+            ->withPivot('location_id')->withTimestamps();
+    }
+
+    public function forms(){
+        return $this->belongsToMany('App\Models\Form','forms_localities')
+            ->withPivot('form_id')->withTimestamps();
+    }
+
 }

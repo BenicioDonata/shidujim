@@ -11,9 +11,10 @@ use App\Services\LineageService;
 use App\Services\ReligiousComplianceLevelService;
 use App\Services\SmokerService;
 use App\Services\LocationService;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Exception;
-
+use App\Exports\FormsExport;
 
 class HomeController extends Controller
 {
@@ -276,7 +277,7 @@ class HomeController extends Controller
 
             $form = $this->formService->editForms($id);
 
-            return view('partials.edit-multi-step-form',compact('form','genders','lineages', 'religiouscompliancelevels', 'smokers','localities'));
+            return view('partials.edit-multi-step-form', compact('form', 'genders', 'lineages', 'religiouscompliancelevels', 'smokers', 'localities'));
 
 
         } catch (\Exception $e) {
@@ -285,9 +286,37 @@ class HomeController extends Controller
 
 
         }
+    }
 
 
+    public function matchPersonForm(Request $request)
+    {
+
+        try {
+
+
+            $forms = $this->formService->matchPersons($request);
+
+            return view('dash_user',compact('forms'));
+
+        } catch (\Exception $e) {
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
 
     }
 
+    public function downloadmMatchPersonForm(Request $request)
+    {
+
+        try {
+
+            return Excel::download(new FormsExport(json_decode(base64_decode($request->collection))), 'matcheo_'.date('Y-d-m H:i:s').'.xlsx' );
+
+        } catch (\Exception $e) {
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
 }

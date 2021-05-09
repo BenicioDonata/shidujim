@@ -23,5 +23,15 @@ class FormStudyLvlSeek extends Model
 
     ];
 
-    protected $table = "forms_qualities_seeks";
+    protected $table = "forms_studies_lvl_seeks";
+
+    public function formseeks(){
+        return $this->belongsToMany('App\Models\Form','forms_studies_lvl_seeks')
+            ->withPivot('form_id')->withTimestamps();;
+    }
+
+    public function studiesseeks(){
+        return $this->belongsToMany('App\Models\Study','forms_studies_lvl_seeks')
+            ->withPivot('study_id')->withTimestamps();
+    }
 }

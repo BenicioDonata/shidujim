@@ -159,19 +159,19 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="accepted_level[]" id="kasher_shabat_study" {{ (old('kasher_shabat_study') ===  5) ? 'checked' : '' }} value="5">
+                    <input class="form-check-input" type="checkbox" name="accepted_level[]" id="kasher_shabat_study" {{ (old('kasher_shabat_study') ===  6) ? 'checked' : '' }} value="6">
                     <label class="form-check-label" for="kasher_shabat_study">
                         Kasher siempre + Shabat + un minimo de estudio semanal
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="accepted_level[]" id="hebrew" {{ (old('hebrew') ===  6) ? 'checked' : '' }} value="6">
+                    <input class="form-check-input" type="checkbox" name="accepted_level[]" id="hebrew" {{ (old('hebrew') ===  7) ? 'checked' : '' }} value="7">
                     <label class="form-check-label" for="hebrew">
                         Que sepa hebreo
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="accepted_level[]" id="wherever" {{ (old('wherever') ===  7) ? 'checked' : '' }} value="7">
+                    <input class="form-check-input" type="checkbox" name="accepted_level[]" id="wherever" {{ (old('wherever') ===  8) ? 'checked' : '' }} value="8">
                     <label class="form-check-label" for="wherever">
                         Me da lo mismo cumpla o no
                     </label>
