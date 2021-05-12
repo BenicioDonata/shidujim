@@ -1,7 +1,7 @@
 
 @extends('layouts.master')
 
-@section('title','SHIDUJIM❤')
+@section('title','SHIDUJIM')
 
 @section('content')
     <section>

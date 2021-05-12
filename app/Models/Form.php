@@ -219,8 +219,8 @@ class Form extends Model
     public function scopeCouplesons($query, $search)
     {
 
-        if(isset($search[0])) {
-            if (in_array(3,$search)) {
+        if(trim($search)!= null) {
+            if ($search == 3 ) {
                 return $query->whereIn('forms.coupleson_id', array(1, 2, 3),'or');
             } else {
                 return $query->whereIn('forms.coupleson_id', array($search), 'or');
