@@ -11166,4 +11166,10 @@ form#frm_match .fg-buttom {
 
 .card a.btn-download {
     margin-bottom: 10px;
+    margin-top: 16px;
+}
+
+.card .card-body .table-responsive th,  .card .card-body .table-responsive td{
+
+    white-space: nowrap;
 }

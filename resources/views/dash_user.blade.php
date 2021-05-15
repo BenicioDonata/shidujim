@@ -26,8 +26,15 @@
                                             <th scope="col">Fecha de Nacimiento</th>
                                             <th scope="col">Celular</th>
                                             <th scope="col">Email</th>
-                                            <th scope="col">Nivel de Cumplimiento Religioso</th>
+                                            <th scope="col">Nivel Religioso</th>
                                             <th scope="col">Fuma</th>
+                                            <th scope="col">Hijos</th>
+                                            <th scope="col">Localidad Actual</th>
+                                            <th scope="col">Acepta Hijos</th>
+                                            <th scope="col">Cumpliria ley de puerza</th>
+
+
+
                                             <th scope="col" class="c">Revisión</th>
                                             <th scope="col" class="text-center">Acción</th>
                                         </tr>
@@ -43,6 +50,11 @@
                                                 <td>{{$form->email}}</td>
                                                 <td>{{$form->religiouscompliancelevel->religious_compliance_lvl}}</td>
                                                 <td>{{$form->smoker->smokers_title}}</td>
+                                                <td>{{$form->son->sons_title}}</td>
+                                                <td>{{$form->location->localities_title}}</td>
+                                                <td>{{ $form->coupleson->couple_sons_title}}</td>
+                                                <td>{{ $form->familypuritylaw->family_purity_laws_title}}</td>
+
                                                 <td>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_check ? 'Sin Revisión' : 'Revisado'}}" class="btn {{!$form->is_check ? 'fas fa-eye-slash btn-danger' : 'far fa-eye btn-success'}} btn-sm view-data"></a>
 {{--                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}" title="Editar Formulario" class="far fa-edit btn btn-dark btn-sm edit-form"></a>--}}
@@ -63,14 +75,15 @@
                             @else
                                 <p>No hay formularios cargados para mostrar</p>
                             @endif
-
-                            <a type="button" data-toggle="tooltip" data-placement="top" title="Descargar Registros" class="btn fas fa-file-download btn-success btn-sm btn-download"></a>
-                            <form  method="post" id="downloadFile"  action="{{route('downloadMatchPersonForm')}}">
-                                @csrf
-                                <input id="collection" name="collection" hidden value="{{base64_encode(json_encode($forms))}}">
-                            </form>
-                            {!! $forms->render() !!}
                         </div>
+
+                        <a type="button" data-toggle="tooltip" data-placement="top" title="Descargar Registros" class="btn fas fa-file-download btn-success btn-sm btn-download"></a>
+                        <form  method="post" id="downloadFile"  action="{{route('downloadMatchPersonForm')}}">
+                            @csrf
+                            <input id="collection" name="collection" hidden value="{{base64_encode(json_encode($forms))}}">
+                        </form>
+                        {!! $forms->render() !!}
+
                     </div>
                 </div>
                 @include('partials.modals.modal-image')
