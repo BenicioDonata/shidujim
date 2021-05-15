@@ -26,6 +26,8 @@
                                             <th scope="col">Fecha de Nacimiento</th>
                                             <th scope="col">Celular</th>
                                             <th scope="col">Email</th>
+                                            <th scope="col">Nivel de Cumplimiento Religioso</th>
+                                            <th scope="col">Fuma</th>
                                             <th scope="col" class="c">Revisión</th>
                                             <th scope="col" class="text-center">Acción</th>
                                         </tr>
@@ -39,6 +41,8 @@
                                                 <td>{{$form->date_of_birth}}</td>
                                                 <td>{{$form->main_phone}}</td>
                                                 <td>{{$form->email}}</td>
+                                                <td>{{$form->religiouscompliancelevel->religious_compliance_lvl}}</td>
+                                                <td>{{$form->smoker->smokers_title}}</td>
                                                 <td>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_check ? 'Sin Revisión' : 'Revisado'}}" class="btn {{!$form->is_check ? 'fas fa-eye-slash btn-danger' : 'far fa-eye btn-success'}} btn-sm view-data"></a>
 {{--                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}" title="Editar Formulario" class="far fa-edit btn btn-dark btn-sm edit-form"></a>--}}

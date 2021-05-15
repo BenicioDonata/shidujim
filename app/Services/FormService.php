@@ -176,7 +176,7 @@ class FormService
         try {
 
             return Form::with('gender','maritalstatus','religiouscompliancelevel','smoker','son','location','coupleson','familypuritylaw','files')
-                        ->orderBy('forms.id','DESC')->paginate(5);
+                        ->orderBy('forms.id','DESC')->paginate(10);
 
         } catch (\Exception $e) {
 

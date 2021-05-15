@@ -67,6 +67,20 @@ $(document).ready(function () {
                 $('.step2 #name').focus();
                 if($('.step0 select').val() == 1){
                     $('.card .card-header span').text('¡Bienvenida!');
+                    $("#religiouscompliancelevel").find("option[value='5']").remove();
+
+                   if($("#religiouscompliancelevel option[value='4']").length == 0) {
+                       $("#religiouscompliancelevel").append('<option value="4">Kasher + Shabat + Tzniut</option>');
+                   }
+
+                }else{
+
+                    $("#religiouscompliancelevel").find("option[value='4']").remove();
+
+                    if($("#religiouscompliancelevel option[value='5']").length == 0) {
+                        $("#religiouscompliancelevel").append('<option value="5">Kasher + Shabat + Estudio de Torá</option>');
+                    }
+
                 }
 
                 break;

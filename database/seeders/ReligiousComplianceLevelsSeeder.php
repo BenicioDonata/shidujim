@@ -36,6 +36,10 @@ class ReligiousComplianceLevelsSeeder extends Seeder
                 'religious_compliance_lvl' => 'Kasher + Shabat + Tzniut',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
+            [
+                'religious_compliance_lvl' => ' Kasher + Shabat + Estudio de Torá',
+                'created_at'=>Carbon::now()->format('Y-m-d H:i:s')
+            ],
         ]);
     }
 }

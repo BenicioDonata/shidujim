@@ -11163,3 +11163,7 @@ form#frm_match .fg-buttom {
     display: block;
     text-align: right;
 }
+
+.card a.btn-download {
+    margin-bottom: 10px;
+}

@@ -124,9 +124,13 @@
                 @endforeach</td>
             <td>{{ $form->find_partner}} puntos</td>
             @php $form_files= \App\Models\File::where('form_id','=',$form->id)->get(); @endphp
-            <td>@foreach($form_files as $file)
-                    <img src="images/upload_forms/{{$file->files_name}}" alt="{{$file->files_name}}" width="150" height="150">
-                @endforeach</td>
+            @php $i = 0 @endphp
+            <td width="25" height="100">@foreach($form_files as $file)
+                @if($i < 1)
+                    <img src="images/upload_forms/{{$file->files_name}}" alt="{{$file->files_name}}" width="100" height="100">
+                    @php $i++ @endphp
+                @endif
+            @endforeach</td>
             <td>{{ $form->familypuritylaw->family_purity_laws_title}}</td>
             <td>{{ $form->about_u}}</td>
             <td>{{ $form->about_u_partner}}</td>

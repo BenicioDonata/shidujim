@@ -77,6 +77,9 @@
                                 <label class="checkbox-inline" for="kasher_shabat_tzniut">
                                     <input type="checkbox" name="religiouscompliancelevel[]" id="kasher_shabat_tzniut"  value="4"> Kasher + Shabat + Tzniut
                                 </label>
+                                <label class="checkbox-inline" for="kasher_shabat_tzniut">
+                                    <input type="checkbox" name="religiouscompliancelevel[]" id="kasher_shabat_tora"  value="5"> Kasher + Shabat + Estudio de Torá
+                                </label>
                             </div>
                         </div>
                         <div class="form-group col-md-4">
@@ -463,7 +466,7 @@
                         </div>
                     </div>
                     <div class="form-group fg-buttom">
-                        <button type="submit" data-toggle="tooltip" data-placement="top" title="Listar"  class=" btn btn-dark fas fa-users"></button>
+                        <button type="submit" data-toggle="tooltip" data-placement="top" title="Matchear Filtrado"  class=" btn btn-dark fas fa-users"></button>
                         <a type="button" data-toggle="tooltip" data-placement="top" title="Todos los Registros" class="btn btnBuscar fas fa-list-ol" href="{{route('dash_user')}}"></a>
                     </div>
                 </form>
