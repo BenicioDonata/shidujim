@@ -39,6 +39,10 @@ Auth::routes();
 
     Route::post('/dash_user/download', 'App\Http\Controllers\HomeController@downloadmMatchPersonForm')->name('downloadMatchPersonForm');
 
+    Route::post('/dash_user/comment', 'App\Http\Controllers\HomeController@saveComment')->name('saveComment');
+
+    Route::get('/comments/{id}', 'App\Http\Controllers\HomeController@getComments');
+
     Route::get('/dash_user/form/{id}', 'App\Http\Controllers\HomeController@editForm')->name('edit_form');
 
     //Route::put('/dash_user/form/{form}', 'FormController@updateForm')->name('updateForm');

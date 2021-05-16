@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class File extends Model
+class Comment extends Model
 {
     use HasFactory, Notifiable,  SoftDeletes;
 
@@ -18,11 +18,12 @@ class File extends Model
      */
     protected $fillable = [
         'form_id',
-        'files_name',
+        'user_id',
+        'comment'
 
     ];
 
-    protected $table = "files";
+    protected $table = "comments";
 
     public function form()
     {
@@ -30,5 +31,14 @@ class File extends Model
 
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
 
+    }
+
+    public static function comments($id){
+
+        return Comment::where('form_id',$id)->with('user','form')->get();
+    }
 }

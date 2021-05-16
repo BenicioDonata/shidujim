@@ -127,6 +127,39 @@ $(document).ready(function () {
         $('#downloadFile').submit();
     });
 
+//---------------------------------------
+
+    $('.add-comment').on('click', function(){
+
+        $("#ModalComment .modal-header h5").text('Agregar Comentario Al Formulario #'+$(this).data('id'));
+        $("#ModalComment form#saveComment input#form-comment").val($(this).data('id'));
+        $("#ModalComment").modal("show");
+
+    });
+
+    $('#ModalComment .save-comment').on('click', function(){
+        $('#saveComment').submit();
+    });
+
+    $('.see-comments').on('click', function(){
+
+        $("#ModalSeeComment .modal-header h5").text('Comentarios del Formulario #'+$(this).data('id'));
+
+         $.get("/registro/comments/"+$(this).data('id')+"",function(response){
+
+             for(i=0; i<response.length; i++){
+                 var date = response[i].created_at.substr(0,10);
+
+                 $('#ModalSeeComment .modal-body').append("<span>"+date+" - Usuario "+response[i].user.name+" comentó :</span><br>");
+                 $('#ModalSeeComment .modal-body').append("<span>"+response[i].comment+"</span><br><br>");
+             }
+
+         });
+
+        $("#ModalSeeComment").modal("show");
+
+    });
+
 });
 
 

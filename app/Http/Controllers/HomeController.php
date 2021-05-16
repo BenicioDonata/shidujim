@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Form;
 use Illuminate\Http\Request;
 use App\Services\UserServices;
@@ -11,6 +12,7 @@ use App\Services\LineageService;
 use App\Services\ReligiousComplianceLevelService;
 use App\Services\SmokerService;
 use App\Services\LocationService;
+use App\Services\CommentService;
 use Maatwebsite\Excel\Facades\Excel;
 
 use Exception;
@@ -26,13 +28,19 @@ class HomeController extends Controller
     private $religiouscompliancelevelService;
     private $smokerService;
     private $locationService;
+    private $commentService;
+
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UserServices $userService, FormService $formService, GenderService $genderService, LineageService $lineageService, ReligiousComplianceLevelService $religiouscompliancelevelService, SmokerService $smokerService, LocationService $locationService)
+    public function __construct(UserServices $userService, FormService $formService,
+                                GenderService $genderService, LineageService $lineageService,
+                                ReligiousComplianceLevelService $religiouscompliancelevelService,
+                                SmokerService $smokerService, LocationService $locationService,
+                                CommentService $commentService)
     {
         $this->middleware('auth');
         $this->userService = $userService;
@@ -42,6 +50,8 @@ class HomeController extends Controller
         $this->religiouscompliancelevelService = $religiouscompliancelevelService;
         $this->smokerService = $smokerService;
         $this->locationService = $locationService;
+        $this->commentService = $commentService;
+
 
     }
 
@@ -59,11 +69,11 @@ class HomeController extends Controller
     {
         try {
 
-            $users= $this->userService->getUsers();
+            $users = $this->userService->getUsers();
 
-            return  view('dash_admin',compact('users'));
+            return view('dash_admin', compact('users'));
 
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
 
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
@@ -76,7 +86,7 @@ class HomeController extends Controller
 
             $user = $this->userService->updateStatusUser($id);
 
-            if(!$user) {
+            if (!$user) {
 
                 $notification = array(
                     'message' => 'No se pudo activar el usuario. Vuelva a intentarlo',
@@ -111,7 +121,7 @@ class HomeController extends Controller
 
             $user = $this->userService->updateAdminUser($id);
 
-            if(!$user) {
+            if (!$user) {
 
                 $notification = array(
                     'message' => 'No se pudo activar como Administrador el usuario. Vuelva a intentarlo',
@@ -145,7 +155,7 @@ class HomeController extends Controller
 
             $user = $this->userService->deleteUser($id);
 
-            if(!$user) {
+            if (!$user) {
 
                 $notification = array(
                     'message' => 'No se pudo eliminar el usuario. Vuelva a intentarlo',
@@ -180,7 +190,7 @@ class HomeController extends Controller
             $users = $this->userService->searchUsers($request);
 
 
-            return view('dash_admin',compact('users'));
+            return view('dash_admin', compact('users'));
 
         } catch (\Exception $e) {
 
@@ -196,7 +206,7 @@ class HomeController extends Controller
 
             $forms = $this->formService->searchForm($request);
 
-            return view('dash_user',compact('forms'));
+            return view('dash_user', compact('forms'));
 
         } catch (\Exception $e) {
 
@@ -212,7 +222,7 @@ class HomeController extends Controller
 
             $user = $this->formService->updateStatusForm($id);
 
-            if(!$user) {
+            if (!$user) {
 
                 $notification = array(
                     'message' => 'No se pudo modificar el estado al formulario. Vuelva a intentarlo',
@@ -244,11 +254,11 @@ class HomeController extends Controller
 
         try {
 
-            $forms= $this->formService->getForms();
+            $forms = $this->formService->getForms();
 
-            return  view('dash_user',compact('forms'));
+            return view('dash_user', compact('forms'));
 
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
 
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
@@ -297,7 +307,7 @@ class HomeController extends Controller
 
             $forms = $this->formService->matchPersons($request);
 
-            return view('dash_user',compact('forms'));
+            return view('dash_user', compact('forms'));
 
         } catch (\Exception $e) {
 
@@ -308,15 +318,62 @@ class HomeController extends Controller
 
     public function downloadmMatchPersonForm(Request $request)
     {
+        try {
+            return Excel::download(new FormsExport(json_decode(base64_decode($request->collection))), 'matcheo_' . date('Y-d-m H:i:s') . '.xlsx');
+        } catch (\Exception $e) {
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+    }
 
+    public function saveComment(Request $request)
+    {
         try {
 
-            return Excel::download(new FormsExport(json_decode(base64_decode($request->collection))), 'matcheo_'.date('Y-d-m H:i:s').'.xlsx' );
+            $message = 'Comentario cargado con exito.';
+            $alert_type = 'success';
 
-        } catch (\Exception $e) {
+            if (!$request->all()){
+                $message = 'Error en la carga del comentario. Vuelva a intentarlo';
+                $alert_type = 'error';
+            }
+
+            $fail_result_request = validate_request_comment($request);
+
+            if($fail_result_request)
+            {
+                $message = 'Campo comentario requerido.';
+                $alert_type = 'error';
+
+            } else {
+
+                $result_data_send = $this->commentService->insertComment($request);
+
+                if(!$result_data_send) {
+                    $message = 'No se pudo cargar el comentario. Vuelva a intentarlo';
+                    $alert_type = 'error';
+                }
+            }
+
+            $notification = array(
+                'message' => $message,
+                'alert-type' => $alert_type
+
+            );
+
+            return redirect()->route('dash_user')->with($notification);
+
+        }catch (\Exception $e) {
 
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
+    }
 
+    public function getComments(Request $request,$id)
+    {
+
+        if ($request->ajax()) {
+            $comments = Comment::comments($id);
+            return response()->json($comments);
+        }
     }
 }

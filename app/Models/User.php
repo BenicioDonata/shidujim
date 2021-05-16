@@ -56,6 +56,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\UserType');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
 
     public static function user($username){
 

@@ -137,6 +137,11 @@ class Form extends Model
         return $this->hasMany('App\Models\File');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
     public static function forms(){
 
         return Form::with('gender','maritalstatus','religiouscompliancelevel','smoker','son','location','coupleson','familypuritylaw')->get();

@@ -5,7 +5,6 @@ if (!function_exists('validate_request')) {
     function validate_request($request)
     {
 
-
         $rules = [
 
             'gender'                        => 'required',
@@ -42,14 +41,29 @@ if (!function_exists('validate_request')) {
 
         ];
 
-
-
-
         $validator = validator()->make($request->all(),$rules);
 
         if($validator->fails()) {
             return true;
         }
+    }
+}
 
+if (!function_exists('validate_request_comment')) {
+
+    function validate_request_comment($request)
+    {
+
+        $rules = [
+
+            'summary-ckeditor' => 'required'
+
+        ];
+
+        $validator = validator()->make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return true;
+        }
     }
 }
