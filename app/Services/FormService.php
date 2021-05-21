@@ -366,6 +366,11 @@ class FormService
             if(!$data_form_update)
                 return false;
 
+            $data_detach_update = $this->updateDataPersonDetach($data_form_update);
+
+            if(!$data_detach_update)
+                return false;
+
             $data_attach_update = $this->updateDataPersonAttach($data_form_update,$request);
 
             if(!$data_attach_update)
@@ -380,11 +385,40 @@ class FormService
 
     }
 
-    public function updateDataPersonAttach($form,$data_person_attach)
+    public function updateDataPersonDetach($form)
     {
 
         try {
 
+             DB::beginTransaction();
+
+            $form->acceptancelevel()->detach();
+            $form->studies()->detach();
+            $form->languages()->detach();
+            $form->quality()->detach();
+            $form->studiesseeks()->detach();
+            $form->locations()->detach();
+            $form->qualityseeks()->detach();
+            $form->maritalstatuses()->detach();
+
+            DB::commit();
+
+            return true;
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+    }
+
+
+
+
+    public function updateDataPersonAttach($form,$data_person_attach)
+    {
+
+        try {
 
             DB::beginTransaction();
 
@@ -396,7 +430,6 @@ class FormService
             $form->locations()->attach($data_person_attach->live_future);
             $form->qualityseeks()->attach($data_person_attach->qualities_seek);
             $form->maritalstatuses()->attach($data_person_attach->civil_status_seeker);
-
 
             DB::commit();
 

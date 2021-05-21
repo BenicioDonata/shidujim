@@ -33,7 +33,7 @@
             <div class="form-group col-md-6">
                 <label for="civil_status"><i class="far fa-check-circle"></i> Estado Civil</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="civil_status" id="single" {{ ($form['form']['maritalstatus_id'] ===  1) ? 'checked' : '' }} value="1">
+                    <input class="form-check-input" type="radio" name="civil_status" id="single" {{ ($form['form']['maritalstatus_id'] ==  1) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="single">
                         Soltero
                     </label>
@@ -173,19 +173,19 @@
             <div class="form-group col-md-6">
                 <label for="languages"><i class="far fa-check-circle"></i> ¿Que idiomas hablas?</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="languages[]" id="spanish" {{ (in_array(1,$form['studies'])) ? 'checked' : '' }} value="1">
+                    <input class="form-check-input" type="checkbox" name="languages[]" id="spanish" {{ (in_array(1,$form['languages'])) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="spanish">
                         Español
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="languages[]" id="english" {{ (in_array(2,$form['studies'])) ? 'checked' : '' }} value="2">
+                    <input class="form-check-input" type="checkbox" name="languages[]" id="english" {{ (in_array(2,$form['languages'])) ? 'checked' : '' }} value="2">
                     <label class="form-check-label" for="english">
                         Ingles
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="languages[]" id="hebrew" {{ (in_array(3,$form['studies'])) ? 'checked' : '' }} value="3">
+                    <input class="form-check-input" type="checkbox" name="languages[]" id="hebrew" {{ (in_array(3,$form['languages'])) ? 'checked' : '' }} value="3">
                     <label class="form-check-label" for="hebrew">
                         Hebreo
                     </label>
@@ -213,25 +213,25 @@
             <div class="form-group col-md-6">
                 <label for="sons"><i class="far fa-check-circle"></i> Hijos</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sons" id="more_sons" {{ ($form['form']['son_id']===  1) ? 'checked' : '' }} value="1">
+                    <input class="form-check-input" type="radio" name="sons" id="more_sons" {{ ($form['form']['son_id'] ==  1) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="more_sons">
                         Ya tengo hijos y quiero más
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sons" id="no_more_sons" {{ ($form['form']['son_id'] ===  2) ? 'checked' : '' }} value="2">
+                    <input class="form-check-input" type="radio" name="sons" id="no_more_sons" {{ ($form['form']['son_id'] ==  2) ? 'checked' : '' }} value="2">
                     <label class="form-check-label" for="no_more_sons">
                         Ya tengo hijos y no quiero más
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sons" id="want_sons" {{ ($form['form']['son_id'] ===  3) ? 'checked' : '' }} value="3">
+                    <input class="form-check-input" type="radio" name="sons" id="want_sons" {{ ($form['form']['son_id'] ==  3) ? 'checked' : '' }} value="3">
                     <label class="form-check-label" for="want_sons">
                         Si quiero tener hijos
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sons" id="dont_know" {{ ($form['form']['son_id'] ===  4) ? 'checked' : '' }} value="4">
+                    <input class="form-check-input" type="radio" name="sons" id="dont_know" {{ ($form['form']['son_id'] ==  4) ? 'checked' : '' }} value="4">
                     <label class="form-check-label" for="dont_know">
                         No lo sé aun
                     </label>
@@ -361,7 +361,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="divorced_seeker" {{ (in_array(2,$form['maritalstatuses']) ===  2) ? 'checked' : '' }} value="2">
+                    <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="divorced_seeker" {{ (in_array(2,$form['maritalstatuses']) ) ? 'checked' : '' }} value="2">
                     <label class="form-check-label" for="divorced_seeker">
                         Divorciado/a
                     </label>
@@ -384,19 +384,19 @@
             <div class="form-group col-md-6">
                 <label for="couple_sons"><i class="far fa-check-circle"></i> ¿Aceptarías una pareja con hijos?</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="couple_sons" id="couple_sons_yes" {{ ($form['form']['coupleson_id'] ===  1) ? 'checked' : '' }} value="1">
+                    <input class="form-check-input" type="radio" name="couple_sons" id="couple_sons_yes" {{ ($form['form']['coupleson_id'] ==  1) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="couple_sons_yes">
                         Si
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="couple_sons" id="couple_sons_no" {{ ($form['form']['coupleson_id'] ===  2) ? 'checked' : '' }} value="2">
+                    <input class="form-check-input" type="radio" name="couple_sons" id="couple_sons_no" {{ ($form['form']['coupleson_id'] ==  2) ? 'checked' : '' }} value="2">
                     <label class="form-check-label" for="couple_sons_no">
                         No
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="couple_sons" id="couple_sons_maybe" {{ ($form['form']['coupleson_id'] ===  3) ? 'checked' : '' }} value="3">
+                    <input class="form-check-input" type="radio" name="couple_sons" id="couple_sons_maybe" {{ ($form['form']['coupleson_id'] ==  3) ? 'checked' : '' }} value="3">
                     <label class="form-check-label" for="couple_sons_maybe">
                         Tal vez
                     </label>

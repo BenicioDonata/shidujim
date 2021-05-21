@@ -100,10 +100,7 @@ class FormController extends Controller
 
                     $message = 'No se pudo cargar el formulario. Vuelva a intentarlo';
                     $alert_type = 'error';
-
                 }
-
-
             }
 
             $notification = array(
@@ -112,10 +109,7 @@ class FormController extends Controller
 
             );
 
-//            return view('partials.final_form_page',compact('notification'));
-
             return redirect()->route('final-form-page')->with($notification);
-
 
         }catch (\Exception $e) {
 

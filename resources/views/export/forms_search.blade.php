@@ -115,10 +115,10 @@
                     @endforeach
                 @endforeach</td>
 
-            @php $form_qualities_seek = \App\Models\FormQualitySeek::where('form_id','=',$form->id)->get(); @endphp
-            <td>@foreach($form_qualities_seek as $quality_seek)
-                    @php $qualities_seek = \App\Models\Quality::where('id','=',$quality_seek->quality_id)->get(); @endphp
-                    @foreach($qualities_seek as $data)
+            @php $form_qualities_seek = \App\Models\FormQuality::where('form_id','=',$form->id)->get(); @endphp
+            <td>@foreach($form_qualities_seek as $quality)
+                    @php $qualities = \App\Models\Quality::where('id','=',$quality->quality_id)->get(); @endphp
+                    @foreach($qualities as $data)
                         {{$data['qualities_title']}} *
                     @endforeach
                 @endforeach</td>

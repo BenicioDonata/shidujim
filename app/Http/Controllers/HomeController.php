@@ -382,7 +382,7 @@ class HomeController extends Controller
 
         try {
 
-            $message = 'Formulario # actualizado con exito.';
+            $message = 'Formulario actualizado con exito.';
             $alert_type = 'success';
 
             if (!$request->all()){
