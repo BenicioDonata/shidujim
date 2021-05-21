@@ -251,7 +251,49 @@ class FormService
 
         try {
 
-            return Form::formbyid($id);
+            $result['form'] = Form::formbyid($id);
+
+            foreach ($result['form']->studies as $study) {
+
+                $result['studies'][$study->id] = $study->id;
+            }
+
+            foreach ($result['form']->languages as $languages) {
+
+                $result['languages'][$languages->id] = $languages->id;
+            }
+
+            foreach ($result['form']->quality as $quality) {
+
+                $result['quality'][$quality->id] = $quality->id;
+            }
+
+            foreach ($result['form']->acceptancelevel as $acceptancelevel) {
+
+                $result['acceptancelevel'][$acceptancelevel->id] = $acceptancelevel->id;
+            }
+
+            foreach ($result['form']->maritalstatuses as $maritalstatuses) {
+
+                $result['maritalstatuses'][$maritalstatuses->id] = $maritalstatuses->id;
+            }
+
+            foreach ($result['form']->studiesseeks as $studiesseeks) {
+
+                $result['studiesseeks'][$studiesseeks->id] = $studiesseeks->id;
+            }
+
+            foreach ($result['form']->locations as $locations) {
+
+                $result['locations'][$locations->id] = $locations->id;
+            }
+
+            foreach ($result['form']->qualityseeks as $qualityseeks) {
+
+                $result['qualityseeks'][$qualityseeks->id] = $qualityseeks->id;
+            }
+
+            return  $result;
 
         } catch (\Exception $e) {
 
@@ -304,6 +346,117 @@ class FormService
 
             return $forms;
 
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
+    public function updateFormById($request) {
+
+        try
+        {
+
+            $data_form_update = $this->updateDataPerson($request);
+
+            if(!$data_form_update)
+                return false;
+
+            $data_attach_update = $this->updateDataPersonAttach($data_form_update,$request);
+
+            if(!$data_attach_update)
+                return false;
+
+            return true;
+
+        } catch (\Exception $e) {
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
+    public function updateDataPersonAttach($form,$data_person_attach)
+    {
+
+        try {
+
+
+            DB::beginTransaction();
+
+            $form->acceptancelevel()->attach($data_person_attach->accepted_level);
+            $form->studies()->attach($data_person_attach->studies);
+            $form->languages()->attach($data_person_attach->languages);
+            $form->quality()->attach($data_person_attach->qualities);
+            $form->studiesseeks()->attach($data_person_attach->studies_lvl_seek);
+            $form->locations()->attach($data_person_attach->live_future);
+            $form->qualityseeks()->attach($data_person_attach->qualities_seek);
+            $form->maritalstatuses()->attach($data_person_attach->civil_status_seeker);
+
+
+            DB::commit();
+
+            return true;
+
+        }
+        catch (\Exception $e) {
+
+            DB::rollback();
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+    }
+
+
+
+    public function updateDataPerson($request) {
+
+
+        try {
+
+
+            $id = $request->get('idform');
+
+            $form = Form::formbyid($id);
+
+            DB::beginTransaction();
+
+            $form->name = $request->get('name');
+            $form->name_hebrew = $request->get('name_hebrew');
+            $form->lastname = $request->get('lastname');
+            $form->second_lastname = $request->get('second_lastname');
+            $form->gender()->associate(Gender::find($request->get('gender')));
+            $form->date_of_birth = $request->get('date_of_birth');
+            $form->maritalstatus()->associate(MaritalStatus::find($request->get('civil_status')));
+            $form->profession = $request->get('profession');
+            $form->email = $request->get('email');
+            $form->main_phone = $request->get('main_phone');
+            $form->count_sons = $request->get('count_sons');
+            $form->religiouscompliancelevel()->associate(ReligiousComplianceLevel::find($request->get('religiouscompliancelevel')));
+            $form->community_assists = $request->get('community_assists');
+            $form->rabanim_know = $request->get('rabanim_know');
+            $form->name_school = $request->get('name_school');
+            $form->name_secondary_school = $request->get('name_secondary_school');
+            $form->smoker()->associate(Smoker::find($request->get('smoke')));
+            $form->son()->associate(Son::find($request->get('sons')));
+            $form->location()->associate(Location::find($request->get('location')));
+            $form->coupleson()->associate(CoupleSons::find($request->get('couple_sons')));
+            $form->years_range_from = $request->get('years_range_from');
+            $form->years_range_to = $request->get('years_range_to');
+            $form->find_partner = $request->get('find_partner');
+            $form->familypuritylaw()->associate(FamilyPurityLaw::find($request->get('family_purity_laws')));
+            $form->about_u = $request->get('about_u');
+            $form->about_u_partner = $request->get('about_u_partner');
+
+
+            $form->save();
+
+            DB::commit();
+
+            return $form;
 
         } catch (\Exception $e) {
 

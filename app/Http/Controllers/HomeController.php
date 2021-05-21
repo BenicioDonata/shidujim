@@ -376,4 +376,46 @@ class HomeController extends Controller
             return response()->json($comments);
         }
     }
+
+    public function updateForm(Request $request)
+    {
+
+        try {
+
+            $message = 'Formulario # actualizado con exito.';
+            $alert_type = 'success';
+
+            if (!$request->all()){
+                $message = 'Error en la actualizacion de datos. Vuelva a intentarlo';
+                $alert_type = 'error';
+            }
+
+            $fail_result_request = validate_request_edit($request);
+
+            if($fail_result_request)
+            {
+                $message = 'Error en la actualizacion de datos. Vuelva a intentarlo';
+                $alert_type = 'error';
+
+            } else {
+
+                $result_data_update = $this->formService->updateFormById($request);
+
+                if(!$result_data_update) {
+                    $message = 'No se pudo actualizar el formulario. Vuelva a intentarlo';
+                    $alert_type = 'error';
+                }
+
+            }
+            $notification = array(
+                'message' => $message,
+                'alert-type' => $alert_type
+            );
+            return redirect()->route('dash_user')->with($notification);
+        }catch (\Exception $e) {
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
 }

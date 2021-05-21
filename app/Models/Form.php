@@ -387,7 +387,7 @@ class Form extends Model
 
     public static function formbyid($id){
 
-        return Form::where('id',$id)->with('gender','maritalstatus','religiouscompliancelevel','smoker','son','location','coupleson','familypuritylaw','files')->first();
+        return Form::where('id',$id)->with('gender','maritalstatus','religiouscompliancelevel','smoker','son','location','coupleson','familypuritylaw','files','studies','languages','quality','acceptancelevel','maritalstatuses','studiesseeks','locations','qualityseeks')->first();
     }
 
 

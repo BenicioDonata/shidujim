@@ -16,8 +16,6 @@ class CommentService
     {
         try
         {
-
-
             DB::beginTransaction();
 
                 $comment = new Comment();
@@ -32,6 +30,8 @@ class CommentService
             return true;
 
         } catch (\Exception $e) {
+
+            DB::rollback();
 
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }

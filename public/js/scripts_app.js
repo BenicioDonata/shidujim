@@ -150,7 +150,7 @@ $(document).ready(function () {
              for(i=0; i<response.length; i++){
                  var date = response[i].created_at.substr(0,10);
 
-                 $('#ModalSeeComment .modal-body').append("<span>"+date+" - Usuario "+response[i].user.name+" comentó :</span><br>");
+                 $('#ModalSeeComment .modal-body').append("<span><b>"+date+" - Usuario "+response[i].user.name+" comentó :</b></span><br>");
                  $('#ModalSeeComment .modal-body').append("<span>"+response[i].comment+"</span><br><br>");
              }
 

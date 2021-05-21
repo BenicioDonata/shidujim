@@ -2263,7 +2263,8 @@ textarea.form-control {
 }
 
 .form-group {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1em;
 }
 
 form#frm_match .form-group {
@@ -7083,7 +7084,9 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+    background-color: #ececec !important;
+    border-radius: 10px;
+    margin-bottom: 13px;
 }
 
 a.bg-dark:hover,
@@ -11173,3 +11176,8 @@ form#frm_match .fg-buttom {
 
     white-space: nowrap;
 }
+
+ form.edit-form label {
+
+     color: #161821;
+ }

@@ -43,9 +43,9 @@ Auth::routes();
 
     Route::get('/comments/{id}', 'App\Http\Controllers\HomeController@getComments');
 
-    Route::get('/dash_user/form/{id}', 'App\Http\Controllers\HomeController@editForm')->name('edit_form');
+    Route::put('/dash_user/updateForm/{form}', 'App\Http\Controllers\HomeController@updateForm')->name('updateForm');
 
-    //Route::put('/dash_user/form/{form}', 'FormController@updateForm')->name('updateForm');
+    Route::get('/dash_user/form/{id}', 'App\Http\Controllers\HomeController@editForm')->name('edit_form');
 
     Route::put('/dash_admin/{id}', 'App\Http\Controllers\HomeController@updateStatusUser')->name('status_user');
 
