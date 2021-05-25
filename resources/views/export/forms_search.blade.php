@@ -36,6 +36,7 @@
         <th>Estarías dispuesto/a a cumplir las leyes de pureza familiar judios</th>
         <th>Cuentanos algo más de ti</th>
         <th>Cuentanos algo más de lo que esperas de tu pareja</th>
+        <th>Fecha de Suscripción</th>
     </tr>
     </thead>
     <tbody>
@@ -134,6 +135,7 @@
             <td>{{ $form->familypuritylaw->family_purity_laws_title}}</td>
             <td>{{ $form->about_u}}</td>
             <td>{{ $form->about_u_partner}}</td>
+            <td>{{\Carbon\Carbon::parse(strtotime($form->created_at))->formatLocalized('%d %B %Y')}}</td>
         </tr>
     @endforeach
     </tbody>

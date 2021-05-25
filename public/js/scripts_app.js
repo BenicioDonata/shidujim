@@ -23,7 +23,7 @@ $(document).ready(function () {
             var image = document.createElement("IMG");
             image.setAttribute('class', 'thumb');
             image.setAttribute('class', 'img-thumbnail');
-            image.src="images/upload_forms/"+$(this).data('file')[i].files_name;
+            image.src="/registro/images/upload_forms/"+$(this).data('file')[i].files_name;
             $('#ModalImages .modal-body #thumblist a#img_'+i).append(image);
 
             var div = document.createElement("DIV");
@@ -142,6 +142,9 @@ $(document).ready(function () {
     });
 
     $('.see-comments').on('click', function(){
+
+        $('#ModalSeeComment .modal-body').empty();
+        $("#ModalSeeComment .modal-header h5").text('');
 
         $("#ModalSeeComment .modal-header h5").text('Comentarios del Formulario #'+$(this).data('id'));
 

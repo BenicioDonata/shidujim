@@ -31,9 +31,7 @@
                                             <th scope="col">Localidad Actual</th>
                                             <th scope="col">Acepta Hijos</th>
                                             <th scope="col">Cumpliría ley de pureza</th>
-
-
-
+                                            <th scope="col">Fecha de Suscripción</th>
                                             <th scope="col" class="c">Revisión</th>
                                             <th scope="col" class="text-center">Acción</th>
                                         </tr>
@@ -53,7 +51,7 @@
                                                 <td>{{$form->location->localities_title}}</td>
                                                 <td>{{ $form->coupleson->couple_sons_title}}</td>
                                                 <td>{{ $form->familypuritylaw->family_purity_laws_title}}</td>
-
+                                                <td>{{\Carbon\Carbon::parse(strtotime($form->created_at))->formatLocalized('%d %B %Y')}}</td>
                                                 <td>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_check ? 'Sin Revisión' : 'Revisado'}}" class="btn {{!$form->is_check ? 'fas fa-eye-slash btn-danger' : 'far fa-eye btn-success'}} btn-sm view-data"></a>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}" title="Editar Formulario" class="far fa-edit btn btn-dark btn-sm edit-form"></a>
