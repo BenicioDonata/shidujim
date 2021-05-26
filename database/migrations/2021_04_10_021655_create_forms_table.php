@@ -24,6 +24,7 @@ class CreateFormsTable extends Migration
             $table->unsignedInteger('gender_id')->nullable(false);
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
             $table->string('date_of_birth');
+            $table->string('age');
             $table->unsignedInteger('maritalstatus_id')->nullable(false);
             $table->foreign('maritalstatus_id')->references('id')->on('marital_statuses')->onDelete('cascade');
             $table->string('profession');

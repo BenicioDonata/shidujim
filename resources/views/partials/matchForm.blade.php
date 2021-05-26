@@ -144,7 +144,7 @@
 
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="years_range"><b>Rango de edad</b></label>
+                            <label for="years_range"><b>Rango de edad (Pretendido)</b></label>
                             <div class="input-group">
                                 <input type="number" id="years_range_from"  min ="18" class="form-control col-md-4" name="years_range_from"  placeholder="Desde">
                                 <span class="col-md-1"></span>
@@ -154,6 +154,14 @@
                     </div>
 
                     <div class="row ">
+                        <div class="form-group col-md-4">
+                            <label for="years_range"><b>Rango de edad (Persona)</b></label>
+                            <div class="input-group">
+                                <input type="number" id="years_range_from"  min ="18" class="form-control col-md-4" name="years_range_from_person"  placeholder="Desde">
+                                <span class="col-md-1"></span>
+                                <input type="number" id="years_range_to" min="18" class="form-control col-md-4" name="years_range_to_person"  placeholder="Hasta">
+                            </div>
+                        </div>
                         <div class="form-group col-md-4">
                             <label for="studies"><b>Estudios seculares y judíos</b></label>
                             <div class="form-check">
@@ -275,6 +283,8 @@
                                 </label>
                             </div>
                         </div>
+                    </div>
+                    <div class="row ">
                         <div class="form-group col-md-4">
                             <label for="accepted_level"><b>Niveles de Aceptación</b></label>
                             <div class="form-check">
@@ -318,8 +328,6 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
-                    <div class="row ">
                         <div class="form-group col-md-4">
                             <label for="qualities"><b>Cualidades</b></label>
                             <div class="form-check">
@@ -436,17 +444,17 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="find_partner"><b>Rango de ganas de encontrar una pareja (1 al 10)</b></label>
-                            <div class="input-group">
-                                <input type="number" id="feel_range_from"  min ="1"  min ="10" class="form-control col-md-4" name="feel_range_from"  placeholder="Desde">
-                                <span class="col-md-1"></span>
-                                <input type="number" id="feel_range_to" min="1"  min ="10"class="form-control col-md-4" name="feel_range_to"  placeholder="Hasta">
-                            </div>
-                        </div>
                     </div>
 
                     <div class="row ">
+                        <div class="form-group col-md-4">
+                            <label for="find_partner"><b>Rango de ganas de encontrar una pareja (1 al 10)</b></label>
+                            <div class="input-group">
+                                <input type="number" id="feel_range_from_person"  min ="1"  min ="10" class="form-control col-md-4" name="feel_range_from"  placeholder="Desde">
+                                <span class="col-md-1"></span>
+                                <input type="number" id="feel_range_to_person" min="1"  min ="10"class="form-control col-md-4" name="feel_range_to"  placeholder="Hasta">
+                            </div>
+                        </div>
                         <div class="form-group col-md-4">
                             <label for="family_purity_laws"><b>Disponibilidad para cumplir las leyes de pureza familiar judios</b></label>
                             <div class="form-check">

@@ -13,6 +13,8 @@ class Form extends Model
 {
     use HasFactory, Notifiable,  SoftDeletes;
 
+    private $q;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,6 +28,7 @@ class Form extends Model
         'second_lastname',
         'gender_id',
         'date_of_birth',
+        'age',
         'maritalstatus_id',
         'profession',
         'email',
@@ -183,6 +186,7 @@ class Form extends Model
     {
         if(trim($search)!= null)
         {
+            $this->q = true;
             return $query->join('genders', 'genders.id', '=', 'forms.gender_id')
                 ->orwhere('genders.genders_title', 'like','%'.strtolower($search).'%');
         }
@@ -192,6 +196,8 @@ class Form extends Model
     {
 
         if(trim($search)!= null) {
+
+            $this->q = true;
             if ($search == 3 ) {
                 return $query->whereIn('forms.gender_id', array(1, 2), 'or');
             } else {
@@ -204,6 +210,7 @@ class Form extends Model
     {
         if(trim($search)!= null)
         {
+
             return $query->join('marital_statuses', 'marital_statuses.id', '=', 'forms.maritalstatus_id')
                 ->orwhere('marital_statuses.marital_statuses_title', 'like','%'.strtolower($search).'%');
         }
@@ -283,6 +290,21 @@ class Form extends Model
         }
     }
 
+    public function scopeAgesrange($query, $search_form, $search_to)
+    {
+
+        if(trim($search_form)!= null && trim($search_to)!= null )
+        {
+            if($this->q) {
+
+                return $query->whereBetween('forms.age', [$search_form, $search_to]);
+            }else{
+
+                return $query->orwhereBetween('forms.age', [$search_form, $search_to]);
+            }
+
+        }
+    }
 
     public function formstudy(){
         return $this->belongsToMany('App\Models\FormsStudies','forms_studies')

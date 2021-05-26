@@ -15,6 +15,8 @@ use App\Models\FamilyPurityLaw;
 use App\Models\File;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use Carbon\Carbon;
+
 
 
 class FormService
@@ -66,6 +68,7 @@ class FormService
             $form->second_lastname = $data_person->second_lastname;
             $form->gender()->associate(Gender::find($data_person->gender));
             $form->date_of_birth = $data_person->date_of_birth;
+            $form->age = Carbon::now()->format('Y') - Carbon::parse($data_person->date_of_birth)->format('Y');
             $form->maritalstatus()->associate(MaritalStatus::find($data_person->civil_status));
             $form->profession = $data_person->profession;
             $form->email = $data_person->email;
@@ -176,7 +179,7 @@ class FormService
         try {
 
             return Form::with('gender','maritalstatus','religiouscompliancelevel','smoker','son','location','coupleson','familypuritylaw','files')
-                        ->orderBy('forms.id','DESC')->paginate(10);
+                        ->orderBy('forms.id','DESC')->paginate(50);
 
         } catch (\Exception $e) {
 
@@ -208,7 +211,7 @@ class FormService
                 ->maritalsatus($marital_status)
                 ->email($email)
                 ->mainphone($main_phone)
-                ->paginate(10);
+                ->paginate(50);
 
             return $forms;
 
@@ -316,6 +319,8 @@ class FormService
             $smoke = $request->get('smoke');
             $years_range_from = $request->get('years_range_from');
             $years_range_to = $request->get('years_range_to');
+            $years_range_from_person = $request->get('years_range_from_person');
+            $years_range_to_person = $request->get('years_range_to_person');
             $studies = $request->get('studies');
             $location = $request->get('location');
             $accepted_level = $request->get('accepted_level');
@@ -335,6 +340,7 @@ class FormService
                 ->countsons($count_sons)
                 ->smoke($smoke)
                 ->yearsrange($years_range_from,$years_range_to)
+                ->agesrange($years_range_from_person,$years_range_to_person)
                 ->studies($studies)
                 ->location($location)
                 ->acceptedlevel($accepted_level)
@@ -342,7 +348,7 @@ class FormService
                 ->livefuture($live_future)
                 ->partnerfeelrange($feel_range_from,$feel_range_to)
                 ->familypuritylaws($family_purity_laws)
-                ->paginate(10);
+                ->paginate(50);
 
             return $forms;
 
@@ -463,6 +469,7 @@ class FormService
             $form->second_lastname = $request->get('second_lastname');
             $form->gender()->associate(Gender::find($request->get('gender')));
             $form->date_of_birth = $request->get('date_of_birth');
+            $form->age = Carbon::now()->format('Y') - Carbon::parse($request->get('date_of_birth'))->format('Y');
             $form->maritalstatus()->associate(MaritalStatus::find($request->get('civil_status')));
             $form->profession = $request->get('profession');
             $form->email = $request->get('email');
@@ -484,6 +491,31 @@ class FormService
             $form->about_u = $request->get('about_u');
             $form->about_u_partner = $request->get('about_u_partner');
 
+
+            $form->save();
+
+            DB::commit();
+
+            return $form;
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
+    public function deleteForm($id) {
+
+        try {
+
+            $form = Form::formbyid($id);
+
+            DB::beginTransaction();
+
+            $form->deleted_at  = Carbon::now()->format('Y-m-d H:i:s');
 
             $form->save();
 

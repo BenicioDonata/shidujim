@@ -163,6 +163,19 @@ $(document).ready(function () {
 
     });
 
+    $('.deleteForm').on('click', function(){
+        $("#ModalDeleteForm .modal-header h5").text(' Eliminar Formulario ');
+        $("#ModalDeleteForm .modal-body h6").text('¿Confirma eliminar el formulario del usuario '+$(this).data('user')+'?');
+        $("#ModalDeleteForm input#form-delete").val($(this).data('id'));
+
+        $("#ModalDeleteForm").modal("show");
+    });
+
+    $(document).on('click','.delete-form', function(){
+        $('#delete-form-'+$("#ModalDeleteForm input#form-delete").val()).submit();
+    });
+
+
 });
 
 

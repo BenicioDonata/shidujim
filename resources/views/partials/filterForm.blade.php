@@ -20,6 +20,7 @@
                             <button type="submit" data-toggle="tooltip" data-placement="top" title="Empezar la Búsqueda"  class="btn btnBuscar fas fa-search"></button>
                             <a type="button" data-toggle="tooltip" data-placement="top" title="Todos los Formularios" class="btn btnBuscar fas fa-list-ol" href="{{route('dash_user')}}"></a>
                         </div>
+                    <h6>* Se puede buscar por Nombre, Nombre Hebreo, Apellido Materno, Apellido Paterno, Género, Estado Civil, Email y Teléfono Principal</h6>
                 </form>
                 </div>
             </div><!--FIN BUSCADOR-->

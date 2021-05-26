@@ -18,7 +18,7 @@ class UserServices
 
             return  User::with('userstatus','usertype')
                             ->where('users.deleted_at','=',NULL)
-                            ->orderBy('users.id','DESC')->paginate(5);
+                            ->orderBy('users.id','DESC')->paginate(50);
 
         } catch (\Exception $e) {
 
@@ -121,7 +121,7 @@ class UserServices
                 ->status($status)
                 ->usertypes($types)
                 ->Where('users.deleted_at','=',NULL)
-                ->paginate(10);
+                ->paginate(50);
 
             return $users;
 

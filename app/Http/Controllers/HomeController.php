@@ -418,4 +418,37 @@ class HomeController extends Controller
 
     }
 
+    public function deleteForm($id)
+    {
+
+        try {
+
+            $user = $this->formService->deleteForm($id);
+
+            if (!$user) {
+
+                $notification = array(
+                    'message' => 'No se pudo eliminar el formulario. Vuelva a intentarlo',
+                    'alert-type' => 'error'
+
+                );
+
+                return redirect()->route('dash_user')->with($notification);
+
+            }
+
+            $notification = array(
+                'message' => 'Formulario eliminado con éxito!',
+                'alert-type' => 'success'
+
+            );
+
+            return redirect()->route('dash_user')->with($notification);
+
+        } catch (\Exception $e) {
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+    }
+
 }

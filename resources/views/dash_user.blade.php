@@ -23,6 +23,7 @@
                                             <th scope="col">Sexo</th>
                                             <th scope="col">Estado Civil</th>
                                             <th scope="col">Fecha de Nacimiento</th>
+                                            <th scope="col">Edad</th>
                                             <th scope="col">Celular</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Nivel Religioso</th>
@@ -30,9 +31,9 @@
                                             <th scope="col">Hijos</th>
                                             <th scope="col">Localidad Actual</th>
                                             <th scope="col">Acepta Hijos</th>
-                                            <th scope="col">Cumpliría ley de pureza</th>
+                                            <th scope="col">Ley de pureza</th>
                                             <th scope="col">Fecha de Suscripción</th>
-                                            <th scope="col" class="c">Revisión</th>
+                                            <th scope="col" class="text-center">Revisión</th>
                                             <th scope="col" class="text-center">Acción</th>
                                         </tr>
                                         </thead>
@@ -43,6 +44,7 @@
                                                 <td>{{$form->gender->genders_title}}</td>
                                                 <td>{{$form->maritalstatus->marital_statuses_title}}</td>
                                                 <td>{{$form->date_of_birth}}</td>
+                                                <td>{{$form->age}}</td>
                                                 <td>{{$form->main_phone}}</td>
                                                 <td>{{$form->email}}</td>
                                                 <td>{{$form->religiouscompliancelevel->religious_compliance_lvl}}</td>
@@ -51,19 +53,24 @@
                                                 <td>{{$form->location->localities_title}}</td>
                                                 <td>{{ $form->coupleson->couple_sons_title}}</td>
                                                 <td>{{ $form->familypuritylaw->family_purity_laws_title}}</td>
-                                                <td>{{\Carbon\Carbon::parse(strtotime($form->created_at))->formatLocalized('%d %B %Y')}}</td>
-                                                <td>
+                                                <td>{{\Carbon\Carbon::parse(strtotime($form->created_at))->formatLocalized('%d %B %Y %H:%M:%S')}}</td>
+                                                <td class="text-center" scope="row">
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_check ? 'Sin Revisión' : 'Revisado'}}" class="btn {{!$form->is_check ? 'fas fa-eye-slash btn-danger' : 'far fa-eye btn-success'}} btn-sm view-data"></a>
-                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}" title="Editar Formulario" class="far fa-edit btn btn-dark btn-sm edit-form"></a>
                                                     <form  method="post" id="change-status-form-{{$form->id}}"  action="{{route('status_form',$form->id)}}">
                                                         {{csrf_field()}}
                                                         {{ method_field('PUT') }}
                                                     </form>
-                                                </td>
+                                               </td>
                                                 <td class="text-center" scope="row">
-                                                    <a type="button" data-toggle="tooltip" data-placement="top" title="Fotos Subidas" data-file="{{$form->files}}" class="btn btn-info fas fa-images btn-sm view-files"></a>
+                                                    <a type="button" data-toggle="tooltip" data-placement="top" title="Ver Fotos Subidas" data-file="{{$form->files}}" class="btn btn-info fas fa-images btn-sm view-files"></a>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" title="Ver Comentarios" class="btn btn-dark fas fa-eye btn-sm see-comments" data-id="{{$form->id}}"></a>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" title="Agregar Comentario" class="btn btn-success fas fa-edit btn-sm add-comment" data-id="{{$form->id}}"></a>
+                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}" title="Editar Formulario" class="fas fa-pencil-alt btn btn-dark btn-sm edit-form"></a>
+                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" data-user="{{$form->lastname}} {{$form->name}}" title="Eliminar Formulario" class="btn btn-danger fas fa-trash-alt btn-sm deleteForm"></a>
+                                                    <form  method="post" id="delete-form-{{$form->id}}"  action="{{route('delete_Form',$form->id)}}">
+                                                        {{csrf_field()}}
+                                                        {{ method_field('PUT') }}
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -86,6 +93,7 @@
                 @include('partials.modals.modal-image')
                 @include('partials.modals.modal-comment')
                 @include('partials.modals.modal-see-comment')
+                @include('partials.modals.modal-delete-form')
             </div>
         </div>
     </div>

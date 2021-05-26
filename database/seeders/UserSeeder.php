@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Administrador',
                 'email' => 'admin@shidujim.com',
-                'password' => bcrypt('12345678'),
+                'password' => bcrypt('P4t4n?l0c@'),
                 'userstatus_id' => UserStatus::all()->find('id',env('ACTIVO')),
                 'usertype_id' => UserType::all()->find('id',env('ADMINISTRADOR')),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s')

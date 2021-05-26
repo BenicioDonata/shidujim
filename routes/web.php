@@ -55,6 +55,9 @@ Auth::routes();
 
     Route::put('/dash_user/form_status/{id}', 'App\Http\Controllers\HomeController@updateStatusForm')->name('status_form');
 
+    Route::put('/dash_user/form_delete/{id}', 'App\Http\Controllers\HomeController@deleteForm')->name('delete_Form');
+
+
 
 
 

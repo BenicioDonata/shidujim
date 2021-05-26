@@ -8,6 +8,7 @@
         <th>Apellido Materno</th>
         <th>Genero</th>
         <th>Fecha de Nacimiento</th>
+        <th>Edad</th>
         <th>Estado Civil</th>
         <th>Profesion</th>
         <th>Email</th>
@@ -51,6 +52,7 @@
             <td>{{ $form->second_lastname}}</td>
             <td>{{ $form->gender->genders_title}}</td>
             <td>{{ $form->date_of_birth}}</td>
+            <td>{{ $form->age}}</td>
             <td>{{ $form->maritalstatus->marital_statuses_title}}</td>
             <td>{{ $form->profession}}</td>
             <td>{{ $form->email}}</td>

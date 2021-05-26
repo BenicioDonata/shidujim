@@ -11181,3 +11181,8 @@ form#frm_match .fg-buttom {
 
      color: #161821;
  }
+
+#frm_busqueda h6 {
+
+    color: red;
+}
