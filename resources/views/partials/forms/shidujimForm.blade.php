@@ -19,12 +19,12 @@
                 <button type="submit" class="send btn float-left"> Enviar</button>
             </div>
         </div>
-        <div class="col-md-6 progress-div-bar">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <p></p>
-        </div>
+{{--        <div class="col-md-6 progress-div-bar">--}}
+{{--            <div class="progress">--}}
+{{--                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>--}}
+{{--            </div>--}}
+{{--            <p></p>--}}
+{{--        </div>--}}
     </div>
 
 </form>

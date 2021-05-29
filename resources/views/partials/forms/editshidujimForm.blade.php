@@ -28,7 +28,6 @@
             <div class="form-group col-md-6">
                 <label for="date_of_birth"><i class="far fa-check-circle"></i> Fecha de Nacimiento</label>
                 <input type="text" id="date_of_birth" class="form-control" name="date_of_birth"  placeholder="Tu respuesta" value="{{$form['form']['date_of_birth']}}">
-
             </div>
             <div class="form-group col-md-6">
                 <label for="civil_status"><i class="far fa-check-circle"></i> Estado Civil</label>
@@ -251,7 +250,7 @@
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="qualities"><i class="far fa-check-circle"></i> ¿Qué cualidad consideras que tienes tu? puedes elegir una, varias o ninguna.</label>
+                <label for="qualities"><i class="far fa-check-circle"></i> ¿Qué cualidad consideras que tienes tu? (Puedes elegir una, varias o ninguna).</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="qualities[]" id="sympathetic" {{ (in_array(1,$form['quality'])) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="sympathetic">
@@ -302,7 +301,7 @@
                 </div>
             </div>
             <div class="form-group col-md-6">
-                <label for="accepted_level"><i class="far fa-check-circle"></i> ¿Qué nivel seria aceptado por vos? (Puedes Elegir varios)</label>
+                <label for="accepted_level"><i class="far fa-check-circle"></i> ¿Qué nivel seria aceptado por vos? (Puedes elegir varios)</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="accepted_level[]" id="kasher_only_house" {{ (in_array(1,$form['acceptancelevel'])) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="kasher_only_house">
@@ -545,7 +544,7 @@
         </div>
         <div class="row bg-dark">
             <div class="form-group col-md-6">
-                <label for="qualities_seek"><i class="far fa-check-circle"></i> ¿Qué cualidades te gustaría que tenga? Puedes elegir una, varias o ninguna.</label>
+                <label for="qualities_seek"><i class="far fa-check-circle"></i> ¿Qué cualidades te gustaría que tenga? (Puedes elegir una, varias o ninguna).</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="sympathetic_seek" {{ (in_array(1,$form['qualityseeks'])) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="sympathetic_seek">

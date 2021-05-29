@@ -72,7 +72,7 @@
     <div class="card ">
         <div class="card-body">
             <div class="form-group col-md-12">
-                <label for="qualities">¿Qué cualidad consideras que tienes tu? puedes elegir una, varias o ninguna.</label>
+                <label for="qualities">¿Qué cualidad consideras que tienes tu? (Puedes elegir una, varias o ninguna).</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="qualities[]" id="sympathetic" {{ (old('sympathetic') ===  1) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="sympathetic">
@@ -127,7 +127,7 @@
     <div class="card ">
         <div class="card-body">
             <div class="form-group col-md-12">
-                <label for="accepted_level"><h6 class="asterics">*</h6> ¿Qué nivel seria aceptado por vos? (Puedes Elegir varios)</label>
+                <label for="accepted_level"><h6 class="asterics">*</h6> ¿Qué nivel seria aceptado por vos? (Puedes elegir varios)</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="accepted_level[]" id="kasher_only_house" {{ (old('kasher_only_house') ===  1) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="kasher_only_house">
