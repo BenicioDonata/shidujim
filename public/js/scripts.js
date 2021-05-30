@@ -244,6 +244,26 @@ $(document).ready(function () {
                     $('.step2 #date_of_birth').focus();
                     return false;
                 }
+                if($('.step2 #date_of_birth').val().length != 10){
+                    toastr["error"]("Revisar que tenga el formato correcto Ej. dd/mm/yyyy","Campo Fecha de Nacimiento");
+                    $('.step2 #date_of_birth').focus();
+                    return false;
+                }
+                if($('.step2 #date_of_birth').val().split('/').length != 3) {
+                    toastr["error"]("Revisar que tenga el formato correcto Ej. dd/mm/yyyy","Campo Fecha de Nacimiento");
+                    $('.step2 #date_of_birth').focus();
+                    return false;
+                }
+                var array_date = $('.step2 #date_of_birth').val().split('/');
+                var anio_now = (new Date).getFullYear();
+                var diff_anio = anio_now - array_date[2];
+
+                if(diff_anio < 18) {
+                    toastr["error"]("El año no es correcto.","Campo Fecha de Nacimiento");
+                    $('.step2 #date_of_birth').focus();
+                    return false;
+                }
+
                 if($('.step2 #profession').val() == ""){
                     toastr["error"]("Completar el campo","Campo Profesion");
                     $('.step2 #profession').focus();
@@ -516,7 +536,11 @@ $(document).ready(function () {
             closeText: 'Cerrar',
             prevText: '<Ant',
             nextText: 'Sig>',
-            currentText: 'Hoy',
+           // currentText:  "-18y",
+            defaultDate: "-70y",
+            minDate: "-100y,-149D",
+            maxDate: "-18y",
+            yearRange: '-100y:-18y',
             monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
             dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
@@ -534,9 +558,9 @@ $(document).ready(function () {
         $('#date_of_birth').datepicker({
             dateFormat: 'dd/mm/yy',
             showButtonPanel: false,
-            changeMonth: false,
-            changeYear: false,
-            inline: true
+            changeMonth: true,
+            changeYear: true,
+            inline: true,
 
         });
     }
