@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Study;
 use App\Models\FormStudy;
+use App\Models\Gender;
+use App\Models\MaritalStatus;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -154,7 +156,7 @@ class Form extends Model
     {
         if(trim($search)!= null)
         {
-            return $query->orWhere('name','LIKE', '%'.$search.'%');
+            return $query->orwhere('name','LIKE', '%'.$search.'%');
         }
     }
 
@@ -162,7 +164,7 @@ class Form extends Model
     {
         if(trim($search)!= null)
         {
-            return $query->orWhere('name_hebrew','LIKE', '%'.$search.'%');
+            return $query->orwhere('name_hebrew','LIKE', '%'.$search.'%');
         }
     }
 
@@ -170,7 +172,7 @@ class Form extends Model
     {
         if(trim($search)!= null)
         {
-            return $query->orWhere('lastname','LIKE', '%'.$search.'%');
+            return $query->orwhere('lastname','LIKE', '%'.$search.'%');
         }
     }
 
@@ -178,7 +180,7 @@ class Form extends Model
     {
         if(trim($search)!= null)
         {
-            return $query->orWhere('second_lastname','LIKE', '%'.$search.'%');
+            return $query->orwhere('second_lastname','LIKE', '%'.$search.'%');
         }
     }
 
@@ -186,9 +188,11 @@ class Form extends Model
     {
         if(trim($search)!= null)
         {
-            $this->q = true;
-            return $query->join('genders', 'genders.id', '=', 'forms.gender_id')
-                ->orwhere('genders.genders_title', 'like','%'.strtolower($search).'%');
+
+            $gender = Gender::genderbystring($search);
+            if(isset($gender[0]))
+                return $query->orwhere('forms.gender_id', '=',$gender[0]->id);
+
         }
     }
 
@@ -211,8 +215,11 @@ class Form extends Model
         if(trim($search)!= null)
         {
 
-            return $query->join('marital_statuses', 'marital_statuses.id', '=', 'forms.maritalstatus_id')
-                ->orwhere('marital_statuses.marital_statuses_title', 'like','%'.strtolower($search).'%');
+            $maritalstatus = MaritalStatus::maritalstatusbystring($search);
+
+            if(isset($maritalstatus[0]))
+                return $query->orwhere('forms.maritalstatus_id', '=',$maritalstatus[0]->id);
+
         }
     }
 
@@ -220,10 +227,20 @@ class Form extends Model
     {
         if(isset($search[0]))
         {
-            if(in_array(4,$search)){
-                return $query->whereIn('forms.maritalstatus_id',array(1,2,3), 'or');
+            if($this->q) {
+                if(in_array(4,$search)){
+                    return $query->whereIn('forms.maritalstatus_id',array(1,2,3), 'and');
+                }else{
+                    return $query->whereIn('forms.maritalstatus_id',array($search),'and');
+                }
+
             }else{
-                return $query->whereIn('forms.maritalstatus_id',array($search),'or');
+                $this->q = true;
+                if(in_array(4,$search)){
+                    return $query->whereIn('forms.maritalstatus_id',array(1,2,3), 'or');
+                }else{
+                    return $query->whereIn('forms.maritalstatus_id',array($search),'or');
+                }
             }
         }
     }
@@ -232,18 +249,34 @@ class Form extends Model
     {
 
         if(trim($search)!= null) {
-            if ($search == 3 ) {
-                return $query->whereIn('forms.coupleson_id', array(1, 2, 3),'or');
-            } else {
-                return $query->whereIn('forms.coupleson_id', array($search), 'or');
+
+            if($this->q) {
+                if ($search == 3 ) {
+                    return $query->whereIn('forms.coupleson_id', array(1, 2, 3),'and');
+                } else {
+                    return $query->whereIn('forms.coupleson_id', array($search), 'and');
+                }
+            }else{
+                $this->q = true;
+                if ($search == 3 ) {
+                    return $query->whereIn('forms.coupleson_id', array(1, 2, 3),'or');
+                } else {
+                    return $query->whereIn('forms.coupleson_id', array($search), 'or');
+                }
             }
+
         }
     }
 
     public function scopeReligiouscompliancelevel($query, $search)
     {
         if(isset($search[0])) {
-            return $query->whereIn('forms.religiouscompliancelevel_id', $search, 'or');
+            if($this->q) {
+                return $query->whereIn('forms.religiouscompliancelevel_id', $search, 'and');
+            }else{
+                $this->q = true;
+                return $query->whereIn('forms.religiouscompliancelevel_id', $search, 'or');
+            }
         }
 
     }
@@ -251,7 +284,12 @@ class Form extends Model
     public function scopeSons($query, $search)
     {
         if(isset($search[0])) {
-            return $query->whereIn('forms.son_id',$search,'or');
+            if($this->q) {
+                return $query->whereIn('forms.son_id',$search,'and');
+            }else{
+                $this->q = true;
+                return $query->whereIn('forms.son_id',$search,'or');
+            }
         }
 
     }
@@ -259,7 +297,14 @@ class Form extends Model
     public function scopeLanguages($query, $search)
     {
         if(isset($search[0])) {
-            return $query->whereIn('forms_languages.language_id', $search, 'or');
+            if($this->q) {
+                return $query->join('forms_languages', 'forms_languages.form_id', '=', 'forms.id')
+                    ->whereIn('forms_languages.language_id', $search, 'and');
+            }else{
+                $this->q = true;
+                return $query->join('forms_languages', 'forms_languages.form_id', '=', 'forms.id')
+                    ->whereIn('forms_languages.language_id', $search, 'or');
+            }
         }
     }
 
@@ -292,7 +337,6 @@ class Form extends Model
 
     public function scopeAgesrange($query, $search_form, $search_to)
     {
-
         if(trim($search_form)!= null && trim($search_to)!= null )
         {
             if($this->q) {
@@ -395,7 +439,7 @@ class Form extends Model
     {
         if(trim($search)!= null)
         {
-            return $query->orWhere('email','LIKE', '%'.strtolower($search).'%');
+            return $query->orwhere('email','LIKE', '%'.strtolower($search).'%');
         }
     }
 
@@ -403,7 +447,7 @@ class Form extends Model
     {
         if(trim($search)!= null)
         {
-            return $query->orWhere('main_phone','LIKE', '%'.strtolower($search).'%');
+            return $query->orwhere('main_phone','LIKE', '%'.strtolower($search).'%');
         }
     }
 

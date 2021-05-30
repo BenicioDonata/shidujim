@@ -30,6 +30,11 @@ class MaritalStatus extends Model
 
     }
 
+    public static function maritalstatusbystring($search){
+
+        return MaritalStatus::where('marital_statuses_title', 'like','%'.strtolower($search).'%')->get();
+    }
+
     public function forms(){
         return $this->belongsToMany('App\Models\Form','forms_civil_status')
             ->withPivot('form_id')->withTimestamps();;

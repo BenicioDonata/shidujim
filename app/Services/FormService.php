@@ -315,7 +315,7 @@ class FormService
             $couple_sons = $request->get('couple_sons');
             $religiouscompliancelevel = $request->get('religiouscompliancelevel');
             $sons = $request->get('sons');
-            $languages = $request->get('languajes');
+            $languages = $request->get('languages');
             $count_sons = $request->get('count_sons');
             $smoke = $request->get('smoke');
             $years_range_from = $request->get('years_range_from');

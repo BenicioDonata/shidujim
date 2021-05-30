@@ -30,6 +30,11 @@ class Gender extends Model
         return Gender::all();
     }
 
+    public static function genderbystring($search){
+
+        return Gender::orwhere('genders_title', 'like','%'.strtolower($search).'%')->get();
+    }
+
     public function form()
     {
         return $this->hasOne('App\Models\form');
