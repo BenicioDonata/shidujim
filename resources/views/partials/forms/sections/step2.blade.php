@@ -11,7 +11,7 @@
         <div class="card-body">
             <div class="form-group col-md-6">
                  <label for="name"><h6 class="asterics">*</h6> Nombre</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Tu respuesta" value="{{old('name')}}">
+                <input type="text" name="name" id="name" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{old('name')}}">
             </div>
             <h6>* Obligatorio</h6>
         </div>
@@ -20,7 +20,7 @@
         <div class="card-body">
             <div class="form-group col-md-6">
                 <label for="name_hebreo"><h6 class="asterics">*</h6> Nombre en Hebreo</label>
-                <input type="text" name="name_hebrew" id="name_hebrew" class="form-control" placeholder="Tu respuesta" value="{{old('name_hebreo')}}">
+                <input type="text" name="name_hebrew" id="name_hebrew" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{old('name_hebreo')}}">
             </div>
             <h6>* Obligatorio</h6>
         </div>
@@ -29,7 +29,7 @@
         <div class="card-body">
             <div class="form-group col-md-6">
                  <label for="lastname"><h6 class="asterics">*</h6> Apellido Paterno</label>
-                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Tu respuesta" value="{{old('lastname')}}">
+                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{old('lastname')}}">
             </div>
             <h6>* Obligatorio</h6>
         </div>
@@ -38,7 +38,7 @@
         <div class="card-body">
             <div class="form-group col-md-6">
                  <label for="second_lastname"><h6 class="asterics">*</h6> Apellido Materno</label>
-                 <input type="text" name="second_lastname" id="second_lastname" class="form-control" placeholder="Tu respuesta" value="{{old('second_lastname')}}">
+                 <input type="text" name="second_lastname" id="second_lastname" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{old('second_lastname')}}">
             </div>
             <h6>* Obligatorio</h6>
         </div>
@@ -56,7 +56,7 @@
         <div class="card-body">
             <div class="form-group col-md-6">
                  <label for="profession"><h6 class="asterics">*</h6> Profesión</label>
-                <input type="text" id="profession" class="form-control" name="profession"  placeholder="Tu respuesta" value="{{old('profession')}}">
+                <input type="text" id="profession" class="form-control" name="profession"  placeholder="Tu respuesta" maxlength="254" value="{{old('profession')}}">
             </div>
             <h6>* Obligatorio</h6>
         </div>
@@ -65,7 +65,7 @@
         <div class="card-body">
             <div class="form-group col-md-6">
                  <label for="email"><h6 class="asterics">*</h6> Tu email</label>
-                 <input type="email" id="email" class="form-control" name="email"  placeholder="Tu respuesta" value="{{old('email')}}">
+                 <input type="email" id="email" class="form-control" name="email"  placeholder="Tu respuesta" maxlength="254" value="{{old('email')}}">
             </div>
             <h6>* Obligatorio</h6>
         </div>

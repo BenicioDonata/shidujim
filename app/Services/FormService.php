@@ -68,7 +68,8 @@ class FormService
             $form->second_lastname = $data_person->second_lastname;
             $form->gender()->associate(Gender::find($data_person->gender));
             $form->date_of_birth = $data_person->date_of_birth;
-            $form->age = Carbon::now()->format('Y') - Carbon::parse($data_person->date_of_birth)->format('Y');
+            $dataTime_date_of_birth = Carbon::createFromFormat('d/m/Y', $data_person->date_of_birth);
+            $form->age = Carbon::now()->format('Y') - Carbon::parse($dataTime_date_of_birth)->format('Y');
             $form->maritalstatus()->associate(MaritalStatus::find($data_person->civil_status));
             $form->profession = $data_person->profession;
             $form->email = $data_person->email;
@@ -469,7 +470,8 @@ class FormService
             $form->second_lastname = $request->get('second_lastname');
             $form->gender()->associate(Gender::find($request->get('gender')));
             $form->date_of_birth = $request->get('date_of_birth');
-            $form->age = Carbon::now()->format('Y') - Carbon::parse($request->get('date_of_birth'))->format('Y');
+            $dataTime_date_of_birth = Carbon::createFromFormat('d/m/Y', $request->get('date_of_birth'));
+            $form->age = Carbon::now()->format('Y') - Carbon::parse($dataTime_date_of_birth)->format('Y');
             $form->maritalstatus()->associate(MaritalStatus::find($request->get('civil_status')));
             $form->profession = $request->get('profession');
             $form->email = $request->get('email');

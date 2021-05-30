@@ -397,7 +397,7 @@
         <div class="card-body">
             <div class="form-group col-md-12">
                 <label for="about_u"><h6 class="asterics">*</h6> Cuentanos algo más de ti</label>
-                <input type="text" name="about_u" id="about_u" class="form-control" placeholder="Tu respuesta" value="{{old('about_u')}}">
+                <input type="text" name="about_u" id="about_u" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{old('about_u')}}">
             </div>
             <h6>* Obligatorio</h6>
         </div>
@@ -406,7 +406,7 @@
         <div class="card-body">
             <div class="form-group col-md-12">
                 <label for="about_u_partner"><h6 class="asterics">*</h6> Cuentanos algo más de lo que esperas de tu pareja</label>
-                <input type="text" name="about_u_partner" id="about_u_partner" class="form-control" placeholder="Tu respuesta" value="{{old('about_u_partner')}}">
+                <input type="text" name="about_u_partner" id="about_u_partner" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{old('about_u_partner')}}">
             </div>
             <h6>* Obligatorio</h6>
         </div>

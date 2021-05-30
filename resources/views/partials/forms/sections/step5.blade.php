@@ -105,7 +105,7 @@
         <div class="card-body">
             <div class="form-group col-md-6">
                  <label for="name_school"><h6 class="asterics">*</h6> Nombre del Colegio Primario</label>
-                <input type="text" id="name_school" class="form-control" name="name_school"  placeholder="Tu respuesta" value="{{old('name_school')}}">
+                <input type="text" id="name_school" class="form-control" name="name_school"  placeholder="Tu respuesta" maxlength="254" value="{{old('name_school')}}">
             </div>
             <h6>* Obligatorio</h6>
         </div>
@@ -114,7 +114,7 @@
         <div class="card-body">
             <div class="form-group col-md-6">
                 <label for="name_secondary_school">Nombre del Colegio Secundario</label>
-                <input type="text" id="name_secondary_school" class="form-control" name="name_secondary_school"  placeholder="Tu respuesta" value="{{old('name_secondary_school')}}">
+                <input type="text" id="name_secondary_school" class="form-control" name="name_secondary_school" maxlength="254" placeholder="Tu respuesta" value="{{old('name_secondary_school')}}">
             </div>
         </div>
     </div>

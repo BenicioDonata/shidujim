@@ -19,7 +19,7 @@
         <div class="card-body">
             <div class="form-group col-md-6">
                  <label for="reference_one"><h6 class="asterics">*</h6> Referencia 1 </label>
-                 <input type="text" name="reference_one" id="reference_one" class="form-control" placeholder="Tu respuesta" value="{{old('reference_one')}}">
+                 <input type="text" name="reference_one" id="reference_one" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{old('reference_one')}}">
             </div>
             <h6>* Obligatorio</h6>
         </div>
@@ -28,7 +28,7 @@
         <div class="card-body">
             <div class="form-group col-md-6">
                 <label for="reference_two">Referencia 2</label>
-                <input type="text" name="reference_two" id="reference_two" class="form-control" placeholder="Tu respuesta" value="{{old('reference_two')}}">
+                <input type="text" name="reference_two" id="reference_two" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{old('reference_two')}}">
             </div>
         </div>
     </div>
