@@ -8,20 +8,20 @@
     <div class="row bg-dark">
             <div class="form-group col-md-6">
                     <label for="name"><i class="far fa-check-circle"></i> Nombre</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Tu respuesta" value="{{$form['form']['name']}}">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['name']}}">
             </div>
             <div class="form-group col-md-6">
                     <label for="name_hebreo"><i class="far fa-check-circle"></i> Nombre en Hebreo</label>
-                    <input type="text" name="name_hebrew" id="name_hebrew" class="form-control" placeholder="Tu respuesta" value="{{$form['form']['name_hebrew']}}">
+                    <input type="text" name="name_hebrew" id="name_hebrew" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['name_hebrew']}}">
             </div>
 
             <div class="form-group col-md-6">
                 <label for="lastname"><i class="far fa-check-circle"></i> Apellido Paterno</label>
-                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Tu respuesta" value="{{$form['form']['lastname']}}">
+                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['lastname']}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="second_lastname"><i class="far fa-check-circle"></i> Apellido Materno</label>
-                <input type="text" name="second_lastname" id="second_lastname" class="form-control" placeholder="Tu respuesta" value="{{$form['form']['second_lastname']}}">
+                <input type="text" name="second_lastname" id="second_lastname" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['second_lastname']}}">
             </div>
         </div>
         <div class="row bg-dark">
@@ -61,13 +61,13 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="profession"><i class="far fa-check-circle"></i> Profesión</label>
-                <input type="text" id="profession" class="form-control" name="profession"  placeholder="Tu respuesta" value="{{$form['form']['profession']}}">
+                <input type="text" id="profession" class="form-control" name="profession"  placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['profession']}}">
             </div>
         </div>
         <div class="row bg-dark">
             <div class="form-group col-md-6">
                 <label for="email"><i class="far fa-check-circle"></i> Tu email</label>
-                <input type="email" id="email" class="form-control" name="email"  placeholder="Tu respuesta" value="{{$form['form']['email']}}">
+                <input type="email" id="email" class="form-control" name="email"  placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['email']}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="main_phone"><i class="far fa-check-circle"></i> Teléfono Celular (Pais + Ciudad + Numero)</label>
@@ -100,11 +100,11 @@
         <div class="row bg-dark">
             <div class="form-group col-md-6">
                 <label for="community_assists"><i class="far fa-check-circle"></i> ¿A que comunidad asistís?</label>
-                <input type="text" name="community_assists" id="community_assists" class="form-control" placeholder="Tu respuesta" value="{{$form['form']['community_assists']}}">
+                <input type="text" name="community_assists" id="community_assists" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['community_assists']}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="module"><i class="far fa-check-circle"></i> ¿Que Rabanim te conocen?</label>
-                <input type="text" name="rabanim_know" id="rabanim_know" class="form-control" placeholder="Tu respuesta" value="{{$form['form']['rabanim_know']}}">
+                <input type="text" name="rabanim_know" id="rabanim_know" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['rabanim_know']}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="studies"><i class="far fa-check-circle"></i> Estudios seculares y judíos (Puedes elegir varios)</label>
@@ -194,11 +194,11 @@
         <div class="row bg-dark">
             <div class="form-group col-md-6">
                 <label for="name_school"><i class="far fa-check-circle"></i> Nombre del Colegio Primario</label>
-                <input type="text" id="name_school" class="form-control" name="name_school"  placeholder="Tu respuesta" value="{{$form['form']['name_school']}}">
+                <input type="text" id="name_school" class="form-control" name="name_school"  placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['name_school']}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="name_secondary_school"><i class="far fa-check-circle"></i> Nombre del Colegio Secundario</label>
-                <input type="text" id="name_secondary_school" class="form-control" name="name_secondary_school"  placeholder="Tu respuesta" value="{{$form['form']['name_secondary_school']}}">
+                <input type="text" id="name_secondary_school" class="form-control" name="name_secondary_school"  placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['name_secondary_school']}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="smoke"><i class="far fa-check-circle"></i> ¿Fumas?</label>
@@ -696,11 +696,11 @@
         <div class="row bg-dark">
             <div class="form-group col-md-6">
                 <label for="about_u"><i class="far fa-check-circle"></i> Cuentanos algo más de ti</label>
-                <input type="text" name="about_u" id="about_u" class="form-control" placeholder="Tu respuesta" value="{{$form['form']['about_u']}}">
+                <input type="text" name="about_u" id="about_u" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['about_u']}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="about_u_partner"><i class="far fa-check-circle"></i> Cuentanos algo más de lo que esperas de tu pareja</label>
-                <input type="text" name="about_u_partner" id="about_u_partner" class="form-control" placeholder="Tu respuesta" value="{{$form['form']['about_u_partner']}}">
+                <input type="text" name="about_u_partner" id="about_u_partner" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['about_u_partner']}}">
             </div>
         </div>
         <div class="row col-md-12">
