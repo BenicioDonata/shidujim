@@ -252,49 +252,49 @@
             <div class="form-group col-md-6">
                 <label for="qualities"><i class="far fa-check-circle"></i> ¿Qué cualidad consideras que tienes tu? (Puedes elegir una, varias o ninguna).</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities[]" id="sympathetic" {{ (in_array(1,$form['quality'])) ? 'checked' : '' }} value="1">
+                    <input class="form-check-input" type="checkbox" name="qualities[]" id="sympathetic" {{ (isset($form['quality']) && (in_array(1,$form['quality']))) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="sympathetic">
                         Simpático/a
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities[]" id="professional" {{ (in_array(2,$form['quality'])) ? 'checked' : '' }} value="2">
+                    <input class="form-check-input" type="checkbox" name="qualities[]" id="professional" {{ (isset($form['quality']) && (in_array(2,$form['quality']))) ? 'checked' : '' }} value="2">
                     <label class="form-check-label" for="professional">
                         Profesional
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities[]" id="worship" {{ (in_array(3,$form['quality'])) ? 'checked' : '' }} value="3">
+                    <input class="form-check-input" type="checkbox" name="qualities[]" id="worship" {{ (isset($form['quality']) && (in_array(3,$form['quality']))) ? 'checked' : '' }} value="3">
                     <label class="form-check-label" for="worship">
                         Culto
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities[]" id="good_mood" {{ (in_array(4,$form['quality'])) ? 'checked' : '' }} value="4">
+                    <input class="form-check-input" type="checkbox" name="qualities[]" id="good_mood" {{ (isset($form['quality']) && (in_array(4,$form['quality']))) ? 'checked' : '' }} value="4">
                     <label class="form-check-label" for="good_mood">
                         Buen Humor
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities[]" id="organized" {{ (in_array(5,$form['quality'])) ? 'checked' : '' }} value="5">
+                    <input class="form-check-input" type="checkbox" name="qualities[]" id="organized" {{ (isset($form['quality']) && (in_array(5,$form['quality']))) ? 'checked' : '' }} value="5">
                     <label class="form-check-label" for="organized">
                         Ordenada/o
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities[]" id="family_member" {{ (in_array(6,$form['quality'])) ? 'checked' : '' }} value="6">
+                    <input class="form-check-input" type="checkbox" name="qualities[]" id="family_member" {{ (isset($form['quality']) && (in_array(6,$form['quality']))) ? 'checked' : '' }} value="6">
                     <label class="form-check-label" for="family_member">
                         Familiero
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities[]" id="affectionate" {{ (in_array(7,$form['quality'])) ? 'checked' : '' }} value="7">
+                    <input class="form-check-input" type="checkbox" name="qualities[]" id="affectionate" {{ (isset($form['quality']) && (in_array(7,$form['quality']))) ? 'checked' : '' }} value="7">
                     <label class="form-check-label" for="affectionate">
                         Cariñoso/a
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities[]" id="irat_shamaim" {{ (in_array(8,$form['quality'])) ? 'checked' : '' }} value="8">
+                    <input class="form-check-input" type="checkbox" name="qualities[]" id="irat_shamaim" {{ (isset($form['quality']) && (in_array(8,$form['quality']))) ? 'checked' : '' }} value="8">
                     <label class="form-check-label" for="irat_shamaim">
                         Irat Shamaim
                     </label>
@@ -546,55 +546,55 @@
             <div class="form-group col-md-6">
                 <label for="qualities_seek"><i class="far fa-check-circle"></i> ¿Qué cualidades te gustaría que tenga? (Puedes elegir una, varias o ninguna).</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="sympathetic_seek" {{ (in_array(1,$form['qualityseeks'])) ? 'checked' : '' }} value="1">
+                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="sympathetic_seek" {{ (isset($form['qualityseeks']) && (in_array(1,$form['qualityseeks']))) ? 'checked' : '' }} value="1">
                     <label class="form-check-label" for="sympathetic_seek">
                         Simpático/a
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="professional_seek" {{ (in_array(2,$form['qualityseeks'])) ? 'checked' : '' }} value="2">
+                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="professional_seek" {{ (isset($form['qualityseeks']) && (in_array(2,$form['qualityseeks']))) ? 'checked' : '' }} value="2">
                     <label class="form-check-label" for="professional_seek">
                         Profesional
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="worship_seek" {{ (in_array(3,$form['qualityseeks'])) ? 'checked' : '' }} value="3">
+                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="worship_seek" {{ (isset($form['qualityseeks']) && (in_array(3,$form['qualityseeks']))) ? 'checked' : '' }} value="3">
                     <label class="form-check-label" for="worship_seek">
                         Culto
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="good_mood_seek" {{ (in_array(4,$form['qualityseeks'])) ? 'checked' : '' }} value="4">
+                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="good_mood_seek" {{ (isset($form['qualityseeks']) && (in_array(4,$form['qualityseeks']))) ? 'checked' : '' }} value="4">
                     <label class="form-check-label" for="good_mood_seek">
                         Buen Humor
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="organized_seek" {{ (in_array(5,$form['qualityseeks'])) ? 'checked' : '' }} value="5">
+                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="organized_seek" {{ (isset($form['qualityseeks']) && (in_array(5,$form['qualityseeks']))) ? 'checked' : '' }} value="5">
                     <label class="form-check-label" for="organized_seek">
                         Ordenada/o
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="family_member_seek" {{ (in_array(6,$form['qualityseeks'])) ? 'checked' : '' }} value="6">
+                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="family_member_seek" {{ (isset($form['qualityseeks']) && (in_array(6,$form['qualityseeks']))) ? 'checked' : '' }} value="6">
                     <label class="form-check-label" for="family_member_seek">
                         Familiero
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="affectionate_seek" {{ (in_array(7,$form['qualityseeks'])) ? 'checked' : '' }} value="7">
+                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="affectionate_seek" {{ (isset($form['qualityseeks']) && (in_array(7,$form['qualityseeks']))) ? 'checked' : '' }} value="7">
                     <label class="form-check-label" for="affectionate_seek">
                         Cariñoso/a
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="no_smoke_seek" {{ (in_array(9,$form['qualityseeks'])) ? 'checked' : '' }} value="9">
+                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="no_smoke_seek" {{ (isset($form['qualityseeks']) && (in_array(8,$form['qualityseeks']))) ? 'checked' : '' }} value="9">
                     <label class="form-check-label" for="no_smoke_seek">
                         Que no fume
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="irat_shamaim_seek" {{ (in_array(8,$form['qualityseeks'])) ? 'checked' : '' }} value="8">
+                    <input class="form-check-input" type="checkbox" name="qualities_seek[]" id="irat_shamaim_seek" {{ (isset($form['qualityseeks']) && (in_array(9,$form['qualityseeks']))) ? 'checked' : '' }} value="8">
                     <label class="form-check-label" for="irat_shamaim_seek">
                         Irat Shamaim
                     </label>

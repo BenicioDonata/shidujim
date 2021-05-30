@@ -35,7 +35,6 @@ if (!function_exists('validate_request')) {
             "accepted_level"                => 'required',
             "studies"                       => 'required',
             "languages"                     => 'required',
-            "qualities"                     => 'required',
             "live_future"                   => 'required',
             "civil_status_seeker"           => 'required'
 
@@ -102,7 +101,6 @@ if (!function_exists('validate_request_edit')) {
             "accepted_level"                => 'required',
             "studies"                       => 'required',
             "languages"                     => 'required',
-            "qualities"                     => 'required',
             "live_future"                   => 'required',
             "civil_status_seeker"           => 'required'
 
