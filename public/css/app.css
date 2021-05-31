@@ -11186,3 +11186,9 @@ form#frm_match .fg-buttom {
 
     color: red;
 }
+
+table.forms-action tr:hover {
+    background-color: #606163;
+    cursor: pointer;
+    color:#FFFFFF;
+}

@@ -40,7 +40,7 @@ $(document).ready(function () {
                 var image_p = document.createElement("IMG");
                 image_p.setAttribute('class', 'previous');
                 image_p.setAttribute('id', 'img_p'+i);
-                image_p.src="images/left.png";
+                image_p.src="/registro/images/left.png";
                 $('#ModalImages .modal-body #thumblist div#image'+i+' a#img_a_'+i).append(image_p);
             }
 
@@ -64,7 +64,7 @@ $(document).ready(function () {
             var image_c = document.createElement("IMG");
             image_c.setAttribute('class', 'exit');
             image_c.setAttribute('id', 'img_c'+i);
-            image_c.src="images/close.png";
+            image_c.src="/registro/images/close.png";
             $('#ModalImages .modal-body #thumblist div#image'+i+' a#img_c'+i).append(image_c);
 
             if(i < ($(this).data('file').length - 1)) {
@@ -78,7 +78,7 @@ $(document).ready(function () {
                 var image_n = document.createElement("IMG");
                 image_n.setAttribute('class', 'next');
                 image_n.setAttribute('id', 'img_n' + i);
-                image_n.src = "images/right.png";
+                image_n.src = "/registro/images/right.png";
                 $('#ModalImages .modal-body #thumblist div#image' + i + ' a#img_n' + i).append(image_n);
             }
 
@@ -173,6 +173,20 @@ $(document).ready(function () {
 
     $(document).on('click','.delete-form', function(){
         $('#delete-form-'+$("#ModalDeleteForm input#form-delete").val()).submit();
+    });
+
+    $(document).on('click','table.forms-action tr', function(){
+
+        if($(this).hasClass('activo')){
+            $(this).css('background-color','#fff');
+            $(this).css('color','#000');
+            $(this).removeClass('activo')
+        }else{
+            $(this).addClass('activo')
+            $(this).css('background-color','#606163');
+            $(this).css('color','#fff');
+        }
+
     });
 
 
