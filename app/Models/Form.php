@@ -231,7 +231,7 @@ class Form extends Model
                 if(in_array(4,$search)){
                     return $query->whereIn('forms.maritalstatus_id',array(1,2,3), 'and');
                 }else{
-                    return $query->whereIn('forms.maritalstatus_id',array($search),'and');
+                    return $query->whereIn('forms.maritalstatus_id',$search,'and');
                 }
 
             }else{
@@ -239,7 +239,7 @@ class Form extends Model
                 if(in_array(4,$search)){
                     return $query->whereIn('forms.maritalstatus_id',array(1,2,3), 'or');
                 }else{
-                    return $query->whereIn('forms.maritalstatus_id',array($search),'or');
+                    return $query->whereIn('forms.maritalstatus_id',$search,'or');
                 }
             }
         }
@@ -379,7 +379,7 @@ class Form extends Model
         if(isset($search[0]))
         {
             return $query->orwhereHas('acceptancelevel', function ($query) use ($search) {
-                $query->whereIn('forms_acceptance_levels.acceptance_level_id',array($search));
+                $query->whereIn('forms_acceptance_levels.acceptance_level_id',$search);
             });
         }
     }
@@ -389,7 +389,7 @@ class Form extends Model
         if(isset($search[0]))
         {
             return $query->orwhereHas('quality', function ($query) use ($search) {
-                $query->whereIn('forms_qualities.quality_id',array($search));
+                $query->whereIn('forms_qualities.quality_id',$search);
             });
         }
     }
@@ -405,7 +405,7 @@ class Form extends Model
 
             } else{
                 return $query->orwhereHas('locations', function ($query) use ($search) {
-                    $query->whereIn('forms_localities.location_id',array($search));
+                    $query->whereIn('forms_localities.location_id',$search);
                 });
             }
         }
@@ -431,7 +431,7 @@ class Form extends Model
                 return $query->orwhere('forms.familypuritylaw_id','=',4);
 
 
-            return $query->whereIn('forms.familypuritylaw_id', array($search),'or');
+            return $query->whereIn('forms.familypuritylaw_id', $search,'or');
         }
     }
 

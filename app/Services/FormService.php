@@ -212,7 +212,7 @@ class FormService
                 ->maritalsatus($marital_status)
                 ->email($email)
                 ->mainphone($main_phone)
-                ->paginate(50);
+                ->paginate(50)->withQueryString();
 
             return $forms;
 
@@ -349,7 +349,7 @@ class FormService
                 ->livefuture($live_future)
                 ->partnerfeelrange($feel_range_from,$feel_range_to)
                 ->familypuritylaws($family_purity_laws)
-                ->paginate(50);
+                ->paginate(50)->withQueryString();
 
             return $forms;
 

@@ -86,7 +86,7 @@
                             {{csrf_field()}}
                             <input id="collection" name="collection" hidden value="{{base64_encode(json_encode($forms))}}">
                         </form>
-                        {!! $forms->render() !!}
+                        {!! $forms->onEachSide(6)->render() !!}
 
                     </div>
                 </div>
