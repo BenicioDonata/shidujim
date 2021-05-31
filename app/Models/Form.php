@@ -424,14 +424,27 @@ class Form extends Model
     {
         if(isset($search[0]))
         {
-            if (in_array(3,$search))
-                return $query->whereIn('forms.familypuritylaw_id', array(1,2,3),'or');
+            if($this->q) {
+                if (in_array(3,$search))
+                    return $query->whereIn('forms.familypuritylaw_id', array(1,2,3),'and');
 
-            if (in_array(4,$search))
-                return $query->orwhere('forms.familypuritylaw_id','=',4);
+                if (in_array(4,$search))
+                    return $query->where('forms.familypuritylaw_id','=',4);
 
 
-            return $query->whereIn('forms.familypuritylaw_id', $search,'or');
+                return $query->whereIn('forms.familypuritylaw_id', $search,'and');
+            }else{
+                $this->q = true;
+                if (in_array(3,$search))
+                    return $query->whereIn('forms.familypuritylaw_id', array(1,2,3),'or');
+
+                if (in_array(4,$search))
+                    return $query->orwhere('forms.familypuritylaw_id','=',4);
+
+
+                return $query->whereIn('forms.familypuritylaw_id', $search,'or');
+            }
+
         }
     }
 
