@@ -319,10 +319,23 @@ class Form extends Model
 
     public function scopeSmoke($query, $search)
     {
-        if($search == 3) {
-             return $query->whereIn('forms.smoker_id', array(1,2), 'or');
-        }else{
-            return $query->orwhere('forms.smoker_id', '=', $search);
+        if(!empty(trim($search)))
+        {
+            if($this->q) {
+                if ($search == 3) {
+                    return $query->whereIn('forms.smoker_id', array(1, 2), 'and');
+                } else {
+                    return $query->where('forms.smoker_id', '=', $search);
+                }
+            }else{
+
+                if ($search == 3) {
+                    return $query->whereIn('forms.smoker_id', array(1, 2), 'or');
+                } else {
+                    return $query->orwhere('forms.smoker_id', '=', $search);
+                }
+            }
+
         }
     }
 
@@ -330,8 +343,15 @@ class Form extends Model
     {
         if(trim($search_form)!= null && trim($search_to)!= null)
         {
-            return $query->orwhere('forms.years_range_from', '>=', $search_form)
-                         ->where('forms.years_range_to', '<=', $search_to);
+            if($this->q) {
+
+                return $query->where('forms.years_range_from', '>=', $search_form)
+                    ->where('forms.years_range_to', '<=', $search_to);
+            }else{
+
+                return $query->orwhere('forms.years_range_from', '>=', $search_form)
+                    ->where('forms.years_range_to', '<=', $search_to);
+            }
         }
     }
 
