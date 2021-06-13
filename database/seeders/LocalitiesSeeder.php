@@ -92,6 +92,18 @@ class LocalitiesSeeder extends Seeder
                 'localities_title'=> 'Me da lo mismo',
                 'created_at'=>Carbon::now()->format('Y-m-d H:i:s')
             ],
+            [
+                'localities_title'=> 'San Pablo',
+                'created_at'=>Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'localities_title'=> 'Río de Janeiro',
+                'created_at'=>Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'localities_title'=> 'España',
+                'created_at'=>Carbon::now()->format('Y-m-d H:i:s')
+            ],
         ]);
     }
 }

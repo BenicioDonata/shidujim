@@ -211,6 +211,24 @@
                     </label>
                 </div>
                 <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_sp" {{ (old('live_future_ro') ===  19 ) ? 'checked' : '' }} value="19">
+                    <label class="form-check-label" for="live_future_sp">
+                        San Pablo
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_rdj" {{ (old('live_future_ro') ===  20 ) ? 'checked' : '' }} value="20">
+                    <label class="form-check-label" for="live_future_rdj">
+                        Río de Janeiro
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_esp" {{ (old('live_future_ro') ===  21 ) ? 'checked' : '' }} value="21">
+                    <label class="form-check-label" for="live_future_esp">
+                        España
+                    </label>
+                </div>
+                <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_wherever" {{ (old('live_future_wherever') ===  18 ) ? 'checked' : '' }} value="18">
                     <label class="form-check-label" for="live_future_wherever">
                         Me da lo mismo
