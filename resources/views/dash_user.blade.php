@@ -32,6 +32,7 @@
                                             <th scope="col">Localidad Actual</th>
                                             <th scope="col">Acepta Hijos</th>
                                             <th scope="col">Ley de pureza</th>
+                                            <th scope="col">Ultimo Comentario</th>
                                             <th scope="col">Fecha de Suscripción</th>
                                             <th scope="col" class="text-center">Revisión</th>
                                             <th scope="col" class="text-center">Acción</th>
@@ -53,6 +54,12 @@
                                                 <td>{{$form->location->localities_title}}</td>
                                                 <td>{{ $form->coupleson->couple_sons_title}}</td>
                                                 <td>{{ $form->familypuritylaw->family_purity_laws_title}}</td>
+                                                @php $form_comment = \App\Models\Comment::where('form_id','=',$form->id)->orderBy('id','DESC')->limit(1)->get(); @endphp
+                                                <td>
+                                                    @foreach($form_comment as $comment)
+                                                          {{$comment->comment}}
+                                                    @endforeach
+                                                </td>
                                                 <td>{{\Carbon\Carbon::parse(strtotime($form->created_at))->formatLocalized('%d %B %Y %H:%M:%S')}}</td>
                                                 <td class="text-center" scope="row">
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_check ? 'Sin Revisión' : 'Revisado'}}" class="btn {{!$form->is_check ? 'fas fa-eye-slash btn-danger' : 'far fa-eye btn-success'}} btn-sm view-data"></a>
