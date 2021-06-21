@@ -5,6 +5,7 @@ $(document).ready(function () {
     var $sections = $('.form-section');
     var index_step = 0;
     var total_size = 0;
+    var remaining = 0;
 
    $('[data-toggle="tooltip"]').tooltip();
 
@@ -40,7 +41,7 @@ $(document).ready(function () {
                 var image_p = document.createElement("IMG");
                 image_p.setAttribute('class', 'previous');
                 image_p.setAttribute('id', 'img_p'+i);
-                image_p.src="/registro/images/left.png";
+                image_p.src="images/left.png";
                 $('#ModalImages .modal-body #thumblist div#image'+i+' a#img_a_'+i).append(image_p);
             }
 
@@ -64,7 +65,7 @@ $(document).ready(function () {
             var image_c = document.createElement("IMG");
             image_c.setAttribute('class', 'exit');
             image_c.setAttribute('id', 'img_c'+i);
-            image_c.src="/registro/images/close.png";
+            image_c.src="images/close.png";
             $('#ModalImages .modal-body #thumblist div#image'+i+' a#img_c'+i).append(image_c);
 
             if(i < ($(this).data('file').length - 1)) {
@@ -78,7 +79,7 @@ $(document).ready(function () {
                 var image_n = document.createElement("IMG");
                 image_n.setAttribute('class', 'next');
                 image_n.setAttribute('id', 'img_n' + i);
-                image_n.src = "/registro/images/right.png";
+                image_n.src = "images/right.png";
                 $('#ModalImages .modal-body #thumblist div#image' + i + ' a#img_n' + i).append(image_n);
             }
 
@@ -133,6 +134,8 @@ $(document).ready(function () {
 
         $("#ModalComment .modal-header h5").text('Agregar Comentario Al Formulario #'+$(this).data('id'));
         $("#ModalComment form#saveComment input#form-comment").val($(this).data('id'));
+        $("#ModalComment form#saveComment #summary-ckeditor").val('');
+        $("#ModalComment form#saveComment #caracteres").css('color','red').text("Máximo 250 caracteres: ");
         $("#ModalComment").modal("show");
 
     });
@@ -189,6 +192,17 @@ $(document).ready(function () {
 
     });
 
+    $("#ModalComment #summary-ckeditor").on('keypress', function() {
+        var limit = 250;
+        $("#ModalComment #summary-ckeditor").attr('maxlength', limit);
+        var init = $(this).val().length;
+
+        if(init<limit){
+            init++;
+            $('#caracteres').text("Máximo 250 caracteres: " + init);
+        }
+
+    });
 
 });
 

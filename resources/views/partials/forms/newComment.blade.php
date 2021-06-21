@@ -7,6 +7,7 @@
                 <input id="form-comment" name="form-comment" hidden>
                 <label for="summary-ckeditor">Comentario</label>
                 <textarea class="form-control" name="summary-ckeditor" id="summary-ckeditor" ></textarea>
+                <span id="caracteres"></span>
             </div>
         </div>
     </div>
