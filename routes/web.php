@@ -21,8 +21,6 @@ Route::get('/complete','App\Http\Controllers\FormController@finalFormPage')->nam
 Route::post('/upload', 'App\Http\Controllers\FormController@store')->name('upload');
 
 
-
-
 Auth::routes();
 
     Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
@@ -54,6 +52,12 @@ Auth::routes();
     Route::delete('/dash_admin/delete/{id}', 'App\Http\Controllers\HomeController@deleteUser')->name('status_user_delete');
 
     Route::put('/dash_user/form_status/{id}', 'App\Http\Controllers\HomeController@updateStatusForm')->name('status_form');
+
+    Route::put('/dash_user/form_blocked/{id}', 'App\Http\Controllers\HomeController@updateBlockedForm')->name('block_form');
+
+    Route::put('/dash_user/form_matched/{id}', 'App\Http\Controllers\HomeController@updateMatchedForm')->name('user_match_form');
+
+    Route::put('/dash_user/form_coupled/{id}', 'App\Http\Controllers\HomeController@updateCoupledForm')->name('user_couple_form');
 
     Route::put('/dash_user/form_delete/{id}', 'App\Http\Controllers\HomeController@deleteForm')->name('delete_Form');
 
