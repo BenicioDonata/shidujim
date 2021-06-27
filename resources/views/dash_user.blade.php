@@ -35,6 +35,7 @@
                                             <th scope="col">Ultimo Comentario</th>
                                             <th scope="col">Fecha de Suscripción</th>
                                             <th scope="col" class="text-center">Revisión</th>
+                                            <th scope="col" class="text-center">Extras</th>
                                             <th scope="col" class="text-center">Acción</th>
                                         </tr>
                                         </thead>
@@ -63,11 +64,26 @@
                                                 <td>{{\Carbon\Carbon::parse(strtotime($form->created_at))->formatLocalized('%d %B %Y %H:%M:%S')}}</td>
                                                 <td class="text-center" scope="row">
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_check ? 'Sin Revisión' : 'Revisado'}}" class="btn {{!$form->is_check ? 'fas fa-eye-slash btn-danger' : 'far fa-eye btn-success'}} btn-sm view-data"></a>
+                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_blocked ? 'Bloquear Postulante' : 'Desbloquear Postulante'}}" class="btn {{!$form->is_blocked ? 'fas fa-user-minus btn-danger' : 'fas fa-user-plus btn-warning'}} btn-sm block-form-data"></a>
+                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_matched ? 'Conociendo Pareja' : 'Volver a Buscar Pareja'}}" class="btn {{!$form->is_matched ? 'fas fa-user-friends btn-info' : 'fas fa-people-arrows btn-danger'}} btn-sm user-match-data"></a>
+                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_couple ? 'En Pareja' : 'Sin Pareja'}}" class="btn {{!$form->is_couple ? 'far fa-heart btn-success' : 'fas fa-heart-broken btn-danger'}} btn-sm user-couple-data"></a>
                                                     <form  method="post" id="change-status-form-{{$form->id}}"  action="{{route('status_form',$form->id)}}">
                                                         {{csrf_field()}}
                                                         {{ method_field('PUT') }}
                                                     </form>
-                                               </td>
+                                                    <form  method="post" id="user-block-form-{{$form->id}}"  action="{{route('block_form',$form->id)}}">
+                                                        {{csrf_field()}}
+                                                        {{ method_field('PUT') }}
+                                                    </form>
+                                                    <form  method="post" id="user-match-form-{{$form->id}}"  action="{{route('user_match_form',$form->id)}}">
+                                                        {{csrf_field()}}
+                                                        {{ method_field('PUT') }}
+                                                    </form>
+                                                    <form  method="post" id="user-couple-form-{{$form->id}}"  action="{{route('user_couple_form',$form->id)}}">
+                                                        {{csrf_field()}}
+                                                        {{ method_field('PUT') }}
+                                                    </form>
+                                                </td>
                                                 <td class="text-center" scope="row">
                                                     <a type="button" data-toggle="tooltip" data-placement="top" title="Ver Fotos Subidas" data-file="{{$form->files}}" class="btn btn-info fas fa-images btn-sm view-files"></a>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" title="Ver Comentarios" class="btn btn-dark fas fa-eye btn-sm see-comments" data-id="{{$form->id}}"></a>
