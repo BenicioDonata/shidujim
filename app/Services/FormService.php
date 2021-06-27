@@ -202,7 +202,6 @@ class FormService
             $email  = $request->get('search');
             $main_phone  = $request->get('search');
 
-
             $forms = Form::orderBy('forms.id','DESC')
                 ->name($name)
                 ->namehebrew($name_hebrew)
@@ -212,6 +211,7 @@ class FormService
                 ->maritalsatus($marital_status)
                 ->email($email)
                 ->mainphone($main_phone)
+                ->queryfinal()
                 ->paginate(50)->withQueryString();
 
             return $forms;
@@ -349,6 +349,7 @@ class FormService
                 ->livefuture($live_future)
                 ->partnerfeelrange($feel_range_from,$feel_range_to)
                 ->familypuritylaws($family_purity_laws)
+                ->queryfinal()
                 ->paginate(50)->withQueryString();
 
             return $forms;
@@ -534,6 +535,79 @@ class FormService
 
     }
 
+    public function updateBlockedForm($id) {
 
+        try {
+
+            $form = Form::formbyid($id);
+
+            DB::beginTransaction();
+
+            $form->is_blocked  = ($form->is_blocked == env('NO_BLOCKED') ) ? env('BLOCKED') : env('NO_BLOCKED') ;
+
+            $form->save();
+
+            DB::commit();
+
+            return $form;
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
+    public function updateMatchedForm($id) {
+
+        try {
+
+            $form = Form::formbyid($id);
+
+            DB::beginTransaction();
+
+            $form->is_matched  = ($form->is_matched == env('NO_MATCHED') ) ? env('MATCHED') : env('NO_MATCHED') ;
+
+            $form->save();
+
+            DB::commit();
+
+            return $form;
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
+    public function updateCoupledForm($id) {
+
+        try {
+
+            $form = Form::formbyid($id);
+
+            DB::beginTransaction();
+
+            $form->is_couple  = ($form->is_couple == env('NO_COUPLED') ) ? env('COUPLED') : env('NO_COUPLED') ;
+
+            $form->save();
+
+            DB::commit();
+
+            return $form;
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
 
 }
