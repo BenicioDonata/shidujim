@@ -451,4 +451,106 @@ class HomeController extends Controller
         }
     }
 
+    public function updateBlockedForm($id)
+    {
+
+        try {
+
+            $user = $this->formService->updateBlockedForm($id);
+
+            if (!$user) {
+
+                $notification = array(
+                    'message' => 'No se pudo realizar la acción sobre el postulante. Vuelva a intentarlo',
+                    'alert-type' => 'error'
+
+                );
+
+                return redirect()->route('dash_user')->with($notification);
+
+            }
+
+            $notification = array(
+                'message' => 'Cambio de estado del Postulante con éxito!',
+                'alert-type' => 'success'
+
+            );
+
+            return redirect()->route('dash_user')->with($notification);
+
+        } catch (\Exception $e) {
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
+    public function updateMatchedForm($id)
+    {
+
+        try {
+
+            $user = $this->formService->updateMatchedForm($id);
+
+            if (!$user) {
+
+                $notification = array(
+                    'message' => 'No se pudo modificar el estado del postulante. Vuelva a intentarlo',
+                    'alert-type' => 'error'
+
+                );
+
+                return redirect()->route('dash_user')->with($notification);
+
+            }
+
+            $notification = array(
+                'message' => 'Cambio de estado del Postulante con éxito!',
+                'alert-type' => 'success'
+
+            );
+
+            return redirect()->route('dash_user')->with($notification);
+
+        } catch (\Exception $e) {
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
+    public function updateCoupledForm($id)
+    {
+
+        try {
+
+            $user = $this->formService->updateCoupledForm($id);
+
+            if (!$user) {
+
+                $notification = array(
+                    'message' => 'No se pudo realizar la acción sobre el postulante. Vuelva a intentarlo',
+                    'alert-type' => 'error'
+
+                );
+
+                return redirect()->route('dash_user')->with($notification);
+
+            }
+
+            $notification = array(
+                'message' => 'Cambio de estado del Postulante con éxito!',
+                'alert-type' => 'success'
+
+            );
+
+            return redirect()->route('dash_user')->with($notification);
+
+        } catch (\Exception $e) {
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
 }
