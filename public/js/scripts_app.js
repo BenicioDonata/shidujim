@@ -97,6 +97,18 @@ $(document).ready(function () {
         $('#edit-form-'+$(this).data('id')).submit();
     });
 
+    $(document).on('click','.block-form-data', function(){
+        $('#user-block-form-'+$(this).data('id')).submit();
+    });
+
+    $(document).on('click','.user-match-data', function(){
+        $('#user-match-form-'+$(this).data('id')).submit();
+    });
+
+    $(document).on('click','.user-couple-data', function(){
+        $('#user-couple-form-'+$(this).data('id')).submit();
+    });
+
     $("#main_phone").keypress(function(tecla)
     {
         if(tecla.charCode < 48 || tecla.charCode > 57)
