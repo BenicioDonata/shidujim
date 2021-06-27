@@ -484,6 +484,14 @@ class Form extends Model
         }
     }
 
+    public function scopeQueryfinal($query)
+    {
+            return $query->where('is_check','=', '0')
+                ->where('is_blocked','=', '0')
+                ->where('is_matched','=', '0')
+                ->where('is_couple','=', '0');
+    }
+
     public static function formbyid($id){
 
         return Form::where('id',$id)->with('gender','maritalstatus','religiouscompliancelevel','smoker','son','location','coupleson','familypuritylaw','files','studies','languages','quality','acceptancelevel','maritalstatuses','studiesseeks','locations','qualityseeks')->first();
