@@ -55,6 +55,9 @@ class CreateFormsTable extends Migration
             $table->string('about_u');
             $table->string('about_u_partner');
             $table->enum('is_check',[0, 1])->default('0');
+            $table->enum('is_blocked',[0, 1])->default('0');
+            $table->enum('is_matched',[0, 1])->default('0');
+            $table->enum('is_couple',[0, 1])->default('0');
             $table->softDeletes();
             $table->timestamps();
         });
