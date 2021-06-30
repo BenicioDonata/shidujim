@@ -192,16 +192,19 @@ $(document).ready(function () {
 
     $(document).on('click','table.forms-action tr', function(){
 
-        if($(this).hasClass('activo')){
+        if($(this).hasClass('activo') ) {
             $(this).css('background-color','#fff');
             $(this).css('color','#000');
             $(this).removeClass('activo')
+            if(($(this).attr('bgcolor') != '#f8fafc')) {
+                $(this).removeClass('activo');
+                $(this).removeAttr("style");
+            }
         }else{
             $(this).addClass('activo')
             $(this).css('background-color','#606163');
             $(this).css('color','#fff');
         }
-
     });
 
     $("#ModalComment #summary-ckeditor").on('keypress', function() {
