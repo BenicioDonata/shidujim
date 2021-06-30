@@ -34,14 +34,13 @@
                                             <th scope="col">Ley de pureza</th>
                                             <th scope="col">Ultimo Comentario</th>
                                             <th scope="col">Fecha de Suscripción</th>
-                                            <th scope="col" class="text-center">Revisión</th>
-                                            <th scope="col" class="text-center">Extras</th>
+                                            <th scope="col" class="text-center">Acciones Rápidas</th>
                                             <th scope="col" class="text-center">Acción</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($forms as $form)
-                                            <tr>
+                                            <tr bgcolor="{{!$form->is_blocked ? (!$form->is_matched ? (!$form->is_couple ? '#f8fafc' : '#20B12C'): '#33DAFF' ) : '#FFC300' }}">
                                                 <td>{{$form->lastname}} {{$form->name}}</td>
                                                 <td>{{$form->gender->genders_title}}</td>
                                                 <td>{{$form->maritalstatus->marital_statuses_title}}</td>
@@ -64,9 +63,9 @@
                                                 <td>{{\Carbon\Carbon::parse(strtotime($form->created_at))->formatLocalized('%d %B %Y %H:%M:%S')}}</td>
                                                 <td class="text-center" scope="row">
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_check ? 'Sin Revisión' : 'Revisado'}}" class="btn {{!$form->is_check ? 'fas fa-eye-slash btn-danger' : 'far fa-eye btn-success'}} btn-sm view-data"></a>
-                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_blocked ? 'Bloquear Postulante' : 'Desbloquear Postulante'}}" class="btn {{!$form->is_blocked ? 'fas fa-user-minus btn-danger' : 'fas fa-user-plus btn-warning'}} btn-sm block-form-data"></a>
-                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_matched ? 'Conociendo Pareja' : 'Volver a Buscar Pareja'}}" class="btn {{!$form->is_matched ? 'fas fa-user-friends btn-info' : 'fas fa-people-arrows btn-danger'}} btn-sm user-match-data"></a>
-                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_couple ? 'En Pareja' : 'Sin Pareja'}}" class="btn {{!$form->is_couple ? 'far fa-heart btn-success' : 'fas fa-heart-broken btn-danger'}} btn-sm user-couple-data"></a>
+                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_blocked ? 'Bloquear Postulante' : 'Desbloquear Postulante'}}" class="btn {{!$form->is_blocked ? 'fas fa-user-minus btn-danger' : 'fas fa-user-plus btn-warning'}} {{($form->is_matched || $form->is_couple) ? 'disabled' : ''}} btn-sm block-form-data"></a>
+                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_matched ? 'Conociendo Pareja' : 'Volver a Buscar Pareja'}}" class="btn {{!$form->is_matched ? 'fas fa-user-friends btn-info' : 'fas fa-people-arrows btn-danger'}} {{($form->is_blocked || $form->is_couple) ? 'disabled' : ''}} btn-sm user-match-data"></a>
+                                                    <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_couple ? 'En Pareja' : 'Sin Pareja'}}" class="btn {{!$form->is_couple ? 'far fa-heart btn-success' : 'fas fa-heart-broken btn-danger'}} {{($form->is_blocked || $form->is_matched ) ? 'disabled' : ''}} btn-sm user-couple-data"></a>
                                                     <form  method="post" id="change-status-form-{{$form->id}}"  action="{{route('status_form',$form->id)}}">
                                                         {{csrf_field()}}
                                                         {{ method_field('PUT') }}
