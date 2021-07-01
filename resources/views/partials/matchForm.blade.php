@@ -13,7 +13,25 @@
             <div id="collapseMatch" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                 <div class="panel-body">
                 <form  method="get" action="{{route('matchPersonForm')}}" name="frm_match" id="frm_match">
-
+                    <div class="row ">
+                      <div class="form-group col-md-12">
+                            <label for="users_banner"><b>Incluir Postulantes excluidos</b></label>
+                            <div class="form-check">
+                                <label class="checkbox-inline" for="users_banner_blocked">
+                                    <input type="checkbox" name="users_banner[]" id="check" value="1"> Revisión
+                                </label>
+                                <label class="checkbox-inline" for="users_banner_blocked">
+                                    <input type="checkbox" name="users_banner[]" id="blocked" value="2"> Bloqueados
+                                </label>
+                                <label class="checkbox-inline" for="users_banner_matched">
+                                    <input type="checkbox" name="users_banner[]" id="matched" value="3"> Matcheados
+                                </label>
+                                <label class="checkbox-inline" for="users_banner_couple">
+                                    <input type="checkbox" name="users_banner[]" id="couple" value="4"> En Pareja
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row ">
                         <div class="form-group col-md-4">
                             <label for="gender"><b>Género</b></label>
