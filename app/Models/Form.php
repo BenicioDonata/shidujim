@@ -484,12 +484,31 @@ class Form extends Model
         }
     }
 
-    public function scopeQueryfinal($query)
+    public function scopeQueryfinal($query,$search)
     {
-            return $query->where('is_check','=', '0')
-                ->where('is_blocked','=', '0')
-                ->where('is_matched','=', '0')
-                ->where('is_couple','=', '0');
+        if(isset($search[0])) {
+
+            if(in_array(1,$search)){
+                $query->orwhere('is_check', '=', '1');
+            }
+            if(in_array(2,$search)){
+                $query->orwhere('is_blocked', '=', '1');
+            }
+            if(in_array(3,$search)){
+                $query->orwhere('is_matched', '=', '1');
+            }
+            if(in_array(4,$search)){
+                $query->orwhere('is_couple', '=', '1');
+            }
+        }else{
+            $query->where('is_check', '=', '0')
+                ->where('is_blocked', '=', '0')
+                ->where('is_matched', '=', '0')
+                ->where('is_couple', '=', '0');
+
+        }
+
+            return $query;
     }
 
     public static function formbyid($id){

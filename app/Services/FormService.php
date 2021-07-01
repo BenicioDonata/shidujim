@@ -235,6 +235,7 @@ class FormService
             DB::beginTransaction();
 
             $form->is_check  = ($form->is_check == env('NO_CHECK') ) ? env('CHECK') : env('NO_CHECK') ;
+            //$form->date_check  = Carbon::now()->format('Y-m-d H:i:s');
 
             $form->save();
 
@@ -330,6 +331,7 @@ class FormService
             $feel_range_from = $request->get('feel_range_from');
             $feel_range_to = $request->get('feel_range_to');
             $family_purity_laws = $request->get('family_purity_laws');
+            $users_banner = $request->get('users_banner');
 
             $forms = Form::orderBy('forms.id','DESC')
                 ->genders($gender)
@@ -349,7 +351,7 @@ class FormService
                 ->livefuture($live_future)
                 ->partnerfeelrange($feel_range_from,$feel_range_to)
                 ->familypuritylaws($family_purity_laws)
-                ->queryfinal()
+                ->queryfinal($users_banner)
                 ->paginate(50)->withQueryString();
 
             return $forms;
@@ -519,7 +521,6 @@ class FormService
             DB::beginTransaction();
 
             $form->deleted_at  = Carbon::now()->format('Y-m-d H:i:s');
-
             $form->save();
 
             DB::commit();
@@ -544,7 +545,7 @@ class FormService
             DB::beginTransaction();
 
             $form->is_blocked  = ($form->is_blocked == env('NO_BLOCKED') ) ? env('BLOCKED') : env('NO_BLOCKED') ;
-
+            //$form->date_blocked  = Carbon::now()->format('Y-m-d H:i:s');
             $form->save();
 
             DB::commit();
@@ -569,7 +570,7 @@ class FormService
             DB::beginTransaction();
 
             $form->is_matched  = ($form->is_matched == env('NO_MATCHED') ) ? env('MATCHED') : env('NO_MATCHED') ;
-
+            //$form->date_matched  = Carbon::now()->format('Y-m-d H:i:s');
             $form->save();
 
             DB::commit();
@@ -594,7 +595,7 @@ class FormService
             DB::beginTransaction();
 
             $form->is_couple  = ($form->is_couple == env('NO_COUPLED') ) ? env('COUPLED') : env('NO_COUPLED') ;
-
+            //$form->date_couple  = Carbon::now()->format('Y-m-d H:i:s');
             $form->save();
 
             DB::commit();

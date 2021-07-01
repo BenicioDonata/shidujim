@@ -62,7 +62,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $forms = $this->formService->getForms();
+
+        return view('dash_user', compact('forms'));
     }
 
     public function dashAdmin()
