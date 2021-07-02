@@ -40,7 +40,7 @@
                                         </thead>
                                         <tbody>
                                         @foreach($forms as $form)
-                                            <tr bgcolor="{{!$form->is_blocked ? (!$form->is_matched ? (!$form->is_couple ? '#f8fafc' : '#20B12C'): '#33DAFF' ) : '#FFC300' }}">
+                                            <tr bgcolor="{{!$form->is_blocked ? (!$form->is_matched ? (!$form->is_couple ? '#f8fafc' : '#20B12C'): '#33DAFF' ) : '#FF0000' }}">
                                                 <td>{{$form->lastname}} {{$form->name}}</td>
                                                 <td>{{$form->gender->genders_title}}</td>
                                                 <td>{{$form->maritalstatus->marital_statuses_title}}</td>
