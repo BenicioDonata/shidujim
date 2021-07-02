@@ -201,6 +201,7 @@ class FormService
             $marital_status = $request->get('search');
             $email  = $request->get('search');
             $main_phone  = $request->get('search');
+            $users_banner = $request->get('users_banner');
 
             $forms = Form::orderBy('forms.id','DESC')
                 ->name($name)
@@ -211,7 +212,7 @@ class FormService
                 ->maritalsatus($marital_status)
                 ->email($email)
                 ->mainphone($main_phone)
-                ->queryfinal()
+                ->queryfinal($users_banner)
                 ->paginate(50)->withQueryString();
 
             return $forms;
