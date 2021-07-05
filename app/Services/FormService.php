@@ -26,7 +26,6 @@ class FormService
     {
         try
         {
-
             $data_form = $this->insertDataPerson($data_request);
 
             if(!$data_form)
@@ -45,20 +44,16 @@ class FormService
             if(!$data_file)
                 return false;
 
-
             return true;
 
         } catch (\Exception $e) {
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
     }
 
     public function insertDataPerson($data_person)
     {
-
         try {
-
             DB::beginTransaction();
 
             $form = new Form();
@@ -98,10 +93,8 @@ class FormService
             DB::commit();
 
             return $form;
-
        }
        catch (\Exception $e) {
-
             DB::rollback();
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
@@ -109,10 +102,7 @@ class FormService
 
     public function insertDataPersonAttach($form,$data_person_attach)
     {
-
         try {
-
-
             DB::beginTransaction();
 
             $form->acceptancelevel()->attach($data_person_attach->accepted_level);
@@ -124,14 +114,11 @@ class FormService
             $form->qualityseeks()->attach($data_person_attach->qualities_seek);
             $form->maritalstatuses()->attach($data_person_attach->civil_status_seeker);
 
-
             DB::commit();
 
             return true;
 
-        }
-        catch (\Exception $e) {
-
+        } catch (\Exception $e) {
             DB::rollback();
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
@@ -139,13 +126,10 @@ class FormService
 
     public function insertFilePerson($form,$files)
     {
-
         try {
-
             DB::beginTransaction();
 
             foreach ($files as $file) {
-
                 $random_String = $this->generateRandomString();
                 $image = explode('.',$file->getClientOriginalName());
                 $name_image = $image[0].'_'.$random_String.'.'.$image[1];
@@ -163,9 +147,7 @@ class FormService
 
             return true;
 
-        }
-        catch (\Exception $e) {
-
+        } catch (\Exception $e) {
             DB::rollback();
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
@@ -183,7 +165,6 @@ class FormService
                         ->orderBy('forms.id','DESC')->paginate(50);
 
         } catch (\Exception $e) {
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
 
@@ -219,9 +200,7 @@ class FormService
 
 
         } catch (\Exception $e) {
-
             DB::rollback();
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
 
@@ -236,7 +215,7 @@ class FormService
             DB::beginTransaction();
 
             $form->is_check  = ($form->is_check == env('NO_CHECK') ) ? env('CHECK') : env('NO_CHECK') ;
-            //$form->date_check  = Carbon::now()->format('Y-m-d H:i:s');
+            $form->date_check  = Carbon::now()->format('Y-m-d H:i:s');
 
             $form->save();
 
@@ -245,64 +224,51 @@ class FormService
             return $form;
 
         } catch (\Exception $e) {
-
             DB::rollback();
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
-
     }
 
     public function editForms($id) {
 
         try {
-
             $result['form'] = Form::formbyid($id);
 
             foreach ($result['form']->studies as $study) {
-
                 $result['studies'][$study->id] = $study->id;
             }
 
             foreach ($result['form']->languages as $languages) {
-
                 $result['languages'][$languages->id] = $languages->id;
             }
 
             foreach ($result['form']->quality as $quality) {
-
                 $result['quality'][$quality->id] = $quality->id;
             }
 
             foreach ($result['form']->acceptancelevel as $acceptancelevel) {
-
                 $result['acceptancelevel'][$acceptancelevel->id] = $acceptancelevel->id;
             }
 
             foreach ($result['form']->maritalstatuses as $maritalstatuses) {
-
                 $result['maritalstatuses'][$maritalstatuses->id] = $maritalstatuses->id;
             }
 
             foreach ($result['form']->studiesseeks as $studiesseeks) {
-
                 $result['studiesseeks'][$studiesseeks->id] = $studiesseeks->id;
             }
 
             foreach ($result['form']->locations as $locations) {
-
                 $result['locations'][$locations->id] = $locations->id;
             }
 
             foreach ($result['form']->qualityseeks as $qualityseeks) {
-
                 $result['qualityseeks'][$qualityseeks->id] = $qualityseeks->id;
             }
 
             return  $result;
 
         } catch (\Exception $e) {
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
 
@@ -359,9 +325,7 @@ class FormService
 
 
         } catch (\Exception $e) {
-
             DB::rollback();
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
 
@@ -371,7 +335,6 @@ class FormService
 
         try
         {
-
             $data_form_update = $this->updateDataPerson($request);
 
             if(!$data_form_update)
@@ -390,7 +353,6 @@ class FormService
             return true;
 
         } catch (\Exception $e) {
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
 
@@ -417,7 +379,6 @@ class FormService
             return true;
 
         } catch (\Exception $e) {
-
             DB::rollback();
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
@@ -448,7 +409,6 @@ class FormService
 
         }
         catch (\Exception $e) {
-
             DB::rollback();
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
@@ -458,10 +418,7 @@ class FormService
 
     public function updateDataPerson($request) {
 
-
         try {
-
-
             $id = $request->get('idform');
 
             $form = Form::formbyid($id);
@@ -505,9 +462,7 @@ class FormService
             return $form;
 
         } catch (\Exception $e) {
-
             DB::rollback();
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
 
@@ -546,7 +501,7 @@ class FormService
             DB::beginTransaction();
 
             $form->is_blocked  = ($form->is_blocked == env('NO_BLOCKED') ) ? env('BLOCKED') : env('NO_BLOCKED') ;
-            //$form->date_blocked  = Carbon::now()->format('Y-m-d H:i:s');
+            $form->date_blocked  = Carbon::now()->format('Y-m-d H:i:s');
             $form->save();
 
             DB::commit();
@@ -554,9 +509,7 @@ class FormService
             return $form;
 
         } catch (\Exception $e) {
-
             DB::rollback();
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
 
@@ -571,7 +524,7 @@ class FormService
             DB::beginTransaction();
 
             $form->is_matched  = ($form->is_matched == env('NO_MATCHED') ) ? env('MATCHED') : env('NO_MATCHED') ;
-            //$form->date_matched  = Carbon::now()->format('Y-m-d H:i:s');
+            $form->date_matched  = Carbon::now()->format('Y-m-d H:i:s');
             $form->save();
 
             DB::commit();
@@ -579,9 +532,7 @@ class FormService
             return $form;
 
         } catch (\Exception $e) {
-
             DB::rollback();
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
 
@@ -596,7 +547,7 @@ class FormService
             DB::beginTransaction();
 
             $form->is_couple  = ($form->is_couple == env('NO_COUPLED') ) ? env('COUPLED') : env('NO_COUPLED') ;
-            //$form->date_couple  = Carbon::now()->format('Y-m-d H:i:s');
+            $form->date_couple  = Carbon::now()->format('Y-m-d H:i:s');
             $form->save();
 
             DB::commit();
@@ -604,9 +555,7 @@ class FormService
             return $form;
 
         } catch (\Exception $e) {
-
             DB::rollback();
-
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
 
