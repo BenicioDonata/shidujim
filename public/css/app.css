@@ -11192,3 +11192,12 @@ table.forms-action tr:hover {
     cursor: pointer;
     color:#FFFFFF;
 }
+
+.form-section{
+    padding-left: 15px;
+    display: none;
+}
+
+.form-section.current{
+    display: inherit;
+}

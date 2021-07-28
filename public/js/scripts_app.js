@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-    const MAXIMO_TAMANIO_BYTES = 2000000; // 1MB = 1 millón de bytes
 
     var $sections = $('.form-section');
     var index_step = 0;
@@ -218,6 +217,91 @@ $(document).ready(function () {
         }
 
     });
+
+
+    //***************************
+
+
+    function navigateTo(index) {
+        index_step = index;
+        $sections.removeClass('current').eq(index).addClass('current');
+        $('.form-navigation .previous').toggle(index>0);
+        var atTheEnd = index >= $sections.length - 1;
+        $('.form-navigation .next').toggle(!atTheEnd);
+        //$('.form-navigation .send').toggle(atTheEnd);
+
+        switch (index) {
+            case 0:
+                //
+            break;
+            case 1:
+                //
+            break;
+            case 2:
+               //
+            break;
+            case 3:
+                //
+            break;
+            case 4:
+                //
+            break;
+            case 5:
+               //
+           break;
+            case 6:
+              //
+            break;
+            case 7:
+              //
+            break;
+        }
+
+    }
+
+    function curlIndex()
+    {
+        return $sections.index($sections.filter('.current'));
+    }
+
+    $('.form-navigation .previous').click(function () {
+        navigateTo(curlIndex() - 1);
+    });
+
+    //comportamiento cuando se preciona el boton next
+    $('.form-navigation .next').click(function () {
+
+        switch (index_step) {
+
+            case 0:
+                navigateTo(curlIndex() + 1);
+            break;
+            case 1:
+                navigateTo(curlIndex() + 1);
+            break;
+            case 2:
+                navigateTo(curlIndex() + 1);
+            break;
+            case 3:
+                navigateTo(curlIndex() + 1);
+            break;
+            case 4:
+                navigateTo(curlIndex() + 1);
+            break;
+            case 7:
+                navigateTo(curlIndex() + 1);
+            break;
+            default:
+                navigateTo(curlIndex() + 1);
+        }
+
+    });
+
+    $sections.each(function (index,section) {
+        $(section).find(':input').attr('data-parsley-group','block-'+index);
+    });
+
+    navigateTo(0);
 
 });
 
