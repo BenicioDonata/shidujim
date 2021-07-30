@@ -135,6 +135,29 @@ class UserServices
 
     }
 
+    public function status_user_not_download($id) {
 
+        try {
+
+            $user = User::userbyid($id);
+
+            DB::beginTransaction();
+
+            $user->block_download  = ($user->block_download == env('NO_BLOCKED')) ? env('BLOCKED') : env('NO_BLOCKED');
+
+            $user->save();
+
+            DB::commit();
+
+            return $user;
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
 
 }
