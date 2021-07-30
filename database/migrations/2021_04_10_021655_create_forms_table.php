@@ -55,13 +55,13 @@ class CreateFormsTable extends Migration
             $table->string('about_u');
             $table->string('about_u_partner');
             $table->enum('is_check',[0, 1])->default('0');
-           //$table->string('date_check')->nullable(true);
+            $table->string('date_check')->nullable(true);
             $table->enum('is_blocked',[0, 1])->default('0');
-            //$table->string('date_blocked')->nullable(true);
+            $table->string('date_blocked')->nullable(true);
             $table->enum('is_matched',[0, 1])->default('0');
-            //$table->string('date_matched')->nullable(true);
+            $table->string('date_matched')->nullable(true);
             $table->enum('is_couple',[0, 1])->default('0');
-            //$table->string('date_couple')->nullable(true);
+            $table->string('date_couple')->nullable(true);
             $table->softDeletes();
             $table->timestamps();
         });

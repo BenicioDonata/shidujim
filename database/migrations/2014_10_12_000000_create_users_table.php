@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->foreign('userstatus_id')->references('id')->on('user_statuses')->onDelete('cascade');
             $table->unsignedInteger('usertype_id')->nullable(false);
             $table->foreign('usertype_id')->references('id')->on('user_types')->onDelete('cascade');
+            $table->enum('block_download',[0, 1])->default('0');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
