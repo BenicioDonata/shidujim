@@ -51,11 +51,18 @@
                                                         </div>
                                                 </td>
                                                 <td class="text-center" scope="row">
+                                                    <div class="input-group">
                                                         <form  method="post"  action="{{route('status_user_admin',$user->id)}}">
                                                             {{csrf_field()}}
                                                             {{ method_field('PUT') }}
                                                             <button type="submit" data-toggle="tooltip" data-placement="top" title="{{($user->usertype->id == env('USUARIO')) ? 'Activar como Admin' : 'Deshabilitar Admin'}}" class="{{($user->usertype->id == env('USUARIO')) ? 'fas fa-user-check' : 'fas fa-user-times'}} btn btn-success btn-sm "></button>
                                                         </form>
+                                                        <form  method="post"  action="{{route('status_user_not_download',$user->id)}}">
+                                                            {{csrf_field()}}
+                                                            {{method_field('PUT')}}
+                                                            <button type="submit" data-toggle="tooltip" data-placement="top" title="{{($user->block_download == env('NO_BLOCKED')) ? 'Bloquear Download File' : 'Activar Download File'}}" class="{{($user->block_download == env('NO_BLOCKED')) ? 'fas fa-file-download btn btn-primary' : 'fas fa-file-excel btn btn-danger'}}  btn-sm "></button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                     @endforeach
