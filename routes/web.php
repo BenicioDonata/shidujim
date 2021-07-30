@@ -49,6 +49,8 @@ Auth::routes();
 
     Route::put('/dash_admin/admin/{id}', 'App\Http\Controllers\HomeController@updateAdminUser')->name('status_user_admin');
 
+    Route::put('/dash_admin/adminfile/{id}', 'App\Http\Controllers\HomeController@updateDownloadFileUser')->name('status_user_not_download');
+
     Route::delete('/dash_admin/delete/{id}', 'App\Http\Controllers\HomeController@deleteUser')->name('status_user_delete');
 
     Route::put('/dash_user/form_status/{id}', 'App\Http\Controllers\HomeController@updateStatusForm')->name('status_form');
