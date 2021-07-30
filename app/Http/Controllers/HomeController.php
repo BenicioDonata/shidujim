@@ -150,6 +150,40 @@ class HomeController extends Controller
 
     }
 
+    public function updateDownloadFileUser($id)
+    {
+
+        try {
+
+            $user = $this->userService->status_user_not_download($id);
+
+            if (!$user) {
+
+                $notification = array(
+                    'message' => 'No se pudo bloquear la descarga de archivo para el usuario. Vuelva a intentarlo',
+                    'alert-type' => 'error'
+
+                );
+
+                return redirect()->route('dash_admin')->with($notification);
+
+            }
+
+            $notification = array(
+                'message' => 'Cambio de estado sobre descarga de archivo satisfactorio!!',
+                'alert-type' => 'success'
+
+            );
+
+            return redirect()->route('dash_admin')->with($notification);
+
+        } catch (\Exception $e) {
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
     public function deleteUser($id)
     {
 
