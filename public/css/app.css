@@ -3770,7 +3770,7 @@ input[type=button].btn-block {
 .input-group {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
   align-items: stretch;
   width: 100%;
 }
