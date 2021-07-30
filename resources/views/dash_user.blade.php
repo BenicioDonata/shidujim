@@ -102,14 +102,16 @@
                                 <p>No hay formularios cargados para mostrar</p>
                             @endif
                         </div>
-
-                        <a type="button" data-toggle="tooltip" data-placement="top" title="Descargar Registros" class="btn fas fa-file-download btn-success btn-sm btn-download"></a>
-                        <form  method="post" id="downloadFile"  action="{{route('downloadMatchPersonForm')}}">
-                            {{csrf_field()}}
-                            <input id="collection" name="collection" hidden value="{{base64_encode(json_encode($forms))}}">
-                        </form>
+                            @if(Auth::user()->block_download == env('NO_BLOCKED'))
+                                <a type="button" data-toggle="tooltip" data-placement="top" title="Descargar Registros" class="btn fas fa-file-download btn-success btn-sm btn-download"></a>
+                                <form  method="post" id="downloadFile"  action="{{route('downloadMatchPersonForm')}}">
+                                    {{csrf_field()}}
+                                    <input id="collection" name="collection" hidden value="{{base64_encode(json_encode($forms))}}">
+                                </form>
+                            @else
+                                <br>
+                            @endif
                         {!! $forms->onEachSide(6)->render() !!}
-
                     </div>
                 </div>
                 @include('partials.modals.modal-image')
