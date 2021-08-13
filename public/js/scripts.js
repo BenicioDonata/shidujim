@@ -140,37 +140,15 @@ $(document).ready(function () {
                 }
                 $('.step7 #single_seeker').focus();
 
-                 $(".step7 #input-id").fileinput();
-
-                $(".step7 #input-id").fileinput({
-                    languaje:'es',
-                    enableResumableUpload: true,
-                    resumableUploadOptions: {
-                    },
-                    uploadExtraData: {
-                        'uploadToken': 'SOME-TOKEN', // for access control / security
-                    },
-                    //maxFileCount: 5,
-                    allowedFileExtensions: ['jpg','jpeg', 'png'],
-                    allowedFileTypes: ['image'],    // allow only images
-                    showCancel: true,
-                    showClose: false,
-                    initialPreviewAsData: false,
-                    overwriteInitial: false,
-                    showUpload:false,
-                    previewFileType:['image'],
-                    dropZoneEnabled: false,
-                    theme: 'fa',
-                });
-
-                $(".step7 .file-caption").hide();
-                $(".step7 .file-drop-zone-title").hide();
-                $(".step7 .file-preview button").hide();
-                $(".step7 .file-preview").css('display','none');
+                 $(".step7  div.file-thumbnail-footer > div.file-footer-caption").hide();
+                 $(".step7 .fileinput-upload").hide();
+                 $(".step7 .file-drop-zone-title").hide();
+                 $(".step7 .file-preview button").hide();
+                 $(".step7 .file-preview").css('display','none');
 
 
                 $('.step7 div.input-group-btn.input-group-append span').text('Examinar');
-                $('.step7 input.file-caption-name').attr('placeholder','Seleccione los archivos...');
+                $('.step7 input.file-caption-name').hide();
 
                 break;
 
@@ -421,7 +399,7 @@ $(document).ready(function () {
                     $('.step7 #years_range_from').focus();
                     return false;
                 }
-                if(!$('.step7 #live_future_bs').is(':checked') && !$('.step7 #live_future_cp').is(':checked') && !$('.step7 #live_future_df').is(':checked') && !$('.step7 #live_future_c').is(':checked') && !$('.step7 #live_future_u').is(':checked') && !$('.step7 #live_future_ca').is(':checked') && !$('.step7 #live_future_i').is(':checked') && !$('.step7 #live_future_m').is(':checked') && !$('.step7 #live_future_ny').is(':checked') && !$('.step7 #live_future_la').is(':checked') && !$('.step7 #live_future_cor').is(':checked') && !$('.step7 #live_future_t').is(':checked') && !$('.step7 #live_future_ro').is(':checked') && !$('.step7 #live_future_wherever').is(':checked') ){
+                if(!$('.step7 #live_future_bs').is(':checked') && !$('.step7 #live_future_cp').is(':checked') && !$('.step7 #live_future_df').is(':checked') && !$('.step7 #live_future_c').is(':checked') && !$('.step7 #live_future_u').is(':checked') && !$('.step7 #live_future_ca').is(':checked') && !$('.step7 #live_future_i').is(':checked') && !$('.step7 #live_future_m').is(':checked') && !$('.step7 #live_future_ny').is(':checked') && !$('.step7 #live_future_la').is(':checked') && !$('.step7 #live_future_cor').is(':checked') && !$('.step7 #live_future_t').is(':checked') && !$('.step7 #live_future_ro').is(':checked') && !$('.step7 #live_future_esp').is(':checked')  && !$('.step7 #live_future_rdj').is(':checked') && !$('.step7 #live_future_sp').is(':checked') && !$('.step7 #live_future_wherever').is(':checked') ){
                     toastr["error"]("Seleccionar una opción","Campo Donde les gustaria vivir ");
                     $('.step7 #live_future_bs').focus();
                     return false;
@@ -566,20 +544,39 @@ $(document).ready(function () {
     }
 
     $(".step7 input[type='file']").change(function(){
-        $(".step7 .fileinput-remove-button").text('Quitar');
+
+        if ( $(".file-error-message").is(":visible")) {
+            $(".file-error-message").css('display','none');
+        }
+
+        $(".step7 .fileinput-remove-button").text('Quitar Todas');
         $(".step7 .fileinput-upload").hide();
         $(".step7 .file-preview").css('display','block');
         $(".step7 .file-drop-zone-title").css('display','block');
         $(".step7 .btn-file").css('margin-left','6px');
+        $(".step7 .file-caption-name").hide();
 
+        setTimeout(function (){
+            $(".step7 .file-thumbnail-footer .file-actions button.kv-file-upload").hide();
+            $(".step7 .file-thumbnail-footer .file-actions button.kv-file-remove").hide();
+        }, 200)
 
-
+        setTimeout(function (){
+            if ( !$(".file-error-message").is(":visible")) {
+                $(".step7 #input-id").clone().attr( 'id', 'input-id-file').attr('name', 'files[]').css('display', 'none').appendTo("div.card.upload");
+            }
+        }, 500)
     });
 
     $(document).on('click', '.step7 .fileinput-remove', function(){
         $(".step7 .file-preview").css('display','none');
         $(".step7 .file-drop-zone-title").css('display','none');
         $(".step7 .btn-file").css('margin-left','0px');
+        $(".step7 input[type='file']").each(function(){
+            if($(this).attr('id') === "input-id-file") {
+                $("#input-id-file").remove();
+            }
+        });
     });
 
 

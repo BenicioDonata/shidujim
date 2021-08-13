@@ -211,19 +211,19 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_sp" {{ (old('live_future_ro') ===  19 ) ? 'checked' : '' }} value="19">
+                    <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_sp" {{ (old('live_future_sp') ===  19 ) ? 'checked' : '' }} value="19">
                     <label class="form-check-label" for="live_future_sp">
                         San Pablo
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_rdj" {{ (old('live_future_ro') ===  20 ) ? 'checked' : '' }} value="20">
+                    <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_rdj" {{ (old('live_future_rdj') ===  20 ) ? 'checked' : '' }} value="20">
                     <label class="form-check-label" for="live_future_rdj">
                         Río de Janeiro
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_esp" {{ (old('live_future_ro') ===  21 ) ? 'checked' : '' }} value="21">
+                    <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_esp" {{ (old('live_future_esp') ===  21 ) ? 'checked' : '' }} value="21">
                     <label class="form-check-label" for="live_future_esp">
                         España
                     </label>
@@ -372,9 +372,10 @@
     <div class="card upload">
         <div class="card-body">
             <div class="form-group col-md-12">
-                <label for="upload_img"><h6 class="asterics">*</h6> Puedes agregar varias fotos, debes seleccionarlas todas juntas (no por separado). Entre todas las fotos no pueden exceder los <b>15 MB</b> (si tus fotos son más pesadas puedes reducirlas fácilmente <a href="https://compressjpeg.com/" target="_blank">clic aquí</a>).</label>
+                <label for="upload_img"><h6 class="asterics">*</h6> Puedes agregar varias fotos. Entre todas las fotos no pueden exceder los <b>15 MB</b> (si tus fotos son más pesadas puedes reducirlas fácilmente <a href="https://compressjpeg.com/" target="_blank">clic aquí</a>).</label>
                 <br>
-                <input id="input-id" type="file" name="files[]" accept="image/*"  multiple>
+                <input id="input-id" type="file" name="input-id" accept="image/*" multiple>
+
             </div>
             <h6>* Obligatorio</h6>
         </div>
