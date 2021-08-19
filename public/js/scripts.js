@@ -46,7 +46,7 @@ $(document).ready(function () {
                 $('.step1 label#widower').text('¿Eres Viudo?');
                 $('.step1 label#divorced').text('¿Eres Divorciado?');
                 $('.step1 label#single').text('¿Eres Soltero?');
-                if($('.step0 select').val() == 1){
+                if($('.step0 #gender').val() == 1){
                     $('.card .card-header span').text('¡Bienvenida!');
                     $('.step1 label#widower').text('¿Eres Viuda?');
                     $('.step1 label#divorced').text('¿Eres Divorciada?');
@@ -64,7 +64,7 @@ $(document).ready(function () {
                 // $('.progress-div-bar p').text('Página 3 de 8');
                 datetimeComponent();
                 $('.step2 #name').focus();
-                if($('.step0 select').val() == 1){
+                if($('.step0 #gender').val() == 1){
                     $('.card .card-header span').text('¡Bienvenida!');
                     $("#religiouscompliancelevel").find("option[value='5']").remove();
 
@@ -105,7 +105,7 @@ $(document).ready(function () {
                 // $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '62.5');
                 // $('.progress-div-bar .progress .progress-bar').css('width', '62.5%');
                 // $('.progress-div-bar p').text('Página 5 de 8');
-                if($('.step0 select').val() == 1){
+                if($('.step0 #gender').val() == 1){
                     $('.card .card-header span').text('¡Bienvenida!');
                 }
                 $('.step5 #full_primary').focus();
@@ -119,7 +119,7 @@ $(document).ready(function () {
                 // $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '75');
                 // $('.progress-div-bar .progress .progress-bar').css('width', '75%');
                 // $('.progress-div-bar p').text('Página 6 de 8');
-                if($('.step0 select').val() == 1){
+                if($('.step0 #gender').val() == 1){
                     $('.card .card-header span').text('¡Bienvenida!');
                 }
                 $('.step6 select#smoke').focus();
@@ -134,7 +134,7 @@ $(document).ready(function () {
                 // $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '87.5');
                 // $('.progress-div-bar .progress .progress-bar').css('width', '87.5%');
                 // $('.progress-div-bar p').text('Página 7 de 8');
-                if($('.step0 select').val() == 1){
+                if($('.step0 #gender').val() == 1){
                     $('.card .card-header span').text('¡Bienvenida!');
                 }
                 $('.step7 #single_seeker').focus();
@@ -177,9 +177,9 @@ $(document).ready(function () {
         switch (index_step) {
 
             case 0:
-                if($('.step0 select').val() == ""){
+                if($('.step0 #gender').val() == ""){
                     toastr["error"]("Seleccione Género","Campo Género");
-                    $('.step0 select').focus();
+                    $('.step0 #gender').focus();
                     return false;
                 }
                 navigateTo(curlIndex() + 1);
@@ -584,6 +584,18 @@ $(document).ready(function () {
         $(".step7 #file-text").val("");
     });
 
+
+    $(document).on('click', '.step0 .logo-mujer', function(){
+        $(".step0 #gender").val(1);
+        $(".step0 .logo-mujer").addClass('logo-gender-select');
+        $(".step0 .logo-varon").removeClass('logo-gender-select');
+    });
+
+    $(document).on('click', '.step0 .logo-varon', function(){
+        $(".step0 #gender").val(2);
+        $(".step0 .logo-mujer").removeClass('logo-gender-select');
+        $(".step0 .logo-varon").addClass('logo-gender-select');
+    });
 
     if ($('.step10').is(":visible")) {
 

@@ -74,7 +74,7 @@ class FormService
             $form->name_hebrew = $data_person->name_hebrew;
             $form->lastname = $data_person->lastname;
             $form->second_lastname = $data_person->second_lastname;
-            $form->gender()->associate(Gender::find($data_person->gender));
+            $form->gender()->associate(Gender::find((int)$data_person->gender));
             $form->date_of_birth = $data_person->date_of_birth;
             $dataTime_date_of_birth = Carbon::createFromFormat('d/m/Y', $data_person->date_of_birth);
             $form->age = Carbon::now()->format('Y') - Carbon::parse($dataTime_date_of_birth)->format('Y');

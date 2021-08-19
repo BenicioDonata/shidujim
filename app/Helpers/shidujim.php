@@ -7,7 +7,7 @@ if (!function_exists('validate_request')) {
 
         $rules = [
 
-            'gender'                        => 'required',
+//            'gender'                        => 'required',
             'name'                          => 'required',
             'name_hebrew'                   => 'required',
             'lastname'                      => 'required',

@@ -257,5 +257,22 @@
         padding-top: 53px;
     }
 
+    img.logo-varon, img.logo-mujer {
+        cursor: pointer;
+
+    }
+
+    img.logo-varon:hover, img.logo-mujer:hover {
+        border-radius: 8px;
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.8);
+    }
+
+    .logo-gender-select {
+        border-radius: 8px;
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.8);
+    }
+
+
+
 
 
