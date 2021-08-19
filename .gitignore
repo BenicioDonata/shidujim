@@ -11,4 +11,7 @@ docker-compose.override.yml
 Homestead.json
 Homestead.yaml
 npm-debug.log
+.idea/
+storage/framework/laravel-excel/*
 yarn-error.log
+BACKUPS
