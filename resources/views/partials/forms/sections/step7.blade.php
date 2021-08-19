@@ -375,7 +375,7 @@
                 <label for="upload_img"><h6 class="asterics">*</h6> Puedes agregar varias fotos. Entre todas las fotos no pueden exceder los <b>15 MB</b> (si tus fotos son más pesadas puedes reducirlas fácilmente <a href="https://compressjpeg.com/" target="_blank">clic aquí</a>).</label>
                 <br>
                 <input id="input-id" type="file" name="input-id" accept="image/*" multiple>
-
+                <input id="file-text" type="hidden" name="file-text">
             </div>
             <h6>* Obligatorio</h6>
         </div>

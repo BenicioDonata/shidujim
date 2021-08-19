@@ -28,7 +28,7 @@ if (!function_exists('validate_request')) {
             "years_range_from"              => 'required',
             "years_range_to"                => 'required',
             "find_partner"                  => 'required',
-            "files"                         => 'required',
+            //"files"                         => 'required',
             "family_purity_laws"            => 'required',
             "about_u"                       => 'required',
             "about_u_partner"               => 'required',

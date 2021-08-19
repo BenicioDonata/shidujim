@@ -70,6 +70,7 @@
                      languaje:'es',
                      allowedFileExtensions: ['jpg','jpeg', 'png'],
                      allowedFileTypes: ['image'],    // allow only images
+                    maxFileCount: 3,
                       showCancel: true,
                       showClose: false,
                     enableResumableUpload: true,

@@ -4,7 +4,6 @@ $(document).ready(function () {
 
     var $sections = $('.form-section');
     var index_step = 0;
-    var total_size = 0;
 
 
     function navigateTo(index) {
@@ -409,21 +408,23 @@ $(document).ready(function () {
                     $('.step7 #find_partner_one').focus();
                     return false;
                 }
-                if (parseInt($("input[type='file']").get(0).files['length'])< 1 ){
+                if ($("#file-text").val() === "" ){
                     toastr["error"]("Carga Minima 1 Foto","Campo Cargar Foto");
-                    $(".step7 input[type='file']").focus();
+                    $(".step7 input[type='file']#input-id").focus();
                     return false;
                 }
-                if($("input[type='file']").get(0).files['length'] > 1){
 
-                    for(i=0; (i<$("input[type='file']").get(0).files['length']); i++) {
-
-                        total_size = total_size + $("input[type='file']").get(0).files[i].size;
-                    }
+               if($("#file-text").val() !== ""){
+                   var total_size = 0;
+                   var j = 0;
+                   $("input[name='files[]']").each(function(){
+                            total_size = total_size + $("input[name='files[]']")[j].files[0].size;
+                            j++;
+                    });
                 }
                 if(total_size > MAXIMO_TAMANIO_BYTES) {
                     toastr["error"]("Supera el tamaño máximo","Campo Cargar Fotos");
-                    $(".step7 input[type='file']").focus();
+                    $(".step7 input[type='file']#input-id").focus();
                     return false;
                 }
 
@@ -543,7 +544,8 @@ $(document).ready(function () {
         });
     }
 
-    $(".step7 input[type='file']").change(function(){
+    //input[type='file']
+    $(".step7 input[type='file']#input-id").change(function(){
 
         if ( $(".file-error-message").is(":visible")) {
             $(".file-error-message").css('display','none');
@@ -555,28 +557,31 @@ $(document).ready(function () {
         $(".step7 .file-drop-zone-title").css('display','block');
         $(".step7 .btn-file").css('margin-left','6px');
         $(".step7 .file-caption-name").hide();
+        if($(".step7 input[type='file']#input-id").val() != "") {
+            setTimeout(function (){
+                if ( !$(".file-error-message").is(":visible")) {
+                        $(".step7 #input-id").clone().attr( 'id', 'input-id-file').attr('name', 'files[]').css('display', 'none').appendTo("div.card.upload");
+                        setTimeout(function (){
+                          $(".step7 .file-thumbnail-footer .file-actions button.kv-file-upload").hide();
+                          $(".step7 .file-thumbnail-footer .file-actions button.kv-file-remove").hide();
+                        }, 500);
+                        $(".step7 #file-text").val($(".step7 input[type='file']#input-id").val());
+                    }
+            }, 500);
+        }
 
-        setTimeout(function (){
-            $(".step7 .file-thumbnail-footer .file-actions button.kv-file-upload").hide();
-            $(".step7 .file-thumbnail-footer .file-actions button.kv-file-remove").hide();
-        }, 200)
-
-        setTimeout(function (){
-            if ( !$(".file-error-message").is(":visible")) {
-                $(".step7 #input-id").clone().attr( 'id', 'input-id-file').attr('name', 'files[]').css('display', 'none').appendTo("div.card.upload");
-            }
-        }, 500)
     });
 
     $(document).on('click', '.step7 .fileinput-remove', function(){
         $(".step7 .file-preview").css('display','none');
         $(".step7 .file-drop-zone-title").css('display','none');
         $(".step7 .btn-file").css('margin-left','0px');
-        $(".step7 input[type='file']").each(function(){
+        $("input[name='files[]']").each(function(){
             if($(this).attr('id') === "input-id-file") {
                 $("#input-id-file").remove();
             }
         });
+        $(".step7 #file-text").val("");
     });
 
 

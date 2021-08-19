@@ -38,8 +38,21 @@ class FormService
 
             $files = $data_request->file('files');
 
-            if($files)
-                $data_file = $this->insertFilePerson($data_form,$files);
+            if( $files == null) {
+
+                $files = $data_request->files;
+
+                if(count($files) <= 0)
+                    return false;
+
+            } else {
+
+                if(!$files)
+                    return false;
+
+            }
+
+            $data_file = $this->insertFilePerson($data_form,$files);
 
             if(!$data_file)
                 return false;
