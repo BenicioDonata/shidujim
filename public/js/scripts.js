@@ -22,7 +22,7 @@ $(document).ready(function () {
         switch (index) {
 
             case 0:
-                $('.card .card-header span').text('¡Bienvenido!');
+                $('.card .card-header span').text('¡Bienvenid@!');
                 $('.contact-form .step0 p').text('La diferencia de Shidujim.com es que además de utilizar la ultima tecnología en el proceso de matchmaking, la combinamos con el factor humano, en forma desinteresada, analizamos cada registro en forma individual, somos profesionales, discretas y ponemos lo mejor, creemos que no mereces un algoritmo automatizado que decida por tu futuro.');
                 // $('.progress-div-bar').css('display', 'none');
                 // $('.progress-div-bar .progress .progress-bar').attr('aria-valuenow', '12.5');
@@ -587,14 +587,20 @@ $(document).ready(function () {
 
     $(document).on('click', '.step0 .logo-mujer', function(){
         $(".step0 #gender").val(1);
-        $(".step0 .logo-mujer").addClass('logo-gender-select');
-        $(".step0 .logo-varon").removeClass('logo-gender-select');
+        $(".step0 #mujer").removeClass('logo-mujer');
+        $(".step0 #mujer").addClass('logo-gender-select');
+        $(".step0 #varon").removeClass('logo-gender-select');
+        $(".step0 #varon").addClass('logo-varon');
+
     });
 
     $(document).on('click', '.step0 .logo-varon', function(){
         $(".step0 #gender").val(2);
-        $(".step0 .logo-mujer").removeClass('logo-gender-select');
-        $(".step0 .logo-varon").addClass('logo-gender-select');
+        $(".step0 #varon").addClass('logo-gender-select');
+        $(".step0 #varon").removeClass('logo-varon');
+        $(".step0 #mujer").removeClass('logo-gender-select');
+        $(".step0 #mujer").addClass('logo-mujer');
+
     });
 
     if ($('.step10').is(":visible")) {

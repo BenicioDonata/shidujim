@@ -9,22 +9,18 @@
     </div>
     <div class="card ">
         <div class="card-body">
-            <div class="form-group col-md-8">
-                <label for="gender"><h6 class="asterics">*</h6> Género</label>
-                <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                    <div class="flex justify-center pt-8">
-                        <img class="logo-mujer" alt="Logo mujer" src=" {{ asset('images/mujer.jpg') }}" width="100" height="100" />
-                        <img class="logo-varon" alt="Logo varon" src=" {{ asset('images/varon.jpg') }}" width="100" height="100" />
+            <div class="form-group col-md-12">
+                <label for="gender"><h6 class="asterics">*</h6> Yo Soy...</label>
+                <div class="row ">
+                    <div class=" col-md-3  offset-md-3 img-div-center">
+                            <img id="mujer" class="logo-mujer" alt="Logo mujer" src=" {{ asset('images/mujer.jpg') }}" width="130" height="130" />
+                    </div>
+{{--                        <div class="col-md-2"></div>--}}
+                    <div class=" col-md-3 div-top img-div-center">
+                        <img id="varon" class="logo-varon" alt="Logo varon" src=" {{ asset('images/varon.jpg') }}" width="130" height="130" />
                         <input type="hidden" id="gender" name="gender" value="{{old('gender')}}">
                     </div>
                 </div>
-
-{{--                <select class="form-control" id="gender" name="gender" tabindex="-1" aria-hidden="true" required>--}}
-{{--                    <option value="" selected>Elige</option>--}}
-{{--                    @foreach($genders as $gender)--}}
-{{--                        <option value="{{$gender->id}}" {{ old('gender') == $gender->id ? 'selected' : '' }} > {{ $gender->genders_title }} </option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
             </div>
             <h6>* Obligatorio</h6>
         </div>

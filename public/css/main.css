@@ -259,18 +259,54 @@
 
     img.logo-varon, img.logo-mujer {
         cursor: pointer;
-
+        border-radius:100px;
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
     img.logo-varon:hover, img.logo-mujer:hover {
-        border-radius: 8px;
-        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.8);
+        border-radius: 100px;
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.45) ;
     }
 
-    .logo-gender-select {
-        border-radius: 8px;
-        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.8);
+    img.logo-gender-select {
+        border-radius: 100px;
+        box-shadow: 0 10px 10px 0 rgba(0, 198, 215, 1) ;
     }
+
+    .img-div-center{
+        text-align: center;
+    }
+
+.div-top {
+    padding-top: 24px;
+}
+
+@media (min-width: 576px) {
+
+    .div-top {
+        padding-top: 24px;
+    }
+
+
+}
+
+@media (min-width: 768px) {
+    .div-top {
+        padding-top: 24px;
+    }
+}
+
+@media (min-width: 992px) {
+    .div-top {
+        padding-top: 0px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .div-top {
+        padding-top: 0px;
+    }
+}
 
 
 
