@@ -1,11 +1,11 @@
 <div class="form-section step5">
     <div class="row bg-dark">
         <div class="form-group col-md-6">
-            <label for="about_u"><i class="far fa-check-circle"></i> Cuentanos algo más de ti</label>
+            <label for="about_u"><i class="far fa-check-circle"></i> Cuentanos algo más de ti <h6 class="asterics">*</h6></label>
             <textarea type="text" name="about_u" id="about_u" class="form-control" placeholder="respuesta" maxlength="254" >{{$form['form']['about_u']}}"</textarea>
         </div>
         <div class="form-group col-md-6">
-            <label for="about_u_partner"><i class="far fa-check-circle"></i> Cuentanos algo más de lo que esperas de tu pareja</label>
+            <label for="about_u_partner"><i class="far fa-check-circle"></i> Cuentanos algo más de lo que esperas de tu pareja <h6 class="asterics">*</h6></label>
             <textarea type="text" name="about_u_partner" id="about_u_partner" class="form-control" placeholder="respuesta" maxlength="254" >{{$form['form']['about_u_partner']}}"</textarea>
         </div>
     </div>
@@ -25,6 +25,9 @@
         <div class="form-group col-md-6">
             <label for="date_couple"><i class="far fa-check-circle"></i> Fecha de Consolidación de Pareja</label>
             <input type="text" name="date_couple" id="date_couple" class="form-control" placeholder="fecha" disabled value="{{$form['form']['date_couple']}}">
+        </div>
+        <div class="form-group col-md-12">
+            <h6>* Campos Obligatorios</h6>
         </div>
     </div>
 </div>

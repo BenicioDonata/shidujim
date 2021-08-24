@@ -1,7 +1,7 @@
 <div class="form-section step3">
     <div class="row bg-dark">
         <div class="form-group col-md-6">
-            <label for="couple_sons"><i class="far fa-check-circle"></i> ¿Aceptarías una pareja con hijos?</label>
+            <label for="couple_sons"><i class="far fa-check-circle"></i> ¿Aceptarías una pareja con hijos? <h6 class="asterics">*</h6></label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="couple_sons" id="couple_sons_yes" {{ ($form['form']['coupleson_id'] ==  1) ? 'checked' : '' }} value="1">
                 <label class="form-check-label" for="couple_sons_yes"> Si </label>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="studies_lvl_seek"><i class="far fa-check-circle"></i> ¿Qué nivel de estudios te gustaría que tenga?</label>
+            <label for="studies_lvl_seek"><i class="far fa-check-circle"></i> ¿Qué nivel de estudios te gustaría que tenga? <h6 class="asterics">*</h6></label>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="studies_lvl_seek[]" id="full_primary_seek" {{ (in_array(1,$form['studiesseeks'])) ? 'checked' : '' }} value="1">
                 <label class="form-check-label" for="full_primary_seek"> Primario Completo </label>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="years_range"><i class="far fa-check-circle"></i> ¿Qué rango de edad te gustaría que tenga?</label>
+            <label for="years_range"><i class="far fa-check-circle"></i> ¿Qué rango de edad te gustaría que tenga? <h6 class="asterics">*</h6></label>
             <div class="input-group">
                 <input type="number" id="years_range_from"  min ="18" class="form-control col-md-2" name="years_range_from"  placeholder="Desde" value="{{$form['form']['years_range_from']}}">
                 <span class="col-md-1"></span>
@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="live_future"><i class="far fa-check-circle"></i> ¿En dónde les gustaría vivir? (Puedes elegir varios)</label>
+            <label for="live_future"><i class="far fa-check-circle"></i> ¿En dónde les gustaría vivir? (Puedes elegir varios) <h6 class="asterics">*</h6></label>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_bs" {{ (in_array(1,$form['locations'])) ? 'checked' : '' }} value="1">
                 <label class="form-check-label" for="live_future_bs"> Buenos Aires </label>
@@ -124,6 +124,9 @@
                 <input class="form-check-input" type="checkbox" name="live_future[]" id="live_future_wherever" {{ (in_array(18,$form['locations'])) ? 'checked' : '' }} value="18">
                 <label class="form-check-label" for="live_future_wherever"> Me da lo mismo </label>
             </div>
+        </div>
+        <div class="form-group col-md-12">
+            <h6>* Campos Obligatorios</h6>
         </div>
     </div>
 </div>

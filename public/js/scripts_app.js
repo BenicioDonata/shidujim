@@ -232,7 +232,18 @@ $(document).ready(function () {
 
         switch (index) {
             case 0:
-                //
+                if ($(".step0 #gender").val() == 1) {
+                    $(".step0 #mujer").removeClass('logo-mujer');
+                    $(".step0 #mujer").addClass('logo-gender-select');
+                    $(".step0 #varon").removeClass('logo-gender-select');
+                    $(".step0 #varon").addClass('logo-varon');
+                }
+                if ($(".step0 #gender").val() == 2) {
+                    $(".step0 #varon").addClass('logo-gender-select');
+                    $(".step0 #varon").removeClass('logo-varon');
+                    $(".step0 #mujer").removeClass('logo-gender-select');
+                    $(".step0 #mujer").addClass('logo-mujer');
+                }
             break;
             case 1:
                 //
@@ -274,21 +285,247 @@ $(document).ready(function () {
         switch (index_step) {
 
             case 0:
+                if($('.step0 #name').val() == ""){
+                    toastr["error"]("Completar el campo","Campo Nombre");
+                    $('.step0 #name').focus();
+                    return false;
+                }
+                if($('.step0 #name_hebrew').val() == ""){
+                    toastr["error"]("Completar el campo","Campo Nombre en Hebreo");
+                    $('.step0 #name_hebrew').focus();
+                    return false;
+                }
+                if($('.step0 #lastname').val() == ""){
+                    toastr["error"]("Completar el campo","Campo Apellido Paterno");
+                    $('.step0 #lastname').focus();
+                    return false;
+                }
+                if($('.step0 #second_lastname').val() == ""){
+                    toastr["error"]("Completar el campo","Campo Apellido Materno");
+                    $('.step0 #second_lastname').focus();
+                    return false;
+                }
+                if($('.step0 #date_of_birth').val() == ""){
+                    toastr["error"]("Completar el campo","Campo Fecha de Nacimiento");
+                    $('.step0 #date_of_birth').focus();
+                    return false;
+                }
+                if($('.step0 #date_of_birth').val().length != 10){
+                    toastr["error"]("Revisar que tenga el formato correcto Ej. dd/mm/yyyy","Campo Fecha de Nacimiento");
+                    $('.step0 #date_of_birth').focus();
+                    return false;
+                }
+                if($('.step0 #date_of_birth').val().split('/').length != 3) {
+                    toastr["error"]("Revisar que tenga el formato correcto Ej. dd/mm/yyyy","Campo Fecha de Nacimiento");
+                    $('.step0 #date_of_birth').focus();
+                    return false;
+                }
+
+                var array_date = $('.step0 #date_of_birth').val().split('/');
+                var anio_now = (new Date).getFullYear();
+                var diff_anio = anio_now - array_date[2];
+
+                if(diff_anio < 18) {
+                    toastr["error"]("El año no es correcto.","Campo Fecha de Nacimiento");
+                    $('.step0 #date_of_birth').focus();
+                    return false;
+                }
+                if($('.step0 #age').val() == ""){
+                    toastr["error"]("Completar el campo","Campo Edad");
+                    $('.step0 #age').focus();
+                    return false;
+                }
+                if($('.step0 #age').val() < 18) {
+                    toastr["error"]("El año no es correcto.","Campo Edad");
+                    $('.step0 #age').focus();
+                    return false;
+                }
+                if(!$('.step0 #single').is(':checked') && !$('.step0 #divorced').is(':checked') && !$('.step0 #widower').is(':checked') ){
+                    toastr["error"]("Seleccionar una opción","Campo Estado Civil");
+                    $('.step0 #single').focus();
+                    return false;
+                }
+                if($('.step0 #gender').val() == ""){
+                    toastr["error"]("Seleccione Género","Campo Género");
+                    $('.step0 #gender').focus();
+                    return false;
+                }
+                if($('.step0 #profession').val() == ""){
+                    toastr["error"]("Ingrese una Profesion","Campo Profesion");
+                    $('.step0 #profession').focus();
+                    return false;
+                }
+
                 navigateTo(curlIndex() + 1);
             break;
             case 1:
+                if($('.step1 #email').val() == ""){
+                    toastr["error"]("Completar el campo","Campo Email");
+                    $('.step1 #email').focus();
+                    return false;
+                }
+                if($(".step1 #email").val().indexOf('@', 0) == -1 || $(".step1 #email").val().indexOf('.', 0) == -1) {
+                    toastr["error"]("Incorrecto", "Campo Email");
+                    $('.step1 #email').focus();
+                    return false;
+                }
+                if($('.step1 #main_phone').val() == ""){
+                    toastr["error"]("Completar el campo","Campo Teléfono Celular");
+                    $('.step1 #main_phone').focus();
+                    return false;
+                }
+                if(isNaN($(".step1 #main_phone").val())) {
+                    toastr["error"]("Sólo Números","Campo Teléfono Celular");
+                    $('.step1 #main_phone').focus();
+                    return false;
+                }
+                if($('.step1 #main_phone').val() < 0 ){
+                    toastr["error"]("Incorrecto","Campo Teléfono Celular");
+                    $('.step1 #main_phone').focus();
+                    return false;
+                }
+                if($(".step1 #main_phone").val().length < 8 ) {
+                    toastr["error"]("Debe tener minimo 8 digitos","Campo Teléfono Celular");
+                    $('.step1 #main_phone').focus();
+                    return false;
+                }
+                if($('.step1 select#count_sons').val() == ""){
+                    toastr["error"]("Seleccione Cantidad","Campo Hijos");
+                    $('.step1 select#count_sons').focus();
+                    return;
+                }
+                if($('.step1 select#religiouscompliancelevel').val() == ""){
+                    toastr["error"]("Seleccione Cumplimiento Religioso","Campo Cumplimiento Religioso");
+                    $('.step1 select#religiouscompliancelevel').focus();
+                    return;
+                }
+                if($('.step1 #community_assists').val() == ""){
+                    toastr["error"]("Completar el campo","Campo Comunidad a la que asistís");
+                    $('.step1 #community_assists').focus();
+                    return false;
+                }
+                if(!$('.step1 #full_primary').is(':checked') && !$('.step1 #complete_secondary').is(':checked') && !$('.step1 #full_college').is(':checked') && !$('.step1 #postgraduate').is(':checked') && !$('.step1 #hebrew_elementary_school').is(':checked') && !$('.step1 #shiurim_one_per_week').is(':checked') && !$('.step1 #shiurim_two_per_week').is(':checked') && !$('.step1 #shiurim_more_two_per_week').is(':checked') && !$('.step1 #ieshiva').is(':checked') && !$('.step1 #hebrew_high_school').is(':checked')){
+                    toastr["error"]("Seleccionar una opción","Campo Estudios");
+                    $('.step1 #full_primary').focus();
+                    return false;
+                }
+                if(!$('.step1 #spanish').is(':checked') && !$('.step1 #english').is(':checked') && !$('.step1 #hebrew').is(':checked')){
+                    toastr["error"]("Seleccionar una opción","Campo Idiomas");
+                    $('.step1 #spanish').focus();
+                    return false;
+                }
                 navigateTo(curlIndex() + 1);
             break;
             case 2:
+                if($('.step2 #name_school').val() == ""){
+                    toastr["error"]("Completar el campo","Campo Nombre Colegio Primario");
+                    $('.step2 #name_school').focus();
+                    return false;
+                }
+                if($('.step2 select#smoke').val() == ""){
+                    toastr["error"]("Seleccione opción","Campo Fumas");
+                    $('.step2 select#smoke').focus();
+                    return false;
+                }
+                if(!$('.step2 #more_sons').is(':checked') && !$('.step2 #no_more_sons').is(':checked') && !$('.step2 #want_sons').is(':checked') && !$('.step2 #dont_know').is(':checked') ){
+                    toastr["error"]("Seleccionar una opción","Campo Hijos");
+                    $('.step2 #more_sons').focus();
+                    return false;
+                }
+                if($('.step2 select#location').val() == ""){
+                    toastr["error"]("Seleccione opción","Campo Localidad donde vivis");
+                    $('.step2 select#location').focus();
+                    return false;
+                }
+                if(!$('.step2 #kasher_only_house').is(':checked') && !$('.step2 #forever_kasher').is(':checked') && !$('.step2 #kasher_shabat').is(':checked') && !$('.step2 #abrej').is(':checked') && !$('.step2 #tora').is(':checked') && !$('.step2 #kasher_shabat_study').is(':checked') && !$('.step2 #hebrew').is(':checked') && !$('.step2 #wherever').is(':checked') ){
+                    toastr["error"]("Seleccionar una opción","Campo Nivel Aceptado");
+                    $('.step2 #forever_kasher').focus();
+                    return false;
+                }
+                if(!$('.step2 #single_seeker').is(':checked') && !$('.step2 #divorced_seeker').is(':checked') && !$('.step2 #widower_seeker').is(':checked') && !$('.step2 #wherever_seeker').is(':checked') ){
+                    toastr["error"]("Seleccionar una opción","Campo Estado Civil");
+                    $('.step2 #single_seeker').focus();
+                    return false;
+                }
                 navigateTo(curlIndex() + 1);
             break;
             case 3:
+                if(!$('.step3 #couple_sons_yes').is(':checked') && !$('.step3 #couple_sons_no').is(':checked') && !$('.step3 #couple_sons_maybe').is(':checked')){
+                    toastr["error"]("Seleccionar una opción","Campo Hijos Anteriores");
+                    $('.step3 #couple_sons_yes').focus();
+                    return false;
+                }
+                if(!$('.step3 #full_primary_seek').is(':checked') && !$('.step3 #complete_secondary_seek').is(':checked') && !$('.step3 #full_college_seek').is(':checked') && !$('.step3 #postgraduate_seek').is(':checked') && !$('.step3 #hebrew_elementary_school_seek').is(':checked') && !$('.step3 #shiurim_one_per_week_seek').is(':checked') && !$('.step3 #hebrew_high_school_seek').is(':checked')){
+                    toastr["error"]("Seleccionar una opción","Campo Nivel de Estudio");
+                    $('.step3 #full_primary_seek').focus();
+                    return false;
+                }
+                if($('.step3 #years_range_from').val() == ""){
+                    toastr["error"]("Completar el campo campo","Campo Rango de Edad");
+                    $('.step3 #years_range_from').focus();
+                    return false;
+                }
+                if($('.step3 #years_range_to').val() == ""){
+                    toastr["error"]("Completar el campo campo","Campo Rango de Edad");
+                    $('.step3 #years_range_to').focus();
+                    return false;
+                }
+                if($('.step3 #years_range_from').val() < 18 ){
+                    toastr["error"]("Edad incorrecta","Campo Rango de Edad");
+                    $('.step3 #years_range_from').focus();
+                    return false;
+                }
+                if($('.step3 #years_range_to').val() < 18 ){
+                    toastr["error"]("Edad incorrecta","Campo Rango de Edad");
+                    $('.step3 #years_range_to').focus();
+                    return false;
+                }
+                if($(".step3 #years_range_from").val().length < 2 ) {
+                    toastr["error"]("Debe tener 2 digitos","Campo Rango de Edad");
+                    $('.step3 #years_range_from').focus();
+                    return false;
+                }
+                if($(".step3 #years_range_to").val().length < 2 ) {
+                    toastr["error"]("Debe tener 2 digitos","Campo Rango de Edad");
+                    $('.step3 #years_range_to').focus();
+                    return false;
+                }
+                if($('.step3 #years_range_from').val() > $('.step3 #years_range_to').val() ){
+                    toastr["error"]("Edad incorrecta","Campo Rango de Edad");
+                    $('.step3 #years_range_from').focus();
+                    return false;
+                }
+                if(!$('.step3 #live_future_bs').is(':checked') && !$('.step3 #live_future_cp').is(':checked') && !$('.step3 #live_future_df').is(':checked') && !$('.step3 #live_future_c').is(':checked') && !$('.step3 #live_future_u').is(':checked') && !$('.step3 #live_future_ca').is(':checked') && !$('.step3 #live_future_i').is(':checked') && !$('.step3 #live_future_m').is(':checked') && !$('.step3 #live_future_ny').is(':checked') && !$('.step3 #live_future_la').is(':checked') && !$('.step3 #live_future_cor').is(':checked') && !$('.step3 #live_future_t').is(':checked') && !$('.step3 #live_future_ro').is(':checked') && !$('.step3 #live_future_esp').is(':checked')  && !$('.step3 #live_future_rdj').is(':checked') && !$('.step3 #live_future_sp').is(':checked') && !$('.step3 #live_future_wherever').is(':checked') ){
+                    toastr["error"]("Seleccionar una opción","Campo Donde les gustaria vivir ");
+                    $('.step3 #live_future_bs').focus();
+                    return false;
+                }
                 navigateTo(curlIndex() + 1);
             break;
             case 4:
+                if(!$('.step4 #find_partner_one').is(':checked') && !$('.step4 #find_partner_two').is(':checked') && !$('.step4 #find_partner_three').is(':checked') && !$('.step4 #find_partner_four').is(':checked') && !$('.step4 #find_partner_five').is(':checked') && !$('.step4 #find_partner_six').is(':checked') && !$('.step4 #find_partner_seven').is(':checked') && !$('.step4 #find_partner_eigth').is(':checked') && !$('.step4 #find_partner_nine').is(':checked') && !$('.step4 #find_partner_ten').is(':checked')){
+                    toastr["error"]("Seleccionar una opción","Campo Encontrar Pareja ");
+                    $('.step4 #find_partner_one').focus();
+                    return false;
+                }
+                if(!$('.step4 #family_purity_laws_yes').is(':checked') && !$('.step4 #family_purity_laws_no').is(':checked') && !$('.step4 #family_purity_laws_maybe').is(':checked') && !$('.step4 #family_purity_laws_never').is(':checked')){
+                    toastr["error"]("Seleccionar una opción","Campo Leyes de pureza familiar ");
+                    $('.step4 #family_purity_laws_yes').focus();
+                    return false;
+                }
                 navigateTo(curlIndex() + 1);
             break;
-            case 7:
+            case 5:
+                if($('.step5 #about_u').val() == ""){
+                    toastr["error"]("Seleccione opción","Campo Algo más de ti");
+                    $('.step5 #about_u').focus();
+                    return false;
+                }
+                if($('.step5 #about_u_partner').val() == ""){
+                    toastr["error"]("Seleccione opción","Campo Que esperas de tu pareja");
+                    $('.step5 #about_u_partner').focus();
+                    return false;
+                }
                 navigateTo(curlIndex() + 1);
             break;
             default:
@@ -302,6 +539,62 @@ $(document).ready(function () {
     });
 
     navigateTo(0);
+
+    $(".step0 #age").keypress(function(tecla)
+    {
+        if(tecla.charCode < 48 || tecla.charCode > 57)
+        {
+            return false;
+        }
+
+        if ($(".step0 #age").val().length > 2){
+            return false;
+        }
+
+        setTimeout(function(){
+            var array_date = $('.step0 #date_of_birth').val().split('/');
+            var anio_now = (new Date).getFullYear();
+            var new_anio = anio_now - $(".step0 #age").val(); array_date[2];
+            $(".step0 #date_of_birth").val(array_date[0]+'/'+array_date[1]+'/'+new_anio);
+        }, 200);
+    });
+
+   $(".step0 #date_of_birth").keypress(function(tecla)
+    {
+        if(tecla.charCode < 47 || tecla.charCode > 57)
+        {
+            return false;
+        }
+
+        if ($(".step0 #date_of_birth").val().length > 9){
+            return false;
+        }
+
+        setTimeout(function(){
+            var array_date = $('.step0 #date_of_birth').val().split('/');
+            var anio_now = (new Date).getFullYear();
+            var diff_anio = anio_now - array_date[2];
+            $(".step0 #age").val(diff_anio);
+        }, 200);
+    });
+
+    $(document).on('click', '.step0 .logo-mujer', function(){
+        $(".step0 #gender").val(1);
+        $(".step0 #mujer").removeClass('logo-mujer');
+        $(".step0 #mujer").addClass('logo-gender-select');
+        $(".step0 #varon").removeClass('logo-gender-select');
+        $(".step0 #varon").addClass('logo-varon');
+
+    });
+
+    $(document).on('click', '.step0 .logo-varon', function(){
+        $(".step0 #gender").val(2);
+        $(".step0 #varon").addClass('logo-gender-select');
+        $(".step0 #varon").removeClass('logo-varon');
+        $(".step0 #mujer").removeClass('logo-gender-select');
+        $(".step0 #mujer").addClass('logo-mujer');
+
+    });
 
 });
 

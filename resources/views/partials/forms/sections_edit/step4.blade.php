@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="form-group col-md-6 edit-level">
-            <label for="find_partner"><i class="far fa-check-circle"></i> Del 1 al 10. ¿Cuántas ganas tienes de encontrar pareja? (1 es nada de ganas - 10 es Muchísimas ganas)</label>
+            <label for="find_partner"><i class="far fa-check-circle"></i> Del 1 al 10. ¿Cuántas ganas tienes de encontrar pareja? (1 es nada de ganas - 10 es Muchísimas ganas) <h6 class="asterics">*</h6></label>
             <div class="col-12 ">
                 <label class="radio-inline">
                     <div class="form-check">
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="family_purity_laws"><i class="far fa-check-circle"></i> ¿Estarías dispuesto/a a cumplir las leyes de pureza familiar judios?</label>
+            <label for="family_purity_laws"><i class="far fa-check-circle"></i> ¿Estarías dispuesto/a a cumplir las leyes de pureza familiar judios? <h6 class="asterics">*</h6></label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="family_purity_laws" id="family_purity_laws_yes" {{ ($form['form']['familypuritylaw_id'] ==  1) ? 'checked' : '' }} value="1">
                 <label class="form-check-label" for="family_purity_laws_yes"> Si </label>
@@ -122,6 +122,9 @@
                 <input class="form-check-input" type="radio" name="family_purity_laws" id="family_purity_laws_never" {{ ($form['form']['familypuritylaw_id'] ==  4) ? 'checked' : '' }} value="4" >
                 <label class="form-check-label" for="family_purity_laws_never"> Nunca </label>
             </div>
+        </div>
+        <div class="form-group col-md-12">
+            <h6>* Campos Obligatorios</h6>
         </div>
     </div>
 </div>

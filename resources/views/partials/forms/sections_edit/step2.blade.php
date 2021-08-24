@@ -1,7 +1,7 @@
 <div class="form-section step2">
     <div class="row bg-dark">
         <div class="form-group col-md-6">
-            <label for="name_school"><i class="far fa-check-circle"></i> Nombre del Colegio Primario</label>
+            <label for="name_school"><i class="far fa-check-circle"></i> Nombre del Colegio Primario <h6 class="asterics">*</h6></label>
             <input type="text" id="name_school" class="form-control" name="name_school"  placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['name_school']}}">
         </div>
         <div class="form-group col-md-6">
@@ -9,7 +9,7 @@
             <input type="text" id="name_secondary_school" class="form-control" name="name_secondary_school"  placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['name_secondary_school']}}">
         </div>
         <div class="form-group col-md-6">
-            <label for="smoke"><i class="far fa-check-circle"></i> ¿Fumas?</label>
+            <label for="smoke"><i class="far fa-check-circle"></i> ¿Fumas? <h6 class="asterics">*</h6></label>
             <select class="form-control" id="smoke" name="smoke" tabindex="-1" aria-hidden="true" required>
                 <option value="" selected>Elige</option>
                 @foreach($smokers as $smoker)
@@ -18,7 +18,7 @@
             </select>
         </div>
         <div class="form-group col-md-6">
-            <label for="sons"><i class="far fa-check-circle"></i> Hijos</label>
+            <label for="sons"><i class="far fa-check-circle"></i> Hijos <h6 class="asterics">*</h6></label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="sons" id="more_sons" {{ ($form['form']['son_id'] ==  1) ? 'checked' : '' }} value="1">
                 <label class="form-check-label" for="more_sons"> Ya tengo hijos y quiero más </label>
@@ -36,10 +36,13 @@
                 <label class="form-check-label" for="dont_know"> No lo sé aun </label>
             </div>
         </div>
+        <div class="form-group col-md-12">
+            <h6>* Campos Obligatorios</h6>
+        </div>
     </div>
     <div class="row bg-dark">
         <div class="form-group col-md-6">
-            <label for="location"><i class="far fa-check-circle"></i> ¿En qué Localidad Vivis Actualmente?</label>
+            <label for="location"><i class="far fa-check-circle"></i> ¿En qué Localidad Vivis Actualmente? <h6 class="asterics">*</h6></label>
             <select class="form-control" id="location" name="location" tabindex="-1" aria-hidden="true" required>
                 <option value="" selected>Elige</option>
                 @foreach($localities as $location)
@@ -85,7 +88,7 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="accepted_level"><i class="far fa-check-circle"></i> ¿Qué nivel seria aceptado por vos? (Puedes elegir varios)</label>
+            <label for="accepted_level"><i class="far fa-check-circle"></i> ¿Qué nivel seria aceptado por vos? (Puedes elegir varios) <h6 class="asterics">*</h6></label>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="accepted_level[]" id="kasher_only_house" {{ (in_array(1,$form['acceptancelevel'])) ? 'checked' : '' }} value="1">
                 <label class="form-check-label" for="kasher_only_house"> Kasher solo en Casa </label>
@@ -120,7 +123,7 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="civil_status_seeker"><i class="far fa-check-circle"></i> Estado Civil Que Buscas (Puedes elegir varios)</label>
+            <label for="civil_status_seeker"><i class="far fa-check-circle"></i> Estado Civil Que Buscas (Puedes elegir varios) <h6 class="asterics">*</h6></label>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="single_seeker" {{ (in_array(1,$form['maritalstatuses'])) ? 'checked' : '' }} value="1">
                 <label class="form-check-label" for="single_seeker"> Soltero/a </label>
@@ -138,6 +141,9 @@
                 <input class="form-check-input" type="checkbox" name="civil_status_seeker[]" id="wherever_seeker" {{ (in_array(4,$form['maritalstatuses'])) ? 'checked' : '' }} value="4">
                 <label class="form-check-label" for="wherever_seeker"> Me da igual </label>
             </div>
+        </div>
+        <div class="form-group col-md-12">
+            <h6>* Campos Obligatorios</h6>
         </div>
     </div>
 </div>

@@ -1,15 +1,15 @@
 <div class="form-section step1">
     <div class="row bg-dark">
         <div class="form-group col-md-6">
-            <label for="email"><i class="far fa-check-circle"></i> Tu email</label>
+            <label for="email"><i class="far fa-check-circle"></i> Tu email <h6 class="asterics">*</h6></label>
             <input type="email" id="email" class="form-control" name="email"  placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['email']}}">
         </div>
         <div class="form-group col-md-6">
-            <label for="main_phone"><i class="far fa-check-circle"></i> Teléfono Celular (Pais + Ciudad + Numero)</label>
+            <label for="main_phone"><i class="far fa-check-circle"></i> Teléfono Celular (Pais + Ciudad + Numero) <h6 class="asterics">*</h6></label>
             <input type="number" id="main_phone" class="form-control" name="main_phone" min="0"   placeholder="Tu respuesta" value="{{$form['form']['main_phone']}}">
         </div>
         <div class="form-group col-md-6">
-            <label for="count_sons"><i class="far fa-check-circle"></i> ¿Tenes hijos, cuantos? </label>
+            <label for="count_sons"><i class="far fa-check-circle"></i> ¿Tenes hijos, cuantos? <h6 class="asterics">*</h6></label>
             <select class="form-control" id="count_sons" name="count_sons" tabindex="-1" aria-hidden="true" >
                 <option value="" selected>Elige</option>
                 @for($i=0; $i<11; $i++)
@@ -18,7 +18,7 @@
             </select>
         </div>
         <div class="form-group col-md-6">
-            <label for="religiouscompliancelevel"><i class="far fa-check-circle"></i> ¿Cual es tu nivel de cumplimiento religioso?</label>
+            <label for="religiouscompliancelevel"><i class="far fa-check-circle"></i> ¿Cual es tu nivel de cumplimiento religioso? <h6 class="asterics">*</h6></label>
             <select class="form-control" id="religiouscompliancelevel" name="religiouscompliancelevel" tabindex="-1" aria-hidden="true" >
                 <option value="" selected>Elige</option>
                 @foreach($religiouscompliancelevels as $religiouscompliancelevel)
@@ -31,10 +31,13 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group col-md-12">
+            <h6>* Campos Obligatorios</h6>
+        </div>
     </div>
     <div class="row bg-dark">
         <div class="form-group col-md-6">
-            <label for="community_assists"><i class="far fa-check-circle"></i> ¿A que comunidad asistís?</label>
+            <label for="community_assists"><i class="far fa-check-circle"></i> ¿A que comunidad asistís? <h6 class="asterics">*</h6></label>
             <input type="text" name="community_assists" id="community_assists" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['community_assists']}}">
         </div>
         <div class="form-group col-md-6">
@@ -42,7 +45,7 @@
             <input type="text" name="rabanim_know" id="rabanim_know" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['rabanim_know']}}">
         </div>
         <div class="form-group col-md-6">
-            <label for="studies"><i class="far fa-check-circle"></i> Estudios seculares y judíos (Puedes elegir varios)</label>
+            <label for="studies"><i class="far fa-check-circle"></i> Estudios seculares y judíos (Puedes elegir varios) <h6 class="asterics">*</h6></label>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="studies[]" id="full_primary" {{ (in_array(1,$form['studies'])) ? 'checked' : '' }} value="1">
                 <label class="form-check-label" for="full_primary"> Primario Completo </label>
@@ -85,7 +88,7 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="languages"><i class="far fa-check-circle"></i> ¿Que idiomas hablas?</label>
+            <label for="languages"><i class="far fa-check-circle"></i> ¿Que idiomas hablas? <h6 class="asterics">*</h6></label>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="languages[]" id="spanish" {{ (in_array(1,$form['languages'])) ? 'checked' : '' }} value="1">
                 <label class="form-check-label" for="spanish"> Español </label>
@@ -98,6 +101,9 @@
                 <input class="form-check-input" type="checkbox" name="languages[]" id="hebrew" {{ (in_array(3,$form['languages'])) ? 'checked' : '' }} value="3">
                 <label class="form-check-label" for="hebrew"> Hebreo </label>
             </div>
+        </div>
+        <div class="form-group col-md-12">
+            <h6>* Campos Obligatorios</h6>
         </div>
     </div>
 </div>
