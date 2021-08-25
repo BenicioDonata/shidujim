@@ -470,27 +470,27 @@ $(document).ready(function () {
                     $('.step3 #years_range_to').focus();
                     return false;
                 }
-                if($('.step3 #years_range_from').val() < 18 ){
+                if(parseInt($('.step3 #years_range_from').val()) < 18 ){
                     toastr["error"]("Edad incorrecta","Campo Rango de Edad");
                     $('.step3 #years_range_from').focus();
                     return false;
                 }
-                if($('.step3 #years_range_to').val() < 18 ){
+                if(parseInt($('.step3 #years_range_to').val()) < 18 ){
                     toastr["error"]("Edad incorrecta","Campo Rango de Edad");
                     $('.step3 #years_range_to').focus();
                     return false;
                 }
-                if($(".step3 #years_range_from").val().length < 2 ) {
+                if(parseInt($(".step3 #years_range_from").val().length) < 2 ) {
                     toastr["error"]("Debe tener 2 digitos","Campo Rango de Edad");
                     $('.step3 #years_range_from').focus();
                     return false;
                 }
-                if($(".step3 #years_range_to").val().length < 2 ) {
+                if(parseInt($(".step3 #years_range_to").val().length) < 2 ) {
                     toastr["error"]("Debe tener 2 digitos","Campo Rango de Edad");
                     $('.step3 #years_range_to').focus();
                     return false;
                 }
-                if($('.step3 #years_range_from').val() > $('.step3 #years_range_to').val() ){
+                if(parseInt($('.step3 #years_range_from').val()) > parseInt($('.step3 #years_range_to').val()) ){
                     toastr["error"]("Edad incorrecta","Campo Rango de Edad");
                     $('.step3 #years_range_from').focus();
                     return false;
