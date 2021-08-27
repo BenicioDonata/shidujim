@@ -11245,6 +11245,26 @@
         text-decoration: none;
     }
 
+    .cuadrado-verde {
+        width: 10px;
+        height: 10px;
+        background: #20b12c;
+    }
+    .cuadrado-rojo {
+        width: 10px;
+        height: 10px;
+        background: #ff0000;
+    }
+    .cuadrado-turquesa {
+        width: 10px;
+        height: 10px;
+        background: #33daff;
+    }
+
+    .q-verde, .q-rojo, .q-turquesa {
+        float: left;
+    }
+
     @media (min-width: 576px) {
 
         .div-top {

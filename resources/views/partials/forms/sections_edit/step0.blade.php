@@ -1,6 +1,14 @@
 <div class="form-section step0">
     <div class="row bg-dark">
         <div class="form-group col-md-6">
+            @php
+                $today = \Carbon\Carbon::now();
+                $diff_in_days = $today->diffInDays($form['form']['created_at']);
+            @endphp
+            <label><b>{{$diff_in_days}} Dias de Suscripción </b></label>
+        </div>
+        <div class="form-group col-md-6"></div>
+        <div class="form-group col-md-6">
             <label for="name"><i class="far fa-check-circle"></i> Nombre <h6 class="asterics">*</h6></label>
             <input type="text" name="name" id="name" class="form-control" placeholder="Tu respuesta" maxlength="254" value="{{$form['form']['name']}}">
         </div>

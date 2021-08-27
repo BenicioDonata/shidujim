@@ -92,9 +92,9 @@ $(document).ready(function () {
         $('#change-status-form-'+$(this).data('id')).submit();
     });
 
-    $(document).on('click','.edit-form', function(){
-        $('#edit-form-'+$(this).data('id')).submit();
-    });
+    // $(document).on('click','.edit-form', function(){
+    //     $('#edit-form-'+$(this).data('id')).submit();
+    // });
 
     $(document).on('click','.block-form-data', function(){
         $('#user-block-form-'+$(this).data('id')).submit();
@@ -143,7 +143,7 @@ $(document).ready(function () {
 
     $('.add-comment').on('click', function(){
 
-        $("#ModalComment .modal-header h5").text('Agregar Comentario Al Formulario #'+$(this).data('id'));
+        $("#ModalComment .modal-header h5").text('Agregar Comentario - '+ $(this).data('tit'));
         $("#ModalComment form#saveComment input#form-comment").val($(this).data('id'));
         $("#ModalComment form#saveComment #summary-ckeditor").val('');
         $("#ModalComment form#saveComment #caracteres").css('color','red').text("Máximo 250 caracteres: ");
@@ -540,7 +540,26 @@ $(document).ready(function () {
 
     navigateTo(0);
 
-    $(".step0 #age").keypress(function(tecla)
+    $(".step0 #age").on('change',function(tecla)
+    {
+        if(tecla.charCode < 48 || tecla.charCode > 57)
+        {
+            return false;
+        }
+
+        if ($(".step0 #age").val().length > 2){
+            return false;
+        }
+
+        setTimeout(function(){
+            var array_date = $('.step0 #date_of_birth').val().split('/');
+            var anio_now = (new Date).getFullYear();
+            var new_anio = anio_now - $(".step0 #age").val(); array_date[2];
+            $(".step0 #date_of_birth").val(array_date[0]+'/'+array_date[1]+'/'+new_anio);
+        }, 200);
+    });
+
+    $(".step0 #age").keypress('change',function(tecla)
     {
         if(tecla.charCode < 48 || tecla.charCode > 57)
         {
@@ -594,6 +613,10 @@ $(document).ready(function () {
         $(".step0 #mujer").removeClass('logo-gender-select');
         $(".step0 #mujer").addClass('logo-mujer');
 
+    });
+
+    $(document).on('click','td.edit-form', function(){
+        window.location.href = $(this).attr('href');
     });
 
 });

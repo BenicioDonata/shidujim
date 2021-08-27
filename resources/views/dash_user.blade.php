@@ -14,6 +14,22 @@
                             @include('partials.filterForm')
                             @include('partials.matchForm')
 
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="col-md-2 q-verde">
+                                        <div class="cuadrado-verde col-md-2"></div><p>En Pareja</p>
+                                    </div>
+                                     <div class="col-md-2 q-rojo ">
+                                        <div class="cuadrado-rojo col-md-2"></div>
+                                         <p>Bloqueado</p>
+                                    </div>
+                                    <div class="col-md-4 q-turquesa">
+                                        <div class="cuadrado-turquesa col-md-2"></div>
+                                        <p>Matcheados</p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="table-responsive">
                                 @if($forms->isNotEmpty())
                                     <table class="table table-bordered forms-action">
@@ -40,27 +56,27 @@
                                         </thead>
                                         <tbody>
                                         @foreach($forms as $form)
-                                            <tr bgcolor="{{!$form->is_blocked ? (!$form->is_matched ? (!$form->is_couple ? '#f8fafc' : '#20B12C'): '#33DAFF' ) : '#FF0000' }}">
-                                                <td>{{$form->lastname}} {{$form->name}}</td>
-                                                <td>{{$form->gender->genders_title}}</td>
-                                                <td>{{$form->maritalstatus->marital_statuses_title}}</td>
-                                                <td>{{$form->date_of_birth}}</td>
-                                                <td>{{$form->age}}</td>
-                                                <td>{{$form->main_phone}}</td>
-                                                <td>{{$form->email}}</td>
-                                                <td>{{$form->religiouscompliancelevel->religious_compliance_lvl}}</td>
-                                                <td>{{$form->smoker->smokers_title}}</td>
-                                                <td>{{$form->son->sons_title}}</td>
-                                                <td>{{$form->location->localities_title}}</td>
-                                                <td>{{ $form->coupleson->couple_sons_title}}</td>
-                                                <td>{{ $form->familypuritylaw->family_purity_laws_title}}</td>
+                                            <tr  bgcolor="{{!$form->is_blocked ? (!$form->is_matched ? (!$form->is_couple ? '#f8fafc' : '#20B12C'): '#33DAFF' ) : '#FF0000' }}">
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}"> {{ucwords($form->lastname)}} {{ucwords($form->name)}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{$form->gender->genders_title}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{$form->maritalstatus->marital_statuses_title}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{$form->date_of_birth}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{$form->age}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{$form->main_phone}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{$form->email}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{$form->religiouscompliancelevel->religious_compliance_lvl}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{$form->smoker->smokers_title}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{$form->son->sons_title}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{$form->location->localities_title}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{ $form->coupleson->couple_sons_title}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{ $form->familypuritylaw->family_purity_laws_title}}</td>
                                                 @php $form_comment = \App\Models\Comment::where('form_id','=',$form->id)->orderBy('id','DESC')->limit(1)->get(); @endphp
-                                                <td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">
                                                     @foreach($form_comment as $comment)
                                                           {{$comment->comment}}
                                                     @endforeach
                                                 </td>
-                                                <td>{{\Carbon\Carbon::parse(strtotime($form->created_at))->formatLocalized('%d %B %Y %H:%M:%S')}}</td>
+                                                <td class="edit-form" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}">{{\Carbon\Carbon::parse(strtotime($form->created_at))->formatLocalized('%d %B %Y %H:%M:%S')}}</td>
                                                 <td class="text-center" scope="row">
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_check ? 'Sin Revisión' : 'Revisado'}}" class="btn {{!$form->is_check ? 'fas fa-eye-slash btn-danger' : 'far fa-eye btn-success'}} btn-sm view-data"></a>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" title="{{!$form->is_blocked ? 'Bloquear Postulante' : 'Desbloquear Postulante'}}" class="btn {{!$form->is_blocked ? 'fas fa-user-minus btn-danger' : 'fas fa-user-plus btn-warning'}} {{($form->is_matched || $form->is_couple) ? 'disabled' : ''}} btn-sm block-form-data"></a>
@@ -86,7 +102,7 @@
                                                 <td class="text-center" scope="row">
                                                     <a type="button" data-toggle="tooltip" data-placement="top" title="Ver Fotos Subidas" data-file="{{$form->files}}" class="btn btn-info fas fa-images btn-sm view-files"></a>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" title="Ver Comentarios" class="btn btn-dark fas fa-eye btn-sm see-comments" data-id="{{$form->id}}"></a>
-                                                    <a type="button" data-toggle="tooltip" data-placement="top" title="Agregar Comentario" class="btn btn-success fas fa-edit btn-sm add-comment" data-id="{{$form->id}}"></a>
+                                                    <a type="button" data-toggle="tooltip" data-placement="top" title="Agregar Comentario" class="btn btn-success fas fa-edit btn-sm add-comment" data-id="{{$form->id}}" data-tit="{{ucwords($form->lastname)}} {{ucwords($form->name)}}"></a>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" href="{{route('edit_form',$form->id)}}" title="Editar Formulario" class="fas fa-pencil-alt btn btn-dark btn-sm edit-form"></a>
                                                     <a type="button" data-toggle="tooltip" data-placement="top" data-id="{{$form->id}}" data-user="{{$form->lastname}} {{$form->name}}" title="Eliminar Formulario" class="btn btn-danger fas fa-trash-alt btn-sm deleteForm"></a>
                                                     <form  method="post" id="delete-form-{{$form->id}}"  action="{{route('delete_Form',$form->id)}}">
