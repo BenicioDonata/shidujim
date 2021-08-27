@@ -116,4 +116,19 @@ class FormController extends Controller
             throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
         }
     }
+
+    public function getEmailExist (Request $request)
+    {
+
+        try {
+
+            $forms = $this->formService->getUserByEmail($request->email);
+
+            return $forms;
+
+        }catch (\Exception $e) {
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+    }
 }

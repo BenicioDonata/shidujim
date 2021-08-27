@@ -516,5 +516,9 @@ class Form extends Model
         return Form::where('id',$id)->with('gender','maritalstatus','religiouscompliancelevel','smoker','son','location','coupleson','familypuritylaw','files','studies','languages','quality','acceptancelevel','maritalstatuses','studiesseeks','locations','qualityseeks','comments')->first();
     }
 
+    public static function formbyemail($email){
+
+        return Form::where('email',$email)->first();
+    }
 
 }

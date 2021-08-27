@@ -20,6 +20,8 @@ Route::get('/complete','App\Http\Controllers\FormController@finalFormPage')->nam
 
 Route::post('/upload', 'App\Http\Controllers\FormController@store')->name('upload');
 
+Route::get('/email_exist', 'App\Http\Controllers\FormController@getEmailExist')->name('emailExist');
+
 
 Auth::routes();
 

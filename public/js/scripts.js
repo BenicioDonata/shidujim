@@ -256,38 +256,61 @@ $(document).ready(function () {
                     $('.step2 #email').focus();
                     return false;
                 }
-                if($('.step2 #main_phone').val() == ""){
-                    toastr["error"]("Completar el campo","Campo Teléfono Principal");
-                    $('.step2 #main_phone').focus();
-                    return false;
-                }
-                if(isNaN($(".step2 #main_phone").val())) {
-                    toastr["error"]("Sólo Números","Campo Teléfono Principal");
-                    $('.step2 #main_phone').focus();
-                    return false;
-                }
-                if($('.step2 #main_phone').val() < 0 ){
-                    toastr["error"]("Incorrecto","Campo Teléfono Principal");
-                    $('.step2 #main_phone').focus();
-                    return false;
-                }
-                if($(".step2 #main_phone").val().length < 8 ) {
-                    toastr["error"]("Debe tener minimo 8 digitos","Campo Teléfono Celular");
-                    $('.step2 #main_phone').focus();
-                    return false;
-                }
-                if($('.step2 select#count_sons').val() == ""){
-                    toastr["error"]("Seleccione Cantidad","Campo Hijos");
-                    $('.step2 select#count_sons').focus();
-                    return;
-                }
-                if($('.step2 select#religiouscompliancelevel').val() == ""){
-                    toastr["error"]("Seleccione Cumplimiento Religioso","Campo Cumplimiento Religioso");
-                    $('.step2 select#religiouscompliancelevel').focus();
-                    return;
-                }
 
-                navigateTo(curlIndex() + 1);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url:'email_exist',
+                    data:{'email':$('.step2 #email').val()},
+                    type:'get',
+                    success: function (response) {
+                        if(response.email !== undefined) {
+                            toastr["error"]("El e-mail ingresado ya existe en nuestra plataforma, recuerde poner un e-mail válido para que luego podamos ponernos en contacto con usted. Gracias","Campo Email",{
+                                "timeOut": "10000",
+                                "extendedTImeout": "10000"
+                            });
+
+                            $('.step2 #email').focus();
+                            return false;
+                        }else{
+                            if($('.step2 #main_phone').val() == ""){
+                                toastr["error"]("Completar el campo","Campo Teléfono Principal");
+                                $('.step2 #main_phone').focus();
+                                return false;
+                            }
+                            if(isNaN($(".step2 #main_phone").val())) {
+                                toastr["error"]("Sólo Números","Campo Teléfono Principal");
+                                $('.step2 #main_phone').focus();
+                                return false;
+                            }
+                            if($('.step2 #main_phone').val() < 0 ){
+                                toastr["error"]("Incorrecto","Campo Teléfono Principal");
+                                $('.step2 #main_phone').focus();
+                                return false;
+                            }
+                            if($(".step2 #main_phone").val().length < 8 ) {
+                                toastr["error"]("Debe tener minimo 8 digitos","Campo Teléfono Celular");
+                                $('.step2 #main_phone').focus();
+                                return false;
+                            }
+                            if($('.step2 select#count_sons').val() == ""){
+                                toastr["error"]("Seleccione Cantidad","Campo Hijos");
+                                $('.step2 select#count_sons').focus();
+                                return;
+                            }
+                            if($('.step2 select#religiouscompliancelevel').val() == ""){
+                                toastr["error"]("Seleccione Cumplimiento Religioso","Campo Cumplimiento Religioso");
+                                $('.step2 select#religiouscompliancelevel').focus();
+                                return;
+                            }
+                            navigateTo(curlIndex() + 1);
+                        }
+                    }
+                });
             break;
 
             case 3:

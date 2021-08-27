@@ -574,4 +574,17 @@ class FormService
 
     }
 
+    public function getUserByEmail($email) {
+
+        try {
+
+            return Form::formbyemail($email);
+            
+        } catch (\Exception $e) {
+
+            throw new Exception(sprintf("ERROR: '%s'", $e->getMessage()));
+        }
+
+    }
+
 }
