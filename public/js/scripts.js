@@ -269,7 +269,7 @@ $(document).ready(function () {
                     type:'get',
                     success: function (response) {
                         if(response.email !== undefined) {
-                            toastr["error"]("El e-mail ingresado ya existe en nuestra plataforma, recuerde poner un e-mail válido para que luego podamos ponernos en contacto con usted. Gracias","Campo Email",{
+                            toastr["error"]("Tu e-mail ya está registrado, para poder efectuar un cambio en tus datos envia el detalle del mismo a shidujim@shidujim.com","Campo Email",{
                                 "timeOut": "10000",
                                 "extendedTImeout": "10000"
                             });
